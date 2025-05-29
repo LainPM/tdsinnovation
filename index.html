@@ -1,10 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UV Community</title>
+    
+    <!-- Secure font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Security headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:;">
+    
     <style>
         :root {
             --primary: #6E48AA;
@@ -342,14 +350,14 @@
             <div class="logo-icon">UV</div>
             <span>UV Community</span>
         </div>
-        <a href="https://discord.gg/UZPacyDQtq" class="cta-button">Join Now</a>
+        <a href="https://discord.gg/UZPacyDQtq" class="cta-button" rel="noopener noreferrer" target="_blank">Join Now</a>
     </nav>
 
     <section class="hero">
         <h1>Chat, Hangout, Play, Voice Chat</h1>
         <p>Join the UV Community - a vibrant space for creators, developers, and enthusiasts to connect and grow together.</p>
         <div>
-            <a href="https://discord.gg/UZPacyDQtq" class="cta-button" style="margin-right: 1rem;">Join The Discord Server</a>
+            <a href="https://discord.gg/UZPacyDQtq" class="cta-button" style="margin-right: 1rem;" rel="noopener noreferrer" target="_blank">Join The Discord Server</a>
         </div>
     </section>
 
@@ -394,7 +402,7 @@
                 <div class="stat-label">Channels</div>
             </div>
             <div class="stat">
-                <div class="stat-number">1</div>
+                <div="stat-number">1</div>
                 <div class="stat-label">Events Monthly</div>
             </div>
             <div class="stat">
@@ -415,7 +423,7 @@
                 </div>
             </div>
             <div class="testimonial">
-                <p>"There’s always someone online to talk to or get help from. Plus, the events are a fun way to unwind."</p>
+                <p>"There's always someone online to talk to or get help from. Plus, the events are a fun way to unwind."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">U</div>
                     <div class="author-info">
@@ -447,83 +455,23 @@
         </div>
     </section>
 
-    <footer>
-        <div class="logo" style="justify-content: center;">
-            <div class="logo-icon">UV</div>
-            <span>UV Community</span>
-        </div>
-    </footer>
-</body>
-</html>
-
-        <div class="feature-cards">
-            <div class="card">
-                <div class="card-icon">👥</div>
-                <h3>Vibrant Community</h3>
-                <p>Connect with like-minded individuals who share your passions and interests in a welcoming environment.</p>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">💬</div>
-                <h3>Engaging Discussions</h3>
-                <p>Participate in meaningful conversations across dozens of specialized channels and topics.</p>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">🎮</div>
-                <h3>Regular Events</h3>
-                <p>Join game nights, workshops, AMAs, and other exciting events organized by our team.</p>
-            </div>
-            
-
-            
-        </div>
+    <section class="join-cta">
+        <h2>Ready to Join Us?</h2>
+        <p>Don't miss out on the conversations, events, and connections waiting for you in the UV Community.</p>
+        <a href="https://discord.gg/UZPacyDQtq" class="cta-button" rel="noopener noreferrer" target="_blank">Join The Discord Server</a>
     </section>
-    
-    <section class="community-showcase">
-        <div class="section-header">
-            <h2>Our Community in Numbers</h2>
-            <p>Join members who are already part of the UV Community</p>
-        </div>
-        
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">400+</div>
-                <div class="stat-label">Members</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">22</div>
-                <div class="stat-label">Channels</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">1</div>
-                <div class="stat-label">Events Monthly</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Active Community</div>
-            </div>
-        </div>
-        
-            
-            <div class="testimonial">
-              
-                <div class="testimonial-author">
-                    <div class="author-info">
-                        <h4>Unlimited Vibes</h4>
-                        <p>Website Developer</p>
-                    </div>
-                </div>
-            </div>
-            
-    
+
     <footer>
         <div class="logo" style="justify-content: center;">
             <div class="logo-icon">UV</div>
             <span>UV Community</span>
         </div>
-        
-
+        <div class="footer-links">
+            <a href="https://discord.gg/UZPacyDQtq" class="footer-link" rel="noopener noreferrer" target="_blank">Discord</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 UV Community. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
