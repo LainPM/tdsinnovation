@@ -3,40 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDS Innovation | Premium Discord Services</title>
-    
-    <!-- Fonts -->
+    <title>Phaltan Agro Tourism | Experience Rural Maharashtra</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #5865F2;
-            --primary-dark: #4752C4;
-            --secondary: #EB459E;
-            --accent: #57F287;
-            --background: #0B0E11;
-            --card-bg: #1E2124;
-            --text: #FFFFFF;
-            --text-muted: #B9BBBE;
-            --success: #3BA55C;
+            --primary: #4E944F;
+            --primary-dark: #386641;
+            --primary-light: #D8F3DC;
+            --secondary: #A7C957;
+            --accent: #6A994E;
+            --background: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text: #1D1D1D;
+            --text-muted: #555;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         body {
+            font-family: 'Poppins', sans-serif;
             background-color: var(--background);
             color: var(--text);
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
 
         .navbar {
@@ -44,11 +46,20 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 5%;
-            background-color: var(--card-bg);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-            position: sticky;
+            background-color: var(--primary);
+            color: white;
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 1rem 5%;
+            background-color: rgba(78, 148, 79, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
@@ -57,30 +68,78 @@
             gap: 0.75rem;
             font-size: 1.5rem;
             font-weight: 700;
-            color: white;
             text-decoration: none;
-            font-family: 'Poppins', sans-serif;
+            color: white;
         }
 
         .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 8px;
+            width: 42px;
+            height: 42px;
+            background: var(--secondary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--secondary);
+            color: var(--primary-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(167, 201, 87, 0.3);
+            background: white;
         }
 
         .hero {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            padding: 8rem 5% 6rem;
             text-align: center;
-            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-light), var(--background));
             position: relative;
             overflow: hidden;
         }
@@ -88,182 +147,267 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(88, 101, 242, 0.1) 0%, transparent 70%);
-            z-index: -1;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
         }
 
         .hero-content {
-            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .tagline {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .headline {
+        .hero h1 {
             font-size: 3.5rem;
-            font-weight: 700;
+            color: var(--primary-dark);
             margin-bottom: 1.5rem;
-            font-family: 'Poppins', sans-serif;
             line-height: 1.2;
         }
 
-        .subheadline {
+        .hero p {
             font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 3rem;
+            color: var(--text-muted);
         }
 
-        .action-buttons {
+        .hero-buttons {
             display: flex;
             gap: 1.5rem;
-            flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 4rem;
+            flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
+        .secondary-button {
+            background: transparent;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.1rem;
+            transition: var(--transition);
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .secondary-button:hover {
+            background: var(--primary-dark);
             color: white;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text);
-            border: 2px solid var(--primary);
-        }
-
-        .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.5);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(88, 101, 242, 0.1);
         }
 
         .features {
-            width: 100%;
-            padding: 5rem 5%;
-            background-color: var(--card-bg);
+            padding: 6rem 5%;
+            background-color: white;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            font-family: 'Poppins', sans-serif;
+            margin-bottom: 4rem;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .feature-card {
-            background-color: var(--background);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
-        .feature-card:hover {
+        .card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-bottom: 4px solid transparent;
+        }
+
+        .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-bottom-color: var(--secondary);
         }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .card-icon {
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            color: var(--primary);
         }
 
-        .feature-title {
-            font-size: 1.5rem;
+        .card h3 {
             margin-bottom: 1rem;
-            font-family: 'Poppins', sans-serif;
+            color: var(--primary-dark);
+            font-size: 1.5rem;
         }
 
-        .feature-desc {
+        .card p {
             color: var(--text-muted);
-            line-height: 1.7;
+        }
+
+        .photo-gallery {
+            padding: 6rem 5%;
+            background-color: var(--primary-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .community-showcase {
+            padding: 6rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .community-showcase .section-header h2,
+        .community-showcase .section-header p {
+            color: white;
+        }
+
+        .community-showcase .section-header h2::after {
+            background: var(--secondary);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            min-width: 200px;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
         }
 
         .testimonials {
-            padding: 5rem 5%;
-            text-align: center;
+            padding: 6rem 5%;
+            background-color: white;
         }
 
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
+            margin-top: 3rem;
         }
 
         .testimonial-card {
             background-color: var(--card-bg);
-            border-radius: 12px;
             padding: 2rem;
-            text-align: left;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .testimonial-card::before {
             content: '"';
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 4rem;
-            opacity: 0.1;
-            font-family: serif;
-            line-height: 1;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-light);
+            z-index: 0;
         }
 
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
+        .testimonial-content {
             position: relative;
             z-index: 1;
+            margin-bottom: 1.5rem;
         }
 
         .testimonial-author {
@@ -276,81 +420,67 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
+            object-fit: cover;
+            border: 2px solid var(--secondary);
         }
 
-        .author-info {
-            text-align: left;
+        .author-info h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.25rem;
         }
 
-        .author-name {
-            font-weight: 600;
-        }
-
-        .author-title {
+        .author-info p {
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        .cta {
+        .rating {
+            color: var(--secondary);
+            margin-top: 0.5rem;
+        }
+
+        .newsletter {
             padding: 6rem 5%;
+            background-color: var(--primary-light);
             text-align: center;
-            background: linear-gradient(135deg, rgba(88, 101, 242, 0.1), rgba(235, 69, 158, 0.1));
-            position: relative;
-            overflow: hidden;
         }
 
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+        .newsletter-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .cta .headline {
-            margin-bottom: 1rem;
+        .newsletter-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
         }
 
-        .cta .subheadline {
-            margin-bottom: 2.5rem;
-        }
-
-        .discord-float {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(88, 101, 242, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .discord-float:nth-child(1) {
-            top: -100px;
-            left: -100px;
-        }
-
-        .discord-float:nth-child(2) {
-            bottom: -150px;
-            right: -100px;
+        .newsletter-input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(167, 201, 87, 0.3);
         }
 
         footer {
-            background-color: var(--card-bg);
-            padding: 3rem 5%;
-            text-align: center;
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 4rem 5% 2rem;
         }
 
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-logo {
@@ -359,278 +489,433 @@
             gap: 0.75rem;
             font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 1.5rem;
             color: white;
             text-decoration: none;
-            font-family: 'Poppins', sans-serif;
         }
 
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .footer-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--primary);
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
         }
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .social-link {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            color: white;
+            transition: var(--transition);
         }
 
         .social-link:hover {
-            background-color: var(--primary);
+            background-color: var(--secondary);
+            color: var(--primary-dark);
             transform: translateY(-3px);
         }
 
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 2rem;
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .headline {
-                font-size: 2.5rem;
-            }
-
-            .subheadline {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .action-buttons {
+            .navbar {
+                padding: 1rem 5%;
                 flex-direction: column;
                 gap: 1rem;
             }
 
-            .btn {
-                width: 100%;
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
                 justify-content: center;
+            }
+
+            .hero {
+                padding: 7rem 5% 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .stat {
+                min-width: 150px;
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1.5rem 1rem;
+            }
+
+            .stat {
+                min-width: 120px;
+                padding: 1rem 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <a href="#" class="logo">
-            <div class="logo-icon">TDS</div>
-            <span>TDS Innovation</span>
+            <div class="logo-icon">AG</div>
+            <span>Phaltan Agro Tourism</span>
+        </a>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Experiences</a>
+            <a href="#">Gallery</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <a href="#" class="cta-button">
+            <i class="fas fa-calendar-alt"></i>
+            Book a Visit
         </a>
     </nav>
 
-    <main class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <span class="tagline">PREMIUM DISCORD SERVICES</span>
-            <h1 class="headline">Elevate Your Discord Experience</h1>
-            <p class="subheadline">
-                Custom bots, stunning server designs, and growth solutions tailored to 
-                make your community stand out from the crowd.
-            </p>
-            
-            <div class="action-buttons">
-                <a href="https://discord.gg/zE4sXAGxmU" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4C14.7 4.54 14.34 5.25 14 5.79C12.45 5.49 10.92 5.49 9.42 5.79C9.07 5.24 8.71 4.54 8.41 4C6.91 4.26 5.47 4.71 4.14 5.33C1.17 9.12 0.49 12.81 1.13 16.39C2.91 17.59 4.63 18.38 6.34 18.88C6.89 18.16 7.37 17.38 7.75 16.55C7.15 16.26 6.58 15.92 6.05 15.53C6.22 15.38 6.39 15.23 6.55 15.07C9.12 16.96 11.97 17.47 14.9 16.78C15.1 16.42 15.29 16.05 15.46 15.67C18.6 14.12 20.15 11.93 20.91 9.05C21.5 6.85 21.2 4.55 19.27 5.33ZM8.68 14.81C7.71 14.81 6.9 13.97 6.9 12.96C6.9 11.95 7.69 11.11 8.68 11.11C9.67 11.11 10.48 11.96 10.47 12.96C10.47 13.97 9.67 14.81 8.68 14.81ZM15.32 14.81C14.33 14.81 13.52 13.97 13.52 12.96C13.52 11.95 14.31 11.11 15.32 11.11C16.31 11.11 17.11 11.96 17.11 12.96C17.11 13.97 16.31 14.81 15.32 14.81Z" fill="currentColor"/>
-                    </svg>
-                    Join Our Discord
+            <h1 class="animate">Discover the Authentic Rural Maharashtra</h1>
+            <p class="animate delay-1">Experience the joy of farming, nature, and traditional culture at Phaltan's premier agro-tourism destination</p>
+            <div class="hero-buttons">
+                <a href="#" class="cta-button animate delay-2">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Explore Activities
                 </a>
-                <a href="#services" class="btn btn-secondary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="currentColor"/>
-                    </svg>
-                    Our Services
+                <a href="#" class="secondary-button animate delay-2">
+                    <i class="fas fa-play-circle"></i>
+                    Watch Video
                 </a>
             </div>
         </div>
-    </main>
+    </section>
 
-    <section class="features" id="services">
-        <h2 class="section-title">What We Offer</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <h3 class="feature-title">Custom Discord Bots</h3>
-                <p class="feature-desc">
-                    Powerful bots tailored to your needs - moderation, music, economy, tickets, 
-                    and more. Coded solutions or no-code setups available.
-                </p>
+    <section class="features">
+        <div class="section-header">
+            <h2>Our Unique Experiences</h2>
+            <p>Immerse yourself in authentic rural activities and create unforgettable memories</p>
+        </div>
+        <div class="feature-cards">
+            <div class="card animate">
+                <div class="card-icon"><i class="fas fa-tractor"></i></div>
+                <h3>Hands-on Farming</h3>
+                <p>Participate in seasonal farming activities like ploughing, sowing, and harvesting with guidance from local farmers.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3 class="feature-title">Premium Server Setups</h3>
-                <p class="feature-desc">
-                    Beautiful, functional server designs with custom roles, channels, 
-                    permissions, and aesthetic themes that impress your members.
-                </p>
+            <div class="card animate delay-1">
+                <div class="card-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Traditional Cuisine</h3>
+                <p>Enjoy authentic Maharashtrian meals prepared with organic ingredients from our farm in traditional style.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">📈</div>
-                <h3 class="feature-title">Server Growth</h3>
-                <p class="feature-desc">
-                    Strategic promotion, advertising, and outreach to help your community 
-                    grow with engaged, quality members.
-                </p>
+            <div class="card animate delay-2">
+                <div class="card-icon"><i class="fas fa-home"></i></div>
+                <h3>Rural Stay</h3>
+                <p>Stay in eco-friendly cottages designed with local materials for a true village experience.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🖌️</div>
-                <h3 class="feature-title">Graphics & Branding</h3>
-                <p class="feature-desc">
-                    Professional logos, banners, icons, and emojis that establish your 
-                    server's unique visual identity.
-                </p>
+        </div>
+    </section>
+
+    <section class="photo-gallery">
+        <div class="section-header">
+            <h2>Glimpses of Our Farm</h2>
+            <p>Explore the natural beauty and activities at our agro-tourism center</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Farm Rows">
+                <div class="gallery-caption">Organic Farming Fields</div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3 class="feature-title">Moderation Team</h3>
-                <p class="feature-desc">
-                    Free professional moderators and admins to help manage your community 
-                    and maintain a positive environment.
-                </p>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1489&q=80" alt="Farm Activities">
+                <div class="gallery-caption">Hands-on Farming Experience</div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">✨</div>
-                <h3 class="feature-title">Special Events</h3>
-                <p class="feature-desc">
-                    Custom game nights, tournaments, and community events to boost 
-                    engagement and member retention.
-                </p>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Traditional Food">
+                <div class="gallery-caption">Traditional Maharashtrian Cuisine</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Rural Accommodation">
+                <div class="gallery-caption">Eco-friendly Cottages</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="community-showcase">
+        <div class="section-header">
+            <h2>Our Growing Community</h2>
+            <p>Join hundreds of visitors who have experienced the magic of rural life with us</p>
+        </div>
+        <div class="stats">
+            <div class="stat animate">
+                <div class="stat-number">1,200+</div>
+                <div class="stat-label">Happy Visitors</div>
+            </div>
+            <div class="stat animate delay-1">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Events Hosted</div>
+            </div>
+            <div class="stat animate delay-2">
+                <div class="stat-number">5★</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat animate delay-3">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Organic Produce</div>
             </div>
         </div>
     </section>
 
     <section class="testimonials">
-        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="section-header">
+            <h2>What Our Visitors Say</h2>
+            <p>Hear from people who have experienced Phaltan Agro Tourism</p>
+        </div>
         <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    TDS Innovation transformed our gaming community server from a mess 
-                    to a professional space. The custom bot they made saves us hours 
-                    of moderation work every week!
-                </p>
+            <div class="testimonial-card animate">
+                <div class="testimonial-content">
+                    <p>An unforgettable experience! My kids learned so much about farming and we all enjoyed the delicious home-cooked meals. Can't wait to visit again!</p>
+                </div>
                 <div class="testimonial-author">
-                    <div class="author-avatar">JD</div>
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya K." class="author-avatar">
                     <div class="author-info">
-                        <div class="author-name">Jason D.</div>
-                        <div class="author-title">Gaming Community Owner</div>
+                        <h4>Priya K.</h4>
+                        <p>Mumbai</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    Our server growth tripled after implementing their promotion strategy. 
-                    The team is responsive, creative, and truly understands Discord 
-                    communities.
-                </p>
+            <div class="testimonial-card animate delay-1">
+                <div class="testimonial-content">
+                    <p>The perfect weekend getaway from Pune. The farming activities were so therapeutic and the night under the stars was magical.</p>
+                </div>
                 <div class="testimonial-author">
-                    <div class="author-avatar">SM</div>
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul S." class="author-avatar">
                     <div class="author-info">
-                        <div class="author-name">Sarah M.</div>
-                        <div class="author-title">NFT Project Manager</div>
+                        <h4>Rahul S.</h4>
+                        <p>Pune</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    The premium setup exceeded all expectations. Every detail was 
-                    customized to our brand, and the onboarding process for new 
-                    members became so much smoother.
-                </p>
+            <div class="testimonial-card animate delay-2">
+                <div class="testimonial-content">
+                    <p>As someone who grew up in cities, this was my first real experience of rural life. The hospitality and authenticity were beyond expectations.</p>
+                </div>
                 <div class="testimonial-author">
-                    <div class="author-avatar">AL</div>
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ananya M." class="author-avatar">
                     <div class="author-info">
-                        <div class="author-name">Alex L.</div>
-                        <div class="author-title">E-sports Team Manager</div>
+                        <h4>Ananya M.</h4>
+                        <p>Bangalore</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta">
-        <div class="discord-float"></div>
-        <div class="discord-float"></div>
-        <div class="cta-content">
-            <h2 class="headline">Ready to Transform Your Server?</h2>
-            <p class="subheadline">
-                Join dozens of satisfied community owners who've elevated their 
-                Discord experience with our premium services.
-            </p>
-            <div class="action-buttons">
-                <a href="https://discord.gg/zE4sXAGxmU" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4C14.7 4.54 14.34 5.25 14 5.79C12.45 5.49 10.92 5.49 9.42 5.79C9.07 5.24 8.71 4.54 8.41 4C6.91 4.26 5.47 4.71 4.14 5.33C1.17 9.12 0.49 12.81 1.13 16.39C2.91 17.59 4.63 18.38 6.34 18.88C6.89 18.16 7.37 17.38 7.75 16.55C7.15 16.26 6.58 15.92 6.05 15.53C6.22 15.38 6.39 15.23 6.55 15.07C9.12 16.96 11.97 17.47 14.9 16.78C15.1 16.42 15.29 16.05 15.46 15.67C18.6 14.12 20.15 11.93 20.91 9.05C21.5 6.85 21.2 4.55 19.27 5.33ZM8.68 14.81C7.71 14.81 6.9 13.97 6.9 12.96C6.9 11.95 7.69 11.11 8.68 11.11C9.67 11.11 10.48 11.96 10.47 12.96C10.47 13.97 9.67 14.81 8.68 14.81ZM15.32 14.81C14.33 14.81 13.52 13.97 13.52 12.96C13.52 11.95 14.31 11.11 15.32 11.11C16.31 11.11 17.11 11.96 17.11 12.96C17.11 13.97 16.31 14.81 15.32 14.81Z" fill="currentColor"/>
-                    </svg>
-                    Get Started Now
-                </a>
-            </div>
+    <section class="newsletter">
+        <div class="section-header">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for seasonal offers and farming events</p>
         </div>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="newsletter-input" required>
+            <button type="submit" class="cta-button">
+                <i class="fas fa-paper-plane"></i>
+                Subscribe
+            </button>
+        </form>
     </section>
 
     <footer>
         <div class="footer-content">
-            <a href="#" class="footer-logo">
-                <div class="logo-icon">TDS</div>
-                <span>TDS Innovation</span>
-            </a>
+            <div class="footer-about">
+                <a href="#" class="footer-logo">
+                    <div class="logo-icon">AG</div>
+                    <span>Phaltan Agro Tourism</span>
+                </a>
+                <p>Promoting sustainable tourism and preserving rural traditions since 2015.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
             <div class="footer-links">
-                <a href="#services" class="footer-link">Services</a>
-                <a href="#" class="footer-link">Portfolio</a>
-                <a href="#" class="footer-link">Pricing</a>
-                <a href="#" class="footer-link">FAQ</a>
-                <a href="#" class="footer-link">Contact</a>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Experiences</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
             </div>
-            <div class="social-links">
-                <a href="#" class="social-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.878V14.891H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.878C18.343 21.128 22 16.991 22 12Z" fill="currentColor"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.286 7.714C8.286 6.767 7.519 6 6.571 6C5.624 6 4.857 6.767 4.857 7.714C4.857 8.661 5.624 9.429 6.571 9.429C7.519 9.429 8.286 8.661 8.286 7.714ZM22 5.143V18.857C22 20.598 20.598 22 18.857 22H5.143C3.402 22 2 20.598 2 18.857V5.143C2 3.402 3.402 2 5.143 2H18.857C20.598 2 22 3.402 22 5.143ZM18.286 5.143C18.286 4.196 17.519 3.429 16.571 3.429H7.429C6.481 3.429 5.714 4.196 5.714 5.143V18.857C5.714 19.804 6.481 20.571 7.429 20.571H16.571C17.519 20.571 18.286 19.804 18.286 18.857V14.143L20.857 16.714V7.286L18.286 9.857V5.143Z" fill="currentColor"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.163C15.204 2.163 15.584 2.175 16.85 2.233C18.021 2.286 18.655 2.478 19.042 2.655C19.514 2.869 19.827 3.132 20.153 3.457C20.477 3.783 20.741 4.096 20.954 4.568C21.131 4.955 21.323 5.589 21.376 6.76C21.435 8.026 21.447 8.406 21.447 11.61C21.447 14.814 21.435 15.194 21.376 16.46C21.323 17.631 21.131 18.265 20.954 18.652C20.741 19.124 20.478 19.437 20.153 19.763C19.827 20.087 19.514 20.351 19.042 20.564C18.655 20.741 18.021 20.933 16.85 20.986C15.584 21.045 15.204 21.057 12 21.057C8.796 21.057 8.416 21.045 7.15 20.986C5.979 20.933 5.345 20.741 4.958 20.564C4.486 20.351 4.173 20.087 3.847 19.763C3.523 19.437 3.259 19.124 3.046 18.652C2.869 18.265 2.677 17.631 2.624 16.46C2.565 15.194 2.553 14.814 2.553 11.61C2.553 8.406 2.565 8.026 2.624 6.76C2.677 5.589 2.869 4.955 3.046 4.568C3.259 4.096 3.523 3.783 3.847 3.457C4.173 3.132 4.486 2.869 4.958 2.655C5.345 2.478 5.979 2.286 7.15 2.233C8.416 2.175 8.796 2.163 12 2.163ZM12 3.857C8.844 3.857 8.484 3.869 7.207 3.927C6.123 3.976 5.519 4.161 5.147 4.31C4.672 4.497 4.325 4.727 3.966 5.086C3.607 5.445 3.377 5.792 3.19 6.267C3.041 6.639 2.856 7.243 2.807 8.327C2.749 9.604 2.737 9.964 2.737 13.12C2.737 16.276 2.749 16.636 2.807 17.913C2.856 18.997 3.041 19.601 3.19 19.973C3.377 20.448 3.607 20.795 3.966 21.154C4.325 21.513 4.672 21.743 5.147 21.93C5.519 22.079 6.123 22.264 7.207 22.313C8.484 22.371 8.844 22.383 12 22.383C15.156 22.383 15.516 22.371 16.793 22.313C17.877 22.264 18.481 22.079 18.853 21.93C19.328 21.743 19.675 21.513 20.034 21.154C20.393 20.795 20.623 20.448 20.81 19.973C20.959 19.601 21.144 18.997 21.193 17.913C21.251 16.636 21.263 16.276 21.263 13.12C21.263 9.964 21.251 9.604 21.193 8.327C21.144 7.243 20.959 6.639 20.81 6.267C20.623 5.792 20.393 5.445 20.034 5.086C19.675 4.727 19.328 4.497 18.853 4.31C18.481 4.161 17.877 3.976 16.793 3.927C15.516 3.869 15.156 3.857 12 3.857ZM12 7.531C15.187 7.531 17.776 10.12 17.776 13.307C17.776 16.494 15.187 19.083 12 19.083C8.813 19.083 6.224 16.494 6.224 13.307C6.224 10.12 8.813 7.531 12 7.531ZM12 16.49C14.135 16.49 15.857 14.768 15.857 12.633C15.857 10.498 14.135 8.776 12 8.776C9.865 8.776 8.143 10.498 8.143 12.633C8.143 14.768 9.865 16.49 12 16.49ZM18.406 6.979C18.406 7.727 17.793 8.34 17.045 8.34C16.297 8.34 15.684 7.727 15.684 6.979C15.684 6.231 16.297 5.618 17.045 5.618C17.793 5.618 18.406 6.231 18.406 6.979Z" fill="currentColor"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.205 2.25H21.513L14.286 10.51L22.787 21.75H16.134L10.916 14.933L4.95 21.75H1.64L9.37 12.915L1.214 2.25H8.04L12.753 8.481L18.205 2.25ZM17.044 19.77H18.877L7.045 4.126H5.078L17.044 19.77Z" fill="currentColor"/>
-                    </svg>
-                </a>
+            <div class="footer-links">
+                <h3>Experiences</h3>
+                <ul>
+                    <li><a href="#">Farming Activities</a></li>
+                    <li><a href="#">Village Walks</a></li>
+                    <li><a href="#">Cooking Classes</a></li>
+                    <li><a href="#">Handicraft Workshops</a></li>
+                    <li><a href="#">Seasonal Festivals</a></li>
+                </ul>
             </div>
-            <p class="copyright">
-                &copy; 2023 TDS Innovation. All rights reserved.
-            </p>
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Near Phaltan, Satara, Maharashtra</li>
+                    <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                    <li><i class="fas fa-envelope"></i> info@phaltanagrotourism.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Phaltan Agro Tourism. All rights reserved.</p>
         </div>
     </footer>
-</body>
-</html>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
     </script>
 </body>
 </html>
