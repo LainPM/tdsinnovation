@@ -1,35 +1,39 @@
-// Smooth scroll for navigation
-const navLinks = document.querySelectorAll('.nav-links a');
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId.startsWith('#')) {
-            e.preventDefault();
-            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | FreshBake Delights</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation (Same as index.html) -->
+    <nav>
+        <a href="index.html" class="logo">FreshBake Delights</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
 
-// Contact form validation
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', function(e) {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    let valid = true;
-    if (name.length < 2) {
-        alert('Please enter your name.');
-        valid = false;
-    } else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        alert('Please enter a valid email address.');
-        valid = false;
-    } else if (message.length < 5) {
-        alert('Please enter a message.');
-        valid = false;
-    }
-    if (!valid) {
-        e.preventDefault();
-    } else {
-        alert('Thank you for contacting us!');
-    }
-});
+    <!-- Product Grid -->
+    <section class="product-grid">
+        <div class="product-card">
+            <img src="chocolate-cake.jpg" alt="Chocolate Cake">
+            <h3>Chocolate Cake</h3>
+            <p>₹499</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <!-- More products -->
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer>
+        <p>&copy; 2024 FreshBake Delights</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
