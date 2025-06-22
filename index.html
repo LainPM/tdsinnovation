@@ -3,336 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranav Bakery | Mumbai's Oldest Bakery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #eab676;
-            --secondary: #fff3e0;
-            --accent: #a0522d;
-            --dark: #3e2723;
-            --light: #fffaf3;
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            background: var(--light);
-            color: var(--dark);
-        }
-        header {
-            background: var(--secondary);
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--accent);
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-        .hero {
-            background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(60, 40, 20, 0.45);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-        .btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn:hover {
-            background: var(--dark);
-        }
-        .section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            color: var(--accent);
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-        }
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s;
-        }
-        .product-card:hover {
-            transform: translateY(-6px) scale(1.03);
-        }
-        .product-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .product-info {
-            padding: 1.2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .product-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            margin: 0 0 0.5rem 0;
-        }
-        .product-price {
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .about {
-            background: var(--secondary);
-            border-radius: 12px;
-        }
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-        }
-        .about-img {
-            flex: 1 1 250px;
-            min-width: 250px;
-        }
-        .about-img img {
-            width: 100%;
-            border-radius: 8px;
-        }
-        .about-text {
-            flex: 2 1 350px;
-        }
-        .contact-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        .contact-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-            padding: 2rem;
-            min-width: 220px;
-            text-align: center;
-        }
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-        }
-        .social-links a {
-            color: white;
-            margin: 0 0.5rem;
-            font-size: 1.5rem;
-            text-decoration: none;
-        }
-        @media (max-width: 800px) {
-            .about-content {
-                flex-direction: column;
-            }
-            .section {
-                padding: 2.5rem 1rem;
-            }
-        }
-    </style>
+    <title>Pranav Bakery</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">Pranav Bakery</div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
-                <li><a href="products.html" class="nav-link" data-page="products">Products</a></li>
-                <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
-                <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
+    <nav class="navbar">
+        <div class="container">
+            <div class="brand">Pranav Bakery</div>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#why">Why Choose Us?</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
-    <main id="main-content">
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>Mumbai's Oldest Bakery</h1>
-                <p>Since 1895, Pranav Bakery has been serving Mumbai with the finest breads, cakes, and pastries, baked fresh every day with love and tradition.</p>
-                <a href="products.html" class="btn" id="view-products-btn">See Our Products</a>
-            </div>
-        </section>
-        <section class="section" id="products-preview">
-            <h2 class="section-title">Our Classics</h2>
-            <div class="products">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=80" alt="Brun Pav">
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">Brun Pav</h3>
-                            <p>Traditional crusty bread roll, a Mumbai staple for over a century.</p>
-                        </div>
-                        <div>
-                            <div class="product-price">₹20</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=800&q=80" alt="Mawa Cake">
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">Mawa Cake</h3>
-                            <p>Rich, moist cake made with mawa and cardamom, a true Parsi bakery classic.</p>
-                        </div>
-                        <div>
-                            <div class="product-price">₹40</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=800&q=80" alt="Khari Biscuit">
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">Khari Biscuit</h3>
-                            <p>Flaky, buttery puff pastry biscuits, perfect with chai.</p>
-                        </div>
-                        <div>
-                            <div class="product-price">₹30</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align:center;margin-top:2rem;">
-                <a href="products.html" class="btn">View All Products</a>
-            </div>
-        </section>
-        <section class="section about" id="about-preview">
-            <h2 class="section-title">Our Story</h2>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=80" alt="Bakery in Mumbai">
-                </div>
-                <div class="about-text">
-                    <h3>Tradition Since 1895</h3>
-                    <p>
-                        Pranav Bakery was founded in 1895 in the heart of Mumbai. For generations, we have been baking with the same passion and recipes handed down through our family. Our bakery is a living piece of Mumbai's history, beloved by locals and visitors alike.
-                    </p>
-                    <p>
-                        We believe in honest ingredients, time-honored methods, and the joy of sharing fresh bread and sweets with our community. Step into our bakery and experience a taste of old Mumbai!
-                    </p>
-                    <a href="about.html" class="btn">Learn More</a>
-                </div>
-            </div>
-        </section>
-        <section class="section" id="contact-preview">
-            <h2 class="section-title">Visit Us</h2>
-            <div class="contact-cards">
-                <div class="contact-card">
-                    <h3>Address</h3>
-                    <p>Pranav Bakery<br>123 Heritage Lane<br>Fort, Mumbai 400001</p>
-                </div>
-                <div class="contact-card">
-                    <h3>Hours</h3>
-                    <p>Mon-Sat: 7am - 9pm<br>Sunday: 8am - 2pm</p>
-                </div>
-                <div class="contact-card">
-                    <h3>Contact</h3>
-                    <p>Phone: 022-12345678<br>Email: info@pranavbakery.com</p>
-                </div>
-            </div>
-            <div style="text-align:center;margin-top:2rem;">
-                <a href="contact.html" class="btn">Contact Us</a>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="logo">Pranav Bakery</div>
-        <div class="social-links">
-            <a href="https://facebook.com/" target="_blank" title="Facebook">📘</a>
-            <a href="https://instagram.com/" target="_blank" title="Instagram">📷</a>
-            <a href="https://twitter.com/" target="_blank" title="Twitter">🐦</a>
         </div>
-        <p>&copy; 2025 Pranav Bakery, Mumbai. All rights reserved.</p>
+    </nav>
+    <header class="hero">
+        <div class="container">
+            <h1>Welcome to Pranav Bakery</h1>
+            <p>Where tradition meets taste!</p>
+        </div>
+    </header>
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>With years of expertise in baking and a passion for quality, we are proud to be one of the leading manufacturers of premium bakery products. From cookies and cakes to breads and sweets, everything is made with the finest ingredients and utmost care.</p>
+            <p>After serving retailers across the country, we are now bringing our delicious range directly to you – the customer. No middlemen, no compromises – just fresh, tasty bakery treats straight from our ovens to your doorstep.</p>
+        </div>
+    </section>
+    <section id="products" class="section">
+        <div class="container">
+            <h2>Our Products</h2>
+            <ul>
+                <li><strong>Cookies:</strong> Crunchy, buttery, and available in a variety of flavors.</li>
+                <li><strong>Cakes:</strong> From classic sponges to rich chocolate indulgence – perfect for every celebration.</li>
+                <li><strong>Breads:</strong> Freshly baked daily – white, brown, multigrain, and more.</li>
+                <li><strong>Sweets & More:</strong> Traditional and modern treats to satisfy every sweet tooth.</li>
+            </ul>
+        </div>
+    </section>
+    <section id="why" class="section">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>Direct from our manufacturing unit to your home</li>
+                <li>Quality you can trust – no added preservatives</li>
+                <li>Hygienic processes and timely delivery</li>
+                <li>Custom orders available for events & gifting</li>
+            </ul>
+        </div>
+    </section>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <form id="contactForm">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <p>📞 Phone: <span id="phone">[Your Contact Number]</span></p>
+                <p>📧 Email: <span id="emailDisplay">[Your Email]</span></p>
+                <p>📍 Location: <span id="location">[City/State]</span></p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 Pranav Bakery. All rights reserved.
+        </div>
     </footer>
-    <script>
-        // Teleporting navigation: instantly loads new pages (simulate SPA navigation)
-        document.querySelectorAll('.nav-link, .btn').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href.endsWith('.html')) {
-                    e.preventDefault();
-                    window.location.href = href; // Teleport to new page
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
