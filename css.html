@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fff8f0;
+    color: #333;
+}
+
+.navbar {
+    background: #b5651d;
+    color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.nav-links a:hover {
+    color: #ffd6b3;
+}
+.hero {
+    background: linear-gradient(90deg, #ffd6b3 0%, #fff8f0 100%);
+    padding: 3rem 0 2rem 0;
+    text-align: center;
+}
+.hero h1 {
+    margin: 0 0 1rem 0;
+    font-size: 2.5rem;
+    color: #b5651d;
+}
+.section {
+    padding: 2rem 0;
+}
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.section h2 {
+    color: #b5651d;
+    margin-bottom: 1rem;
+}
+.section ul {
+    padding-left: 1.2rem;
+}
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+#contactForm input, #contactForm textarea {
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+#contactForm button {
+    background: #b5651d;
+    color: #fff;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#contactForm button:hover {
+    background: #8d4a13;
+}
+.contact-info p {
+    margin: 0.3rem 0;
+}
+.footer {
+    background: #b5651d;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+@media (max-width: 600px) {
+    .navbar .container, .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
