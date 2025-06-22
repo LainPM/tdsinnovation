@@ -3,280 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found | UV Community</title>
-    
-    <!-- Secure font loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>Order Tracker | Hrishikesh Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6E48AA;
-            --primary-dark: #4B2E83;
-            --secondary: #9D50BB;
-            --accent: #4776E6;
-            --background: #1A1A2E;
-            --card-bg: #16213E;
-            --text: #E6E6E6;
-            --text-muted: #A0A0A0;
+            --primary: #f9a825;
+            --secondary: #fff8e1;
+            --accent: #e65100;
+            --dark: #3e2723;
+            --light: #fff9f0;
+            --success: #2e7d32;
+            --warning: #f9a825;
+            --error: #c62828;
         }
-
-        * {
+        
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        body {
-            background-color: var(--background);
-            color: var(--text);
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
-
-        .navbar {
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+        }
+        
+        header {
+            background-color: white;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
-            background-color: var(--card-bg);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-
+        
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
             font-weight: 700;
-            color: white;
-            text-decoration: none;
+            color: var(--accent);
         }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
+        
+        nav ul {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
-
-        .error-container {
-            flex: 1;
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .tracker-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .tracker-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tracker-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .order-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .order-info, .customer-info {
+            background-color: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .info-group {
+            margin-bottom: 1rem;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .tracker-steps {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .progress-line {
+            position: absolute;
+            height: 4px;
+            width: 100%;
+            background-color: #e0e0e0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .progress-active {
+            position: absolute;
+            height: 4px;
+            background-color: var(--success);
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+        
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .step {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--background), var(--card-bg));
+            width: 25%;
         }
-
-        .error-code {
-            font-size: 8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1;
-            margin-bottom: 1rem;
-        }
-
-        .error-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .error-message {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-
-        .action-buttons {
+        
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            border: 4px solid #e0e0e0;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #9e9e9e;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
         }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        
+        .step.active .step-icon {
+            border-color: var(--success);
+            background-color: var(--success);
             color: white;
         }
-
-        .btn-secondary {
-            background-color: var(--card-bg);
-            color: var(--text);
-            border: 1px solid var(--text-muted);
+        
+        .step.completed .step-icon {
+            border-color: var(--success);
+            background-color: var(--success);
+            color: white;
         }
-
+        
+        .step.completed .step-icon:after {
+            content: "✓";
+        }
+        
+        .step-text {
+            text-align: center;
+            font-weight: 500;
+            color: #616161;
+        }
+        
+        .step.active .step-text {
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .step.completed .step-text {
+            color: var(--success);
+        }
+        
+        .estimated-delivery {
+            background-color: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .delivery-time {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 0.5rem 0;
+        }
+        
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+        
         .btn:hover {
+            background-color: var(--dark);
             transform: translateY(-2px);
         }
-
-        .btn-primary:hover {
-            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
         }
-
-        .btn-secondary:hover {
-            background-color: var(--background);
-            border-color: var(--text);
+        
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: white;
         }
-
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: -1;
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
         }
-
-        .floating-element {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-element:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-element:nth-child(2) {
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
-        }
-
-        .floating-element:nth-child(3) {
-            top: 80%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        .floating-element:nth-child(4) {
-            top: 30%;
-            left: 70%;
-            animation-delay: 1s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) scale(1);
-            }
-            50% {
-                transform: translateY(-20px) scale(1.1);
-            }
-        }
-
+        
         footer {
-            background-color: var(--card-bg);
-            padding: 2rem 5%;
+            background-color: var(--dark);
+            color: white;
             text-align: center;
-            margin-top: auto;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
         }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        
+        .social-links {
+            margin: 1.5rem 0;
         }
-
+        
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
         @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
+            .order-details {
+                grid-template-columns: 1fr;
             }
-
-            .error-code {
-                font-size: 6rem;
+            
+            .steps-container {
+                flex-wrap: wrap;
             }
-
-            .error-title {
-                font-size: 2rem;
+            
+            .step {
+                width: 50%;
+                margin-bottom: 2rem;
             }
-
-            .error-message {
-                font-size: 1.1rem;
-            }
-
+            
             .action-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-
+            
             .btn {
-                width: 200px;
-                justify-content: center;
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="/" class="logo">
-            <div class="logo-icon">UV</div>
-            <span>UV Community</span>
-        </a>
-    </nav>
-
-    <main class="error-container">
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
+    <header>
+        <div class="logo">Hrishikesh Bakery</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/track-order">Track Order</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="tracker-container">
+        <div class="tracker-header">
+            <h1>Your Order Journey</h1>
+            <p>Track your delicious bakery items in real-time</p>
         </div>
         
-        <div class="error-code">404</div>
-        <h1 class="error-title">Page Not Found</h1>
-        <p class="error-message">
-            Oops! The page you're looking for seems to have vanished into the digital void. 
-            Don't worry though - our community is still here and ready to welcome you!
-        </p>
+        <div class="order-details">
+            <div class="order-info">
+                <h3>Order Information</h3>
+                <div class="info-group">
+                    <span class="info-label">Order Number</span>
+                    <span>#HRB-2023-0568</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Order Date</span>
+                    <span>June 15, 2023 - 10:30 AM</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Items Ordered</span>
+                    <ul>
+                        <li>Butter Cookies (2 boxes)</li>
+                        <li>Special Fruit Cake (1kg)</li>
+                        <li>Pav Bread (12 pieces)</li>
+                    </ul>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Total Amount</span>
+                    <span>₹1,250.00</span>
+                </div>
+            </div>
+            
+            <div class="customer-info">
+                <h3>Delivery Information</h3>
+                <div class="info-group">
+                    <span class="info-label">Customer Name</span>
+                    <span>Rahul Sharma</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Delivery Address</span>
+                    <span>123 Baker Street, Pune, Maharashtra - 411001</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Contact Number</span>
+                    <span>+91 9876543210</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Payment Method</span>
+                    <span>UPI Payment (Paid)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tracker-steps">
+            <div class="progress-line"></div>
+            <div class="progress-active" style="width: 75%;"></div>
+            
+            <div class="steps-container">
+                <div class="step completed">
+                    <div class="step-icon">1</div>
+                    <div class="step-text">Order Placed</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-icon">2</div>
+                    <div class="step-text">Processing</div>
+                </div>
+                <div class="step active">
+                    <div class="step-icon">3</div>
+                    <div class="step-text">Out for Delivery</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">4</div>
+                    <div class="step-text">Delivered</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="estimated-delivery">
+            <h3>Estimated Delivery Time</h3>
+            <div class="delivery-time">Today by 3:00 PM - 4:00 PM</div>
+            <p>Your order is with our delivery partner Rajesh</p>
+            <p>Contact: +91 98765 43210</p>
+        </div>
         
         <div class="action-buttons">
-            <a href="/" class="btn btn-primary">
-                🏠 Go Home
-            </a>
-            <a href="https://discord.gg/VEzMUF9tFR" class="btn btn-secondary" rel="noopener noreferrer" target="_blank">
-                💬 Join Discord
-            </a>
+            <a href="/products" class="btn btn-outline">Order More</a>
+            <a href="/contact" class="btn">Need Help?</a>
         </div>
-    </main>
-
+    </div>
+    
     <footer>
-        <div class="copyright">
-            <p>&copy; 2025 UV Community. All rights reserved.</p>
+        <div class="logo">Hrishikesh Bakery</div>
+        <div class="social-links">
+            <a href="#">📘</a>
+            <a href="#">📷</a>
+            <a href="#">📱</a>
+            <a href="#">📞</a>
         </div>
+        <p>&copy; 2023 Hrishikesh Bakery. All rights reserved.</p>
     </footer>
 </body>
 </html>
