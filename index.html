@@ -27,50 +27,174 @@
         .teleport-nav {position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1000;display:flex;flex-direction:column;gap:15px;}
         .teleport-item {width:40px;height:40px;border-radius:50%;background:#6B8E23;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.13);transition:background 0.2s;}
         .teleport-item:hover {background:#8B9A46;}
-        .home-section {min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;}
+        section {padding:110px 0 50px 0;}
+        .home-section {min-height:100vh;padding-top:130px;display:flex;align-items:center;justify-content:center;text-align:center;background:url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;}
         .home-content {background:rgba(0,0,0,0.45);padding:50px 30px;border-radius:16px;}
         .home-content h1 {color:#fff;font-size:3rem;}
         .home-content p {color:#fff;font-size:1.3rem;}
         .btn {display:inline-block;margin-top:20px;background:#6B8E23;color:#fff;padding:12px 28px;border-radius:30px;font-weight:500;text-decoration:none;}
-        footer {background:#222;color:#fff;text-align:center;padding:30px 0;}
+        .section-title {color:#6B8E23;text-align:center;font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:30px;}
+        .about-content, .facilities-content, .testimonials-content, .faq-content, .contact-content {background:#fff;padding:40px 30px;border-radius:16px;box-shadow:0 4px 8px rgba(0,0,0,0.07);max-width:700px;margin:0 auto;}
+        .about-content p, .facilities-content ul, .faq-content .faq-list, .contact-details, .testimonials-content {font-size:1.1rem;color:#333;}
+        .facilities-content ul {list-style:none;padding:0;}
+        .facilities-content li {padding:10px 0;border-bottom:1px solid #eee;}
+        .facilities-content li:last-child {border-bottom:none;}
+        .facilities-content span {font-weight:600;color:#8B9A46;}
+        .gallery-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1000px;margin:0 auto;}
+        .gallery-item img {width:100%;height:210px;object-fit:cover;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+        .testimonials-content blockquote {margin:24px 0;padding:20px 30px;border-left:4px solid #6B8E23;background:#f9f9f9;border-radius:6px;}
+        .testimonials-content blockquote footer {margin-top:12px;color:#8B9A46;font-style:normal;}
+        .faq-list details {background:#f9f9f9;border-radius:6px;margin-bottom:20px;box-shadow:0 2px 4px rgba(0,0,0,0.03);}
+        .faq-list summary {padding:16px 20px;cursor:pointer;font-weight:600;}
+        .faq-list details[open] summary {color:#6B8E23;}
+        .faq-list p {padding:0 20px 16px;}
+        .contact-details {margin-bottom:30px;}
+        .contact-item {display:flex;align-items:center;margin-bottom:15px;}
+        .contact-item i {margin-right:15px;color:#6B8E23;font-size:1.2rem;}
+        .social-links {display:flex;gap:15px;}
+        .social-links a {display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#6B8E23;color:#fff;}
+        .social-links a:hover {background:#8B9A46;}
+        @media (max-width: 700px) {
+          .container {padding:0 10px;}
+          .about-content, .facilities-content, .testimonials-content, .faq-content, .contact-content {padding:25px 8px;}
+          .gallery-grid {grid-template-columns:1fr;}
+          section {padding-top:90px;}
+        }
+        footer {background:#222;color:#fff;text-align:center;padding:30px 0;margin-top:40px;}
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="sticky-nav">
         <div class="container nav-container">
-            <a href="index.html" class="logo">Kadam <span>Farms</span></a>
+            <a href="#home" class="logo">Kadam <span>Farms</span></a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="facilities.html">Facilities</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
+    <!-- Teleport Navigation -->
     <nav class="teleport-nav" aria-label="Section Navigation">
-        <a href="index.html" class="teleport-item" aria-label="Home"><i class="fas fa-home"></i></a>
-        <a href="about.html" class="teleport-item" aria-label="About"><i class="fas fa-info-circle"></i></a>
-        <a href="facilities.html" class="teleport-item" aria-label="Facilities"><i class="fas fa-umbrella-beach"></i></a>
-        <a href="gallery.html" class="teleport-item" aria-label="Gallery"><i class="fas fa-images"></i></a>
-        <a href="testimonials.html" class="teleport-item" aria-label="Testimonials"><i class="fas fa-comment"></i></a>
-        <a href="faq.html" class="teleport-item" aria-label="FAQ"><i class="fas fa-question"></i></a>
-        <a href="contact.html" class="teleport-item" aria-label="Contact"><i class="fas fa-envelope"></i></a>
+        <a href="#home" class="teleport-item" aria-label="Home"><i class="fas fa-home"></i></a>
+        <a href="#about" class="teleport-item" aria-label="About"><i class="fas fa-info-circle"></i></a>
+        <a href="#facilities" class="teleport-item" aria-label="Facilities"><i class="fas fa-umbrella-beach"></i></a>
+        <a href="#gallery" class="teleport-item" aria-label="Gallery"><i class="fas fa-images"></i></a>
+        <a href="#testimonials" class="teleport-item" aria-label="Testimonials"><i class="fas fa-comment"></i></a>
+        <a href="#faq" class="teleport-item" aria-label="FAQ"><i class="fas fa-question"></i></a>
+        <a href="#contact" class="teleport-item" aria-label="Contact"><i class="fas fa-envelope"></i></a>
     </nav>
-    <section class="home-section">
+    <!-- Home Section -->
+    <section class="home-section" id="home">
         <div class="home-content">
             <h1>Experience Rural Serenity at Kadam Farms</h1>
             <p>Escape to our countryside farmhouse in Phaltan, Satara where nature meets comfort.</p>
-            <a href="contact.html" class="btn">Book Your Stay</a>
+            <a href="#contact" class="btn">Book Your Stay</a>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-content">
+            <div class="section-title">About Our Farm</div>
+            <p>
+                Nestled in the picturesque countryside of Phaltan, Satara, Kadam Farms offers a perfect blend of rural charm and modern comfort. Our farmhouse spans over 5 acres of lush greenery, providing a tranquil escape from city life.<br><br>
+                Established in 2010, we've been hosting guests who seek authentic farm experiences, organic food, and a chance to reconnect with nature. Our farm produces seasonal fruits, vegetables, and dairy products that you can enjoy during your stay.<br><br>
+                Whether you're looking for a weekend getaway, a family vacation, or a venue for special events, Kadam Farms provides the perfect setting with its serene atmosphere and warm hospitality.
+            </p>
+        </div>
+    </section>
+    <!-- Facilities Section -->
+    <section id="facilities">
+        <div class="facilities-content">
+            <div class="section-title">Our Facilities</div>
+            <ul>
+                <li><span>Comfortable Cottages:</span> Stay in well-appointed cottages with modern amenities and private sit-out areas.</li>
+                <li><span>Organic Dining:</span> Farm-to-table meals with fresh produce from our own farm. Special dietary requirements accommodated.</li>
+                <li><span>Farm Activities:</span> Milking cows, fruit picking, pottery, traditional cooking classes, bullock cart rides, and guided farm tours.</li>
+                <li><span>Free Parking:</span> Secure, ample parking space for guests.</li>
+                <li><span>Event Spaces:</span> Host family gatherings, parties, and corporate events in a serene rural environment.</li>
+            </ul>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="section-title">Gallery</div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Farm View"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Sugarcane Field"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Countryside Road"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101178521-c1a9136a37ff?auto=format&fit=crop&w=600&q=80" alt="Farmers in Field"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="Village Sunrise"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519121783700-1e3ef1d8b8e4?auto=format&fit=crop&w=600&q=80" alt="Cattle at Pond"></div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="testimonials-content">
+            <div class="section-title">What Our Guests Say</div>
+            <blockquote>
+                "A peaceful paradise! The food was delicious and the farm experience is unforgettable."
+                <footer>- Rohan S., Pune</footer>
+            </blockquote>
+            <blockquote>
+                "Perfect weekend getaway. My kids loved the animals and the activities."
+                <footer>- Priya D., Mumbai</footer>
+            </blockquote>
+            <blockquote>
+                "The cottages are cozy, and the staff is so welcoming. We can't wait to come back!"
+                <footer>- Sunil K., Nashik</footer>
+            </blockquote>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="faq-content">
+            <div class="section-title">Frequently Asked Questions</div>
+            <div class="faq-list">
+                <details>
+                    <summary>Is Kadam Farms suitable for families with children?</summary>
+                    <p>Absolutely! We have special activities designed for kids and families.</p>
+                </details>
+                <details>
+                    <summary>Do you provide vegetarian or vegan food?</summary>
+                    <p>Yes, we offer a variety of vegetarian and vegan options. Let us know your preferences in advance.</p>
+                </details>
+                <details>
+                    <summary>Is there parking available?</summary>
+                    <p>Yes, we offer free and secure parking on the premises.</p>
+                </details>
+                <details>
+                    <summary>How can I book my stay?</summary>
+                    <p>Simply fill out the contact form or call us directly at the number provided on the Contact page.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-content">
+            <div class="section-title">Contact Us</div>
+            <div class="contact-details">
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i>Village Road, Near Phaltan, Satara, Maharashtra 415523</div>
+                <div class="contact-item"><i class="fas fa-phone-alt"></i>+91 9876543210</div>
+                <div class="contact-item"><i class="fas fa-envelope"></i>info@kadamfarms.com</div>
+            </div>
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </section>
     <footer>
         &copy; 2025 Kadam Farms. All Rights Reserved.
-    </footer>
-</body>
-</html>.
     </footer>
 </body>
 </html>
