@@ -8,7 +8,7 @@
     <meta name="description" content="Experience the authentic rural lifestyle at Kadam Farms in Phaltan, Satara. Stay in modern cottages, enjoy organic food, and explore farm activities.">
     <meta property="og:title" content="Kadam Farms | Countryside Farmhouse in Phaltan, Satara">
     <meta property="og:description" content="Experience the authentic rural lifestyle at Kadam Farms in Phaltan, Satara. Stay in modern cottages, enjoy organic food, and explore farm activities.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kadamfarms.com">
     <link rel="icon" type="image/png" href="favicon.png">
@@ -146,7 +146,12 @@
             align-items:center; justify-content:center; cursor:pointer;
             transition:var(--transition); color:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.2);
         }
-        .teleport-item:hover {transform:scale(1.1); background:rgba(107,142,35,1);}
+        .teleport-item:hover, .teleport-item.active, .teleport-item:focus {
+            background: var(--secondary) !important;
+            color: #fff !important;
+            outline: 2px solid var(--accent);
+            transform: scale(1.1);
+        }
         .whatsapp-float {
             position:fixed; bottom:30px; right:30px; width:60px; height:60px;
             background:#25D366; color:#fff; border-radius:50%; display:flex;
@@ -180,7 +185,7 @@
         }
         #home {
             height:100vh;
-            background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
             color:#fff; display:flex; align-items:center; text-align:center; position:relative;
         }
         .hero-content {
@@ -374,6 +379,7 @@
             </div>
         </nav>
     </header>
+    <!-- Teleport Navigation (improved) -->
     <nav class="teleport-nav" aria-label="Section Navigation">
         <a href="#home" class="teleport-item" aria-label="Home"><i class="fas fa-home"></i></a>
         <a href="#about" class="teleport-item" aria-label="About"><i class="fas fa-info-circle"></i></a>
@@ -406,7 +412,7 @@
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lush farm fields at Kadam Farms" loading="lazy" width="600" height="400">
+                    <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a37ff?auto=format&fit=crop&w=800&q=80" alt="Lush farm fields at Kadam Farms" loading="lazy" width="600" height="400">
                 </div>
                 <div class="about-text">
                     <h3>Discover Our Peaceful Retreat</h3>
@@ -426,7 +432,7 @@
             <div class="facilities-grid">
                 <div class="facility-card">
                     <div class="facility-img">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Comfortable Cottages" loading="lazy" width="400" height="200">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Comfortable Cottages" loading="lazy" width="400" height="200">
                     </div>
                     <div class="facility-info">
                         <h3>Comfortable Cottages</h3>
@@ -435,7 +441,7 @@
                 </div>
                 <div class="facility-card">
                     <div class="facility-img">
-                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Organic Dining" loading="lazy" width="400" height="200">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Organic Dining" loading="lazy" width="400" height="200">
                     </div>
                     <div class="facility-info">
                         <h3>Organic Dining</h3>
@@ -444,7 +450,7 @@
                 </div>
                 <div class="facility-card">
                     <div class="facility-img">
-                        <img src="https://images.unsplash.com/photo-1600566752229-250ed79470a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm Activities" loading="lazy" width="400" height="200">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Farm Activities" loading="lazy" width="400" height="200">
                     </div>
                     <div class="facility-info">
                         <h3>Farm Activities</h3>
@@ -461,9 +467,15 @@
             </div>
             <div class="gallery-container">
                 <div class="carousel" aria-label="Image Carousel">
-                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm View" class="carousel-img" loading="lazy" width="1200" height="500"></div>
-                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cottage" class="carousel-img" loading="lazy" width="1200" height="500"></div>
-                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm Stay" class="carousel-img" loading="lazy" width="1200" height="500"></div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80" alt="Scenic Phaltan landscape" class="carousel-img" loading="lazy" width="1200" height="500">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Phaltan sugarcane fields" class="carousel-img" loading="lazy" width="1200" height="500">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80" alt="Countryside road near Phaltan" class="carousel-img" loading="lazy" width="1200" height="500">
+                    </div>
                 </div>
                 <div class="carousel-nav" aria-label="Carousel Navigation">
                     <button class="carousel-dot active" aria-label="Go to slide 1"></button>
@@ -471,12 +483,30 @@
                     <button class="carousel-dot" aria-label="Go to slide 3"></button>
                 </div>
                 <div class="gallery-grid">
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1542272201-b1ca555f8505?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm Activity" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600566752229-250ed79470a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Organic Farming" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm Dining" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm Animals" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm Food" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm Sunset" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a37ff?auto=format&fit=crop&w=600&q=80" alt="Farmers in Phaltan fields" loading="lazy">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="Village sunrise in Phaltan" loading="lazy">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1519121783700-1e3ef1d8b8e4?auto=format&fit=crop&w=600&q=80" alt="Cattle at a village pond near Phaltan" loading="lazy">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="Local Phaltan livestock" loading="lazy">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Dusty road in Phaltan countryside" loading="lazy">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=600&q=80" alt="Rural life in Phaltan" loading="lazy">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -732,7 +762,34 @@
             darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
     }
+    // Teleport navigation JS: Active highlight and smooth scroll
+    const teleportLinks = document.querySelectorAll('.teleport-item');
+    const sectionIds = Array.from(teleportLinks).map(link => link.getAttribute('href'));
+    function highlightTeleport() {
+        let scrollPos = window.scrollY + 120;
+        let activeIdx = 0;
+        sectionIds.forEach((sel, idx) => {
+            const sec = document.querySelector(sel);
+            if (sec && scrollPos >= sec.offsetTop) {
+                activeIdx = idx;
+            }
+        });
+        teleportLinks.forEach((link, idx) => {
+            link.classList.toggle('active', idx === activeIdx);
+        });
+    }
+    window.addEventListener('scroll', highlightTeleport);
+    teleportLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            const section = document.querySelector(targetId);
+            if (section) {
+                e.preventDefault();
+                section.scrollIntoView({ behavior: 'smooth' });
+                section.focus({ preventScroll: true });
+            }
+        });
+    });
     </script>
 </body>
 </html>
-
