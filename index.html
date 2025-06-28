@@ -356,6 +356,28 @@
             transition: width 0.5s ease;
         }
         
+        /* Quiz Results */
+        .quiz-results {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .style-recommendation {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 0.8rem;
+            margin: 1rem 0;
+        }
+        
+        .style-image {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
         /* Virtual Dressing Room */
         #dressing-room {
             background: white;
@@ -448,6 +470,9 @@
         
         .brand-logo {
             height: 60px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
             filter: grayscale(100%);
             opacity: 0.7;
             transition: all 0.3s ease;
@@ -572,6 +597,68 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 2rem;
+        }
+        
+        /* Contact Form */
+        #contact {
+            background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(110, 72, 170, 0.2);
+        }
+        
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(110, 72, 170, 0.3);
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(110, 72, 170, 0.4);
         }
         
         /* Footer */
@@ -755,6 +842,7 @@
             <a href="#style-quiz" class="nav-link">Style Quiz</a>
             <a href="#dressing-room" class="nav-link">Dressing Room</a>
             <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </div>
         <a href="#sustainability" class="cta-button">Coming Soon</a>
     </nav>
@@ -911,9 +999,11 @@
                     <h3 class="quiz-question">Your Personalized Style Profile</h3>
                     <div class="quiz-results">
                         <p>Based on your answers, we recommend:</p>
-                        <div style="background: #f5f5f5; padding: 2rem; border-radius: 0.8rem; margin: 1rem 0;">
-                            <h4>Modern Classic</h4>
-                            <p>Timeless pieces with contemporary fits</p>
+                        <div class="style-recommendation">
+                            <h4 id="style-name">Modern Classic</h4>
+                            <p id="style-desc">Timeless pieces with contemporary fits</p>
+                            <img src="https://i.ibb.co/PZ99skhX/20250628-1049-Floral-Summer-Elegance-simple-compose-01jytfj91nfjavjcxp6j2vcdke.png" alt="Style Recommendation" class="style-image" id="style-img">
+                            <p id="style-details">Clean lines, neutral colors, and versatile pieces that work for any occasion.</p>
                         </div>
                         <button class="cta-button" style="margin-top: 1rem;" onclick="resetQuiz()">Try Again</button>
                     </div>
@@ -963,10 +1053,10 @@
                     <div class="color-picker">
                         <label>Color:</label>
                         <div class="color-options">
-                            <div class="color-option selected" style="--color: #6e48aa" onclick="changeColor('#6e48aa')"></div>
-                            <div class="color-option" style="--color: #2E2E3A" onclick="changeColor('#2E2E3A')"></div>
-                            <div class="color-option" style="--color: #FF3E6C" onclick="changeColor('#FF3E6C')"></div>
-                            <div class="color-option" style="--color: #4CAF50" onclick="changeColor('#4CAF50')"></div>
+                            <div class="color-option selected" style="background-color: #6e48aa;" onclick="changeColor('#6e48aa')"></div>
+                            <div class="color-option" style="background-color: #2E2E3A;" onclick="changeColor('#2E2E3A')"></div>
+                            <div class="color-option" style="background-color: #FF3E6C;" onclick="changeColor('#FF3E6C')"></div>
+                            <div class="color-option" style="background-color: #4CAF50;" onclick="changeColor('#4CAF50')"></div>
                         </div>
                     </div>
                 </div>
@@ -985,12 +1075,12 @@
             <p class="section-subheading animate-in delay-1">Try on outfits from your favorite brands</p>
             
             <div class="brand-carousel animate-in delay-2">
-                <img src="https://via.placeholder.com/150x60?text=Nike" alt="Nike" class="brand-logo">
-                <img src="https://via.placeholder.com/150x60?text=Zara" alt="Zara" class="brand-logo">
-                <img src="https://via.placeholder.com/150x60?text=Levi's" alt="Levi's" class="brand-logo">
-                <img src="https://via.placeholder.com/150x60?text=H&M" alt="H&M" class="brand-logo">
-                <img src="https://via.placeholder.com/150x60?text=Adidas" alt="Adidas" class="brand-logo">
-                <img src="https://via.placeholder.com/150x60?text=Gucci" alt="Gucci" class="brand-logo">
+                <img src="https://i.ibb.co/G4phwLhZ/002-nike-logos-swoosh-white.jpg" alt="Nike" class="brand-logo">
+                <img src="https://i.ibb.co/L4DNFB0/zara-popular-clothing-brand-and-logo-illustration-free-vector.jpg" alt="Zara" class="brand-logo">
+                <img src="https://i.ibb.co/DgzgqDsv/images.png" alt="Levi's" class="brand-logo">
+                <img src="https://i.ibb.co/nNG8dGcy/HM-Share-Image.jpg" alt="H&M" class="brand-logo">
+                <img src="https://i.ibb.co/5hMtLPCr/images-1.png" alt="Adidas" class="brand-logo">
+                <img src="https://i.ibb.co/Bm87tZ8/images-2.png" alt="Gucci" class="brand-logo">
             </div>
         </div>
     </section>
@@ -1035,6 +1125,34 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <!-- Contact Form -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-heading animate-in">Contact Us</h2>
+            <p class="section-subheading animate-in delay-1">Have questions? Get in touch with our team</p>
+            
+            <form class="contact-form animate-in delay-2" action="https://formspree.io/f/mwpbwlbq" method="POST">
+                <div class="form-group">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-input" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
         </div>
     </section>
     
@@ -1138,6 +1256,34 @@
         const totalSteps = 4;
         const userSelections = {};
         
+        // Style recommendations data
+        const styleRecommendations = {
+            casual: {
+                name: "Casual Comfort",
+                desc: "Relaxed and comfortable everyday wear",
+                img: "https://i.ibb.co/W4yTyGcR/20250628-1045-Urban-Street-Style-simple-compose-01jytf9gx5fdg915qx9mfggnyg.png",
+                details: "Easy-going outfits perfect for daily wear with a focus on comfort and versatility."
+            },
+            professional: {
+                name: "Professional Chic",
+                desc: "Polished looks for the workplace",
+                img: "https://i.ibb.co/V0Yzh9pr/20250628-1049-Ethnic-Elegance-simple-compose-01jytfhepcekmtxc7wc432rapm.png",
+                details: "Tailored pieces that balance professionalism with modern style."
+            },
+            athleisure: {
+                name: "Athleisure Trend",
+                desc: "Sporty meets stylish",
+                img: "https://i.ibb.co/hFY52Rwn/20250628-1052-Futuristic-Techwear-Mannequin-simple-compose-01jytfpe5rf7vvqn7hnjnqn699.png",
+                details: "Performance fabrics with streetwear aesthetics for all-day comfort."
+            },
+            trendy: {
+                name: "Fashion Forward",
+                desc: "Cutting-edge contemporary styles",
+                img: "https://i.ibb.co/1YXLyqBT/20250628-1049-Ethnic-Elegance-simple-compose-01jytfhepders8b628seype6jv.png",
+                details: "Bold statement pieces and the latest trends for those who love to stand out."
+            }
+        };
+        
         function nextQuizStep(selection) {
             userSelections[`step${currentStep}`] = selection;
             document.getElementById(`step${currentStep}`).classList.remove('active');
@@ -1146,12 +1292,24 @@
             if (currentStep <= totalSteps) {
                 document.getElementById(`step${currentStep}`).classList.add('active');
                 document.querySelector('.quiz-progress-bar').style.width = `${(currentStep/totalSteps)*100}%`;
-            } else {
-                showQuizResults();
             }
         }
         
-        function showQuizResults() {
+        function completeQuiz(selection) {
+            userSelections[`step${currentStep}`] = selection;
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            
+            // Determine style recommendation based on first answer
+            const styleKey = userSelections.step1 || 'casual';
+            const recommendation = styleRecommendations[styleKey] || styleRecommendations.casual;
+            
+            // Update results display
+            document.getElementById('style-name').textContent = recommendation.name;
+            document.getElementById('style-desc').textContent = recommendation.desc;
+            document.getElementById('style-img').src = recommendation.img;
+            document.getElementById('style-img').alt = recommendation.name + " Style";
+            document.getElementById('style-details').textContent = recommendation.details;
+            
             document.getElementById('results').classList.add('active');
         }
         
