@@ -22,13 +22,20 @@
         }
         
         body {
-            background-color: var(--light);
+            background: linear-gradient(-45deg, #f8f9fa, #e9ecef, #dee2e6, #ced4da);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: var(--dark);
             line-height: 1.6;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            cursor: pointer;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .coming-soon-container {
@@ -76,159 +83,167 @@
             font-weight: 600;
         }
         
-        .countdown {
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 1.5rem 0;
+        }
+        
+        .progress-text {
             display: flex;
-            gap: 1rem;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+            animation: progressAnimation 2s ease-in-out;
+        }
+        
+        @keyframes progressAnimation {
+            0% { width: 0%; }
+            100% { width: 75%; }
+        }
+        
+        /* Email Form */
+        .email-form {
             margin: 2rem 0;
-            justify-content: center;
+            width: 100%;
+            max-width: 400px;
         }
         
-        .countdown-item {
-            background: white;
-            padding: 1.5rem;
+        .form-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid #ddd;
             border-radius: 0.5rem;
-            min-width: 80px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-size: 1rem;
+            transition: all 0.3s;
         }
         
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
+        .email-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(110, 72, 170, 0.2);
         }
         
-        .countdown-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: var(--dark);
-            opacity: 0.6;
-        }
-        
-        .coming-soon-badge {
-            background: var(--primary);
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 2rem;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0.5rem;
             font-weight: 600;
-            display: inline-block;
-            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
         }
         
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Social Links */
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 3rem;
+            margin-top: 1rem;
         }
         
         .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(110, 72, 170, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            transition: all 0.3s ease;
-            text-decoration: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            transition: all 0.3s;
             cursor: pointer;
         }
         
         .social-link:hover {
-            background: var(--primary);
-            color: white;
+            color: var(--primary);
             transform: translateY(-3px);
         }
         
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--dark);
-            opacity: 0.7;
+        /* Visitor Counter */
+        .visitor-counter {
+            margin-top: 1rem;
             font-size: 0.9rem;
+            color: var(--dark);
+            opacity: 0.8;
         }
         
-        /* Error message modal */
-        .error-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .error-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            max-width: 500px;
-            animation: modalFadeIn 0.3s;
-        }
-        
-        .error-content h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .error-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .close-modal {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.25rem;
-            cursor: pointer;
+        /* Success Message */
+        .success-message {
+            color: #28a745;
             font-weight: 600;
+            margin-top: 1rem;
+            display: none;
         }
         
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Click Message */
+        .click-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            z-index: 1000;
+            display: none;
+            animation: fadeInOut 2s ease-in-out;
         }
         
-        @media (max-width: 768px) {
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
             .logo {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .countdown {
-                flex-wrap: wrap;
+            .form-group {
+                flex-direction: column;
             }
             
-            .countdown-item {
-                min-width: 70px;
-                padding: 1rem;
-            }
-            
-            .countdown-number {
-                font-size: 1.5rem;
-            }
-            
-            .error-content {
-                width: 90%;
-                padding: 1.5rem;
+            .submit-btn {
+                padding: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Click Message Element -->
+    <div class="click-message" id="click-message">Coming Soon in December - Stay Tuned!</div>
+    
     <div class="coming-soon-container">
-        <div class="logo">TDS Innovation</div>
-        <h1 class="animate__animated animate__fadeIn"> our  Website Coming Soon</h1>
+        <div class="logo animate__animated animate__fadeIn">TDS Innovation</div>
+        <h1 class="animate__animated animate__fadeIn">Professional Website Coming Soon</h1>
         <p class="subtext animate__animated animate__fadeIn animate__delay-1s">
             We're working hard to bring you an amazing new experience. Our website will launch in December.
         </p>
@@ -236,103 +251,143 @@
             <i class="fab fa-google-play"></i> We're coming with our own app on Play Store! Stay tuned!
         </p>
         
-        <div class="countdown animate__animated animate__fadeIn animate__delay-2s">
-            <div class="countdown-item">
-                <div class="countdown-number" id="days">00</div>
-                <div class="countdown-label">Days</div>
+        <!-- Progress Bar -->
+        <div class="progress-container animate__animated animate__fadeIn animate__delay-2s">
+            <div class="progress-text">
+                <span>Development Progress</span>
+                <span>75%</span>
             </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="hours">00</div>
-                <div class="countdown-label">Hours</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="minutes">00</div>
-                <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="seconds">00</div>
-                <div class="countdown-label">Seconds</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
             </div>
         </div>
         
-        <div class="coming-soon-badge animate__animated animate__pulse animate__infinite">
-            Stay Tuned!
+        <!-- Email Subscription -->
+        <form id="notify-form" action="https://formspree.io/f/mwpbwlbq" method="POST" class="email-form animate__animated animate__fadeIn animate__delay-2s">
+            <p>Get notified when we launch:</p>
+            <div class="form-group">
+                <input type="email" name="email" class="email-input" placeholder="Your email address" required>
+                <button type="submit" class="submit-btn">Notify Me</button>
+            </div>
+            <div class="success-message" id="success-message">
+                Thank you! We'll notify you when we launch.
+            </div>
+        </form>
+        
+        <!-- Social Links -->
+        <div class="social-links animate__animated animate__fadeIn animate__delay-3s">
+            <div class="social-link"><i class="fab fa-facebook"></i></div>
+            <div class="social-link"><i class="fab fa-twitter"></i></div>
+            <div class="social-link"><i class="fab fa-instagram"></i></div>
+            <div class="social-link"><i class="fab fa-linkedin"></i></div>
         </div>
         
-        <div class="social-links">
-            <a href="javascript:void(0)" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="javascript:void(0)" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="javascript:void(0)" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="javascript:void(0)" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-    </div>
-    
-    <footer>
-        © 2025 TDS Innovation. All Rights Reserved.
-    </footer>
-    
-    <!-- Error Modal -->
-    <div class="error-modal" id="errorModal">
-        <div class="error-content">
-            <h2>COMING SOON</h2>
-            <p>Our website and app will be available in December 2025. Please check back later!</p>
-            <button class="close-modal" onclick="closeModal()">OK</button>
+        <!-- Visitor Counter -->
+        <div class="visitor-counter animate__animated animate__fadeIn animate__delay-3s">
+            <i class="fas fa-users"></i> Join <span id="visitor-count">1,248</span> others waiting for our launch
         </div>
     </div>
     
     <script>
-        // Set the date we're counting down to (December 1, 2025)
-        const countDownDate = new Date("Dec 1, 2025 00:00:00").getTime();
+        // Click message functionality
+        const clickMessage = document.getElementById('click-message');
         
-        // Update the countdown every 1 second
-        const countdown = setInterval(function() {
-            // Get today's date and time
-            const now = new Date().getTime();
-            
-            // Find the distance between now and the countdown date
-            const distance = countDownDate - now;
-            
-            // Time calculations for days, hours, minutes and seconds
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // Display the result
-            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerHTML = Math.floor(seconds).toString().padStart(2, '0');
-            
-            // If the countdown is finished, write some text
-            if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById("days").innerHTML = "00";
-                document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00";
-                document.getElementById("seconds").innerHTML = "00";
-            }
-        }, 1000);
+        // Make all text elements and social media icons clickable
+        const clickableElements = document.querySelectorAll(
+            'h1, p, .logo, .subtext, .app-announcement, .progress-text, .visitor-counter, .social-link'
+        );
         
-        // Show modal when clicking anywhere on the page or social media icons
-        document.addEventListener('click', function(e) {
-            // Prevent default behavior for all links
-            if (e.target.closest('a')) {
-                e.preventDefault();
-            }
-            document.getElementById('errorModal').style.display = 'flex';
+        clickableElements.forEach(element => {
+            element.style.cursor = 'pointer';
+            element.addEventListener('click', () => {
+                clickMessage.style.display = 'block';
+                setTimeout(() => {
+                    clickMessage.style.display = 'none';
+                }, 2000);
+            });
         });
         
-        // Close modal function
-        function closeModal() {
-            document.getElementById('errorModal').style.display = 'none';
+        // Form submission handling
+        const notifyForm = document.getElementById('notify-form');
+        const successMessage = document.getElementById('success-message');
+        
+        notifyForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(notifyForm);
+            
+            try {
+                const response = await fetch(notifyForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    notifyForm.reset();
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                alert('There was a problem submitting your email. Please try again later.');
+                console.error('Error:', error);
+            }
+        });
+        
+        // Simulated visitor counter
+        let visitorCount = 1248;
+        const visitorElement = document.getElementById('visitor-count');
+        
+        function updateCounter() {
+            visitorCount += Math.floor(Math.random() * 3);
+            visitorElement.textContent = visitorCount.toLocaleString();
         }
         
-        // Close modal when clicking outside content
-        document.getElementById('errorModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
+        // Initial counter animation
+        let count = 0;
+        const target = visitorCount;
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        
+        function animateCounter() {
+            if (count < target) {
+                count += increment;
+                visitorElement.textContent = Math.floor(count).toLocaleString();
+                requestAnimationFrame(animateCounter);
+            } else {
+                visitorElement.textContent = target.toLocaleString();
+                // Start random updates
+                setInterval(updateCounter, 30000);
             }
+        }
+        
+        animateCounter();
+        
+        // Add animation to elements on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animation = entry.target.getAttribute('class').match(/animate__\w+/)[0];
+                        entry.target.classList.add(animation);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
         });
     </script>
 </body>
