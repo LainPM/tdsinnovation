@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tryona – AI Virtual Fitting Room | TDS Innovation</title>
+    <title>AIfitwear - AI-Powered Virtual Try-On | Coming Soon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer@2.1.1/dist/model-viewer.min.js" type="module"></script>
     <style>
         :root {
-            --primary: #FF3E6C;
-            --secondary: #FF6B8B;
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
             --dark: #2E2E3A;
             --light: #F8F9FA;
             --gray: #6C757D;
+            --success: #4CAF50;
         }
         
         * {
@@ -25,6 +28,7 @@
             overflow-x: hidden;
             background-color: var(--light);
             color: var(--dark);
+            line-height: 1.6;
         }
         
         /* Navigation */
@@ -81,6 +85,7 @@
             color: var(--dark);
             transition: all 0.3s ease;
             padding: 0.5rem 0;
+            text-decoration: none;
         }
         
         .nav-link:after {
@@ -111,22 +116,39 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 62, 108, 0.3);
+            box-shadow: 0 4px 15px rgba(110, 72, 170, 0.3);
+            text-decoration: none;
+            display: inline-block;
         }
         
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 62, 108, 0.4);
+            box-shadow: 0 8px 25px rgba(110, 72, 170, 0.4);
+        }
+        
+        .coming-soon-badge {
+            background: var(--success);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 1rem;
+            display: inline-block;
         }
         
         /* Sections */
         section {
             min-height: 100vh;
             padding: 6rem 5% 4rem;
-            display: flex;
-            align-items: center;
             position: relative;
             overflow: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
         
         .section-heading {
@@ -146,6 +168,13 @@
             bottom: -1rem;
             left: 0;
             border-radius: 2px;
+        }
+        
+        .section-subheading {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-bottom: 3rem;
         }
         
         /* Hero Section */
@@ -214,233 +243,335 @@
             transform: translateY(-5px);
         }
         
-        /* Features Section */
-        #features {
+        /* 3D Product Viewer */
+        #product-viewer {
             background: white;
             text-align: center;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        model-viewer {
+            width: 100%;
+            height: 500px;
+            background: #f8f8f8;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
-        .feature-box {
-            padding: 2.5rem 2rem;
-            border-radius: 1rem;
+        .viewer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .viewer-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             background: white;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
-            text-align: left;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-        
-        .feature-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 62, 108, 0.1);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 1rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
         }
         
-        .feature-icon i {
-            font-size: 1.8rem;
+        .viewer-btn:hover {
+            background: var(--primary);
             color: white;
         }
         
-        .feature-title {
+        /* Style Quiz */
+        #style-quiz {
+            background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+        }
+        
+        .quiz-step {
+            display: none;
+        }
+        
+        .quiz-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .quiz-question {
             font-size: 1.4rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-weight: 600;
             color: var(--dark);
         }
         
-        .feature-desc {
-            color: var(--gray);
-            line-height: 1.6;
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
         
-        /* How It Works Section */
-        #how-it-works {
+        .quiz-option {
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.1);
+        }
+        
+        .quiz-option.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .quiz-progress {
+            height: 6px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 3px;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+        
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        /* Virtual Dressing Room */
+        #dressing-room {
+            background: white;
+        }
+        
+        .dressing-room-container {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .outfit-selector {
+            width: 300px;
+            background: #f9f9f9;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        
+        .outfit-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-title {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .outfit-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+        }
+        
+        .outfit-option {
+            width: 100%;
+            aspect-ratio: 1;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .outfit-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .outfit-option.selected {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        .outfit-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .outfit-preview {
+            flex: 1;
+            background: #f5f5f5;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .preview-image {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 0.5rem;
+        }
+        
+        /* Brand Collaboration */
+        #brands {
             background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
             text-align: center;
         }
         
-        .steps-container {
+        .brand-carousel {
             display: flex;
+            align-items: center;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .brand-logo {
+            height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* Testimonials */
+        #testimonials {
+            background: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
         
-        .step {
-            flex: 1;
-            min-width: 300px;
-            max-width: 350px;
-            padding: 2rem;
-            position: relative;
+        .testimonial-card {
             background: white;
             border-radius: 1rem;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
+            padding: 2rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
         
-        .step:hover {
+        .testimonial-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(110, 72, 170, 0.1);
         }
         
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Color Picker */
+        .color-picker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .color-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.selected {
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        /* Sustainability */
+        #sustainability {
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
             color: white;
+        }
+        
+        .eco-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .eco-score {
+            font-size: 4rem;
+            font-weight: 700;
+            background: white;
+            color: var(--primary);
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(255, 62, 108, 0.3);
-        }
-        
-        .step-image {
-            width: 100%;
-            height: 200px;
-            background: #f5f5f5;
-            border-radius: 0.8rem;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
-        
-        .step-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .step:hover .step-image img {
-            transform: scale(1.05);
-        }
-        
-        .step-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .step-desc {
-            color: var(--gray);
-            line-height: 1.6;
-        }
-        
-        /* Gallery Section */
-        #gallery {
-            background: white;
-            text-align: center;
-        }
-        
-        .screenshots {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .screenshot {
-            width: 280px;
-            border-radius: 1.5rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .screenshot:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-        }
-        
-        .screenshot img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* FAQ Section */
-        #faq {
-            background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 3rem auto 0;
-        }
-        
-        .faq-item {
-            margin-bottom: 1rem;
-            border-radius: 0.8rem;
-            overflow: hidden;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        
-        .faq-question {
-            padding: 1.5rem 2rem;
-            font-size: 1.1rem;
-            color: var(--dark);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-question:hover {
-            color: var(--primary);
-        }
-        
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-question.active i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            padding: 0 2rem;
-            color: var(--gray);
-            line-height: 1.6;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.5s ease;
-        }
-        
-        .faq-answer.active {
-            padding: 0 2rem 1.5rem;
-            max-height: 500px;
+            margin: 0 auto 2rem;
         }
         
         /* Footer */
@@ -548,6 +679,11 @@
         }
         
         /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .animate-in {
             opacity: 0;
             transform: translateY(30px);
@@ -565,6 +701,7 @@
         .delay-4 { transition-delay: 0.4s; }
         .delay-5 { transition-delay: 0.5s; }
         
+        /* Responsive */
         @media (max-width: 992px) {
             .hero-heading {
                 font-size: 2.5rem;
@@ -595,245 +732,376 @@
             .app-badges {
                 justify-content: center;
             }
+            
+            .dressing-room-container {
+                flex-direction: column;
+            }
+            
+            .outfit-selector {
+                width: 100%;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav id="navbar">
         <div class="logo">
-            TRYONA <span class="logo-badge">AI</span>
+            AIfitwear <span class="logo-badge">AI</span>
         </div>
         <div class="nav-links">
             <a href="#hero" class="nav-link active">Home</a>
-            <a href="#features" class="nav-link">Features</a>
-            <a href="#how-it-works" class="nav-link">How It Works</a>
-            <a href="#gallery" class="nav-link">Gallery</a>
-            <a href="#faq" class="nav-link">FAQ</a>
+            <a href="#product-viewer" class="nav-link">3D Try-On</a>
+            <a href="#style-quiz" class="nav-link">Style Quiz</a>
+            <a href="#dressing-room" class="nav-link">Dressing Room</a>
+            <a href="#testimonials" class="nav-link">Testimonials</a>
         </div>
-        <button class="cta-button">Get Started</button>
+        <a href="#sustainability" class="cta-button">Coming Soon</a>
     </nav>
     
     <!-- Hero Section -->
     <section id="hero">
-        <div class="hero-content">
-            <h1 class="hero-heading animate-in visible">Virtual Fitting Room Powered by AI</h1>
-            <p class="hero-subtext animate-in visible delay-1">Try on any outfit instantly with our revolutionary AI technology. No more guessing how clothes will fit!</p>
-            <div class="app-badges animate-in visible delay-2">
-                <img src="https://via.placeholder.com/150x50?text=App+Store" alt="App Store" class="app-badge">
-                <img src="https://via.placeholder.com/150x50?text=Google+Play" alt="Google Play" class="app-badge">
-            </div>
-        </div>
-        <div class="hero-image animate-in visible delay-3">
-            <img src="https://i.ibb.co/hFY52Rwn/20250628-1052-Futuristic-Techwear-Mannequin-simple-compose-01jytfpe5rf7vvqn7hnjnqn699.png" alt="Tryona App Preview">
-        </div>
-    </section>
-    
-    <!-- Features Section -->
-    <section id="features">
         <div class="container">
-            <h2 class="section-heading animate-in">Revolutionary Features</h2>
-            <div class="features-grid">
-                <div class="feature-box animate-in delay-1">
-                    <div class="feature-icon">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <h3 class="feature-title">Smart Photo Capture</h3>
-                    <p class="feature-desc">Our AI guides you to take the perfect photo for accurate virtual try-ons with automatic background removal.</p>
+            <div class="hero-content">
+                <h1 class="hero-heading animate-in visible">Revolutionary AI Virtual Fitting Room</h1>
+                <p class="hero-subtext animate-in visible delay-1">Try on any outfit instantly with our cutting-edge AI technology. See how clothes fit before you buy - no more guessing or returns!</p>
+                <div class="app-badges animate-in visible delay-2">
+                    <div class="cta-button">Coming Soon <span class="coming-soon-badge">New</span></div>
                 </div>
-                <div class="feature-box animate-in delay-2">
-                    <div class="feature-icon">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <h3 class="feature-title">3D Garment Simulation</h3>
-                    <p class="feature-desc">Clothes naturally drape and fold on your virtual body for realistic visualization.</p>
-                </div>
-                <div class="feature-box animate-in delay-3">
-                    <div class="feature-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Instant Outfit Swapping</h3>
-                    <p class="feature-desc">Switch between hundreds of outfits in seconds to compare styles.</p>
-                </div>
-                <div class="feature-box animate-in delay-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-ruler-combined"></i>
-                    </div>
-                    <h3 class="feature-title">Precision Fit Analysis</h3>
-                    <p class="feature-desc">Get detailed fit predictions based on your body measurements and brand sizing.</p>
-                </div>
-                <div class="feature-box animate-in delay-3">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="feature-title">Social Sharing</h3>
-                    <p class="feature-desc">Share your virtual try-ons with friends to get instant feedback.</p>
-                </div>
-                <div class="feature-box animate-in delay-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="feature-title">Personalized Recommendations</h3>
-                    <p class="feature-desc">AI suggests outfits tailored to your body type, style preferences, and occasion.</p>
-                </div>
+            </div>
+            <div class="hero-image animate-in visible delay-3">
+                <img src="https://i.ibb.co/hFY52Rwn/20250628-1052-Futuristic-Techwear-Mannequin-simple-compose-01jytfpe5rf7vvqn7hnjnqn699.png" alt="AIfitwear Virtual Try-On">
             </div>
         </div>
     </section>
     
-    <!-- How It Works Section -->
-    <section id="how-it-works">
+    <!-- 3D Product Viewer -->
+    <section id="product-viewer">
         <div class="container">
-            <h2 class="section-heading animate-in">How Tryona Works</h2>
-            <div class="steps-container">
-                <div class="step animate-in delay-1">
-                    <div class="step-number">1</div>
-                    <div class="step-image">
-                        <img src="https://i.ibb.co/PZ99skhX/20250628-1049-Floral-Summer-Elegance-simple-compose-01jytfj91nfjavjcxp6j2vcdke.png" alt="Step 1">
+            <h2 class="section-heading animate-in">Interactive 3D Try-On</h2>
+            <p class="section-subheading animate-in delay-1">Rotate, zoom, and explore outfits in stunning 3D detail</p>
+            
+            <model-viewer 
+                src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                alt="3D Outfit Model"
+                auto-rotate
+                camera-controls
+                ar
+                class="animate-in delay-2">
+            </model-viewer>
+            
+            <div class="viewer-controls animate-in delay-3">
+                <button class="viewer-btn" onclick="document.querySelector('model-viewer').cameraOrbit = '0deg 75deg 105%'">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <button class="viewer-btn" onclick="document.querySelector('model-viewer').zoom(-0.5)">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="viewer-btn" onclick="document.querySelector('model-viewer').zoom(0.5)">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Style Quiz -->
+    <section id="style-quiz">
+        <div class="container">
+            <h2 class="section-heading animate-in">Find Your Perfect Style</h2>
+            <p class="section-subheading animate-in delay-1">Take our AI-powered style quiz to get personalized recommendations</p>
+            
+            <div class="quiz-container animate-in delay-2">
+                <div class="quiz-step active" id="step1">
+                    <h3 class="quiz-question">How would you describe your daily style?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="nextQuizStep('casual')">
+                            <i class="fas fa-tshirt"></i>
+                            <p>Casual Comfort</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('professional')">
+                            <i class="fas fa-suitcase"></i>
+                            <p>Professional</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('athleisure')">
+                            <i class="fas fa-running"></i>
+                            <p>Athleisure</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('trendy')">
+                            <i class="fas fa-star"></i>
+                            <p>Trendy/Fashion-forward</p>
+                        </div>
                     </div>
-                    <h3 class="step-title">Capture Your Photo</h3>
-                    <p class="step-desc">Take a full-body photo following our easy guidelines for best results.</p>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-bar" style="width: 25%"></div>
+                    </div>
                 </div>
-                <div class="step animate-in delay-2">
-                    <div class="step-number">2</div>
-                    <div class="step-image">
-                        <img src="https://i.ibb.co/1YXLyqBT/20250628-1049-Ethnic-Elegance-simple-compose-01jytfhepders8b628seype6jv.png" alt="Step 2">
+                
+                <div class="quiz-step" id="step2">
+                    <h3 class="quiz-question">What colors do you typically wear?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="nextQuizStep('neutral')">
+                            <div style="background: #2E2E3A; width: 30px; height: 30px; border-radius: 50%; margin: 0 auto;"></div>
+                            <p>Neutrals</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('bright')">
+                            <div style="background: #FF3E6C; width: 30px; height: 30px; border-radius: 50%; margin: 0 auto;"></div>
+                            <p>Bright Colors</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('pastel')">
+                            <div style="background: #9d50bb; width: 30px; height: 30px; border-radius: 50%; margin: 0 auto;"></div>
+                            <p>Pastels</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('mixed')">
+                            <div style="background: linear-gradient(45deg, #6e48aa, #9d50bb); width: 30px; height: 30px; border-radius: 50%; margin: 0 auto;"></div>
+                            <p>Mixed</p>
+                        </div>
                     </div>
-                    <h3 class="step-title">Select Outfits</h3>
-                    <p class="step-desc">Browse from thousands of styles or upload your own clothing items.</p>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-bar" style="width: 50%"></div>
+                    </div>
                 </div>
-                <div class="step animate-in delay-3">
-                    <div class="step-number">3</div>
-                    <div class="step-image">
-                        <img src="https://i.ibb.co/V0Yzh9pr/20250628-1049-Ethnic-Elegance-simple-compose-01jytfhepcekmtxc7wc432rapm.png" alt="Step 3">
+                
+                <div class="quiz-step" id="step3">
+                    <h3 class="quiz-question">What's your typical budget for clothing?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="nextQuizStep('budget')">
+                            <i class="fas fa-dollar-sign"></i>
+                            <p>Budget Friendly</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('midrange')">
+                            <i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i>
+                            <p>Mid-Range</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('premium')">
+                            <i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i>
+                            <p>Premium</p>
+                        </div>
+                        <div class="quiz-option" onclick="nextQuizStep('luxury')">
+                            <i class="fas fa-gem"></i>
+                            <p>Luxury</p>
+                        </div>
                     </div>
-                    <h3 class="step-title">See Yourself</h3>
-                    <p class="step-desc">Get photorealistic previews of how the clothes will look on your body.</p>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-bar" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="step4">
+                    <h3 class="quiz-question">Where do you shop most often?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="completeQuiz('fastfashion')">
+                            <p>Fast Fashion Retailers</p>
+                        </div>
+                        <div class="quiz-option" onclick="completeQuiz('department')">
+                            <p>Department Stores</p>
+                        </div>
+                        <div class="quiz-option" onclick="completeQuiz('boutique')">
+                            <p>Local Boutiques</p>
+                        </div>
+                        <div class="quiz-option" onclick="completeQuiz('online')">
+                            <p>Online Only</p>
+                        </div>
+                    </div>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-bar" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="results" style="text-align: center;">
+                    <h3 class="quiz-question">Your Personalized Style Profile</h3>
+                    <div class="quiz-results">
+                        <p>Based on your answers, we recommend:</p>
+                        <div style="background: #f5f5f5; padding: 2rem; border-radius: 0.8rem; margin: 1rem 0;">
+                            <h4>Modern Classic</h4>
+                            <p>Timeless pieces with contemporary fits</p>
+                        </div>
+                        <button class="cta-button" style="margin-top: 1rem;" onclick="resetQuiz()">Try Again</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Gallery Section -->
-    <section id="gallery">
+    <!-- Virtual Dressing Room -->
+    <section id="dressing-room">
         <div class="container">
-            <h2 class="section-heading animate-in">Virtual Try-On Gallery</h2>
-            <div class="screenshots">
-                <div class="screenshot animate-in delay-1">
-                    <img src="https://i.ibb.co/xq9bwVmR/20250628-1045-Urban-Street-Style-simple-compose-01jytf9gx6f02tygh88yzjhteh.png" alt="Urban Street Style">
+            <h2 class="section-heading animate-in">Virtual Dressing Room</h2>
+            <p class="section-subheading animate-in delay-1">Mix and match clothing items to create your perfect outfit</p>
+            
+            <div class="dressing-room-container animate-in delay-2">
+                <div class="outfit-selector">
+                    <div class="outfit-category">
+                        <h4 class="category-title">Tops</h4>
+                        <div class="outfit-options">
+                            <div class="outfit-option selected" onclick="selectOutfit('top1')">
+                                <img src="https://i.ibb.co/PZ99skhX/20250628-1049-Floral-Summer-Elegance-simple-compose-01jytfj91nfjavjcxp6j2vcdke.png" alt="Top 1">
+                            </div>
+                            <div class="outfit-option" onclick="selectOutfit('top2')">
+                                <img src="https://i.ibb.co/1YXLyqBT/20250628-1049-Ethnic-Elegance-simple-compose-01jytfhepders8b628seype6jv.png" alt="Top 2">
+                            </div>
+                            <div class="outfit-option" onclick="selectOutfit('top3')">
+                                <img src="https://i.ibb.co/V0Yzh9pr/20250628-1049-Ethnic-Elegance-simple-compose-01jytfhepcekmtxc7wc432rapm.png" alt="Top 3">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="outfit-category">
+                        <h4 class="category-title">Bottoms</h4>
+                        <div class="outfit-options">
+                            <div class="outfit-option selected" onclick="selectOutfit('bottom1')">
+                                <img src="https://i.ibb.co/xq9bwVmR/20250628-1045-Urban-Street-Style-simple-compose-01jytf9gx6f02tygh88yzjhteh.png" alt="Bottom 1">
+                            </div>
+                            <div class="outfit-option" onclick="selectOutfit('bottom2')">
+                                <img src="https://i.ibb.co/W4yTyGcR/20250628-1045-Urban-Street-Style-simple-compose-01jytf9gx5fdg915qx9mfggnyg.png" alt="Bottom 2">
+                            </div>
+                            <div class="outfit-option" onclick="selectOutfit('bottom3')">
+                                <img src="https://i.ibb.co/hFY52Rwn/20250628-1052-Futuristic-Techwear-Mannequin-simple-compose-01jytfpe5rf7vvqn7hnjnqn699.png" alt="Bottom 3">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-picker">
+                        <label>Color:</label>
+                        <div class="color-options">
+                            <div class="color-option selected" style="--color: #6e48aa" onclick="changeColor('#6e48aa')"></div>
+                            <div class="color-option" style="--color: #2E2E3A" onclick="changeColor('#2E2E3A')"></div>
+                            <div class="color-option" style="--color: #FF3E6C" onclick="changeColor('#FF3E6C')"></div>
+                            <div class="color-option" style="--color: #4CAF50" onclick="changeColor('#4CAF50')"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="screenshot animate-in delay-2">
-                    <img src="https://i.ibb.co/W4yTyGcR/20250628-1045-Urban-Street-Style-simple-compose-01jytf9gx5fdg915qx9mfggnyg.png" alt="Urban Street Style">
-                </div>
-                <div class="screenshot animate-in delay-3">
-                    <img src="https://i.ibb.co/hFY52Rwn/20250628-1052-Futuristic-Techwear-Mannequin-simple-compose-01jytfpe5rf7vvqn7hnjnqn699.png" alt="Futuristic Techwear">
+                
+                <div class="outfit-preview">
+                    <img src="https://i.ibb.co/PZ99skhX/20250628-1049-Floral-Summer-Elegance-simple-compose-01jytfj91nfjavjcxp6j2vcdke.png" alt="Outfit Preview" class="preview-image" id="outfit-preview">
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- FAQ Section -->
-    <section id="faq">
+    <!-- Brand Collaboration -->
+    <section id="brands">
         <div class="container">
-            <h2 class="section-heading animate-in">Frequently Asked Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item animate-in delay-1">
-                    <div class="faq-question">
-                        How accurate are the virtual try-ons?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Tryona achieves 92% accuracy in fit visualization based on independent testing. Our AI accounts for fabric drape, body proportions, and garment sizing. Colors may vary slightly due to screen differences.
-                    </div>
-                </div>
-                <div class="faq-item animate-in delay-2">
-                    <div class="faq-question">
-                        What photo requirements are there?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        For best results: Full-body photo with feet visible, arms slightly away from body, form-fitting clothing, plain background, and good lighting. The app will guide you through the process.
-                    </div>
-                </div>
-                <div class="faq-item animate-in delay-3">
-                    <div class="faq-question">
-                        Can I try on my own clothes?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Absolutely! Upload clear images of your clothing items (front and back views recommended) to add them to your virtual wardrobe. Our AI will map them to your body.
-                    </div>
-                </div>
-                <div class="faq-item animate-in delay-4">
-                    <div class="faq-question">
-                        Is my data private and secure?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Completely. We use military-grade encryption and never share your photos or data without permission. You can delete all data anytime through the app settings.
+            <h2 class="section-heading animate-in">Partner Brands</h2>
+            <p class="section-subheading animate-in delay-1">Try on outfits from your favorite brands</p>
+            
+            <div class="brand-carousel animate-in delay-2">
+                <img src="https://via.placeholder.com/150x60?text=Nike" alt="Nike" class="brand-logo">
+                <img src="https://via.placeholder.com/150x60?text=Zara" alt="Zara" class="brand-logo">
+                <img src="https://via.placeholder.com/150x60?text=Levi's" alt="Levi's" class="brand-logo">
+                <img src="https://via.placeholder.com/150x60?text=H&M" alt="H&M" class="brand-logo">
+                <img src="https://via.placeholder.com/150x60?text=Adidas" alt="Adidas" class="brand-logo">
+                <img src="https://via.placeholder.com/150x60?text=Gucci" alt="Gucci" class="brand-logo">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-heading animate-in">What Our Users Say</h2>
+            <p class="section-subheading animate-in delay-1">Join thousands of satisfied fashion lovers</p>
+            
+            <div class="testimonial-grid animate-in delay-2">
+                <div class="testimonial-card">
+                    <p class="testimonial-content">"AIfitwear completely changed how I shop online. The virtual try-on was so accurate I knew exactly how everything would fit!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah J.</h4>
+                            <p>Fashion Blogger</p>
+                        </div>
                     </div>
                 </div>
-                <div class="faq-item animate-in delay-5">
-                    <div class="faq-question">
-                        Which brands are available?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        We partner with 200+ major brands across categories. The app is constantly adding new partners. You can also try on items from any store by uploading product images.
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-content">"The AI recommendations are scarily accurate. It knows my style better than I do!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael T.</h4>
+                            <p>Tech Entrepreneur</p>
+                        </div>
                     </div>
                 </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-content">"I've reduced my return rate by 90% since using AIfitwear. The sizing predictions are perfect every time."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Priya K.</h4>
+                            <p>Frequent Shopper</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sustainability -->
+    <section id="sustainability">
+        <div class="container">
+            <h2 class="section-heading animate-in" style="color: white;">Sustainable Shopping</h2>
+            <p class="section-subheading animate-in delay-1" style="color: rgba(255,255,255,0.8);">Reducing fashion's environmental impact</p>
+            
+            <div class="eco-card animate-in delay-2">
+                <div class="eco-score">87%</div>
+                <h3>Reduction in Return Rates</h3>
+                <p>Virtual try-ons significantly decrease unnecessary shipping and packaging waste</p>
+                <button class="cta-button" style="margin-top: 1.5rem;">Learn More</button>
             </div>
         </div>
     </section>
     
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <div class="footer-logo">TRYONA</div>
-                <p class="footer-about">
-                    Tryona revolutionizes online shopping with AI-powered virtual try-ons. 
-                    See how clothes fit before you buy, saving time and reducing returns.
-                </p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/welcometopunecity" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/PalkiSharmaFP" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/anchor_palkisharma/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCsT0YIqwnpJCM-mx7-gSA4Q" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">AIfitwear</div>
+                    <p class="footer-about">
+                        Revolutionizing online fashion with AI-powered virtual try-ons and personalized recommendations.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/welcometopunecity" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/PalkiSharmaFP" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/anchor_palkisharma/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UCsT0YIqwnpJCM-mx7-gSA4Q" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#product-viewer">3D Try-On</a></li>
+                        <li><a href="#style-quiz">Style Quiz</a></li>
+                        <li><a href="#dressing-room">Dressing Room</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@aifitwear.com">hello@aifitwear.com</a></li>
+                        <li><a href="tel:+18005551234">+1 (800) 555-1234</a></li>
+                        <li><a href="#">Press Inquiries</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-column">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <div class="copyright">© 2023 AIfitwear. All rights reserved.</div>
+                <div class="copyright">Developed by TDS Innovation</div>
             </div>
-            <div class="footer-column">
-                <h3 class="footer-heading">Legal</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">GDPR Compliance</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading">Contact</h3>
-                <ul class="footer-links">
-                    <li><a href="mailto:hello@tryona.app">hello@tryona.app</a></li>
-                    <li><a href="tel:+18005551234">+1 (800) 555-1234</a></li>
-                    <li><a href="#">Press Inquiries</a></li>
-                    <li><a href="#">Partnerships</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="copyright">© 2023 Tryona AI. All rights reserved.</div>
-            <div class="copyright">Developed by TDS Innovation</div>
         </div>
     </footer>
     
@@ -865,25 +1133,64 @@
             });
         });
         
-        // FAQ accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const isActive = question.classList.contains('active');
-                
-                // Close all answers
-                document.querySelectorAll('.faq-answer').forEach(ans => {
-                    ans.classList.remove('active');
-                    ans.previousElementSibling.classList.remove('active');
-                });
-                
-                // Open clicked answer if it was closed
-                if (!isActive) {
-                    answer.classList.add('active');
-                    question.classList.add('active');
-                }
+        // Style Quiz
+        let currentStep = 1;
+        const totalSteps = 4;
+        const userSelections = {};
+        
+        function nextQuizStep(selection) {
+            userSelections[`step${currentStep}`] = selection;
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep++;
+            
+            if (currentStep <= totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                document.querySelector('.quiz-progress-bar').style.width = `${(currentStep/totalSteps)*100}%`;
+            } else {
+                showQuizResults();
+            }
+        }
+        
+        function showQuizResults() {
+            document.getElementById('results').classList.add('active');
+        }
+        
+        function resetQuiz() {
+            currentStep = 1;
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            document.querySelector('.quiz-progress-bar').style.width = '25%';
+        }
+        
+        // Virtual Dressing Room
+        function selectOutfit(item) {
+            // Remove selected class from all options in this category
+            const category = item.includes('top') ? 'top' : 'bottom';
+            document.querySelectorAll(`.outfit-option[onclick*="${category}"]`).forEach(opt => {
+                opt.classList.remove('selected');
             });
-        });
+            
+            // Add selected class to clicked option
+            event.target.closest('.outfit-option').classList.add('selected');
+            
+            // Update preview (simplified for demo)
+            if (category === 'top') {
+                document.getElementById('outfit-preview').src = event.target.closest('.outfit-option').querySelector('img').src;
+            }
+        }
+        
+        function changeColor(color) {
+            // Remove selected class from all color options
+            document.querySelectorAll('.color-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked color
+            event.target.classList.add('selected');
+            
+            // In a real implementation, this would change the outfit color
+            console.log(`Changed color to: ${color}`);
+        }
         
         // Scroll animation
         function checkScroll() {
