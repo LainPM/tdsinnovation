@@ -1,1198 +1,1230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trekkers of India | Explore Majestic Forts & Peaks</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #3498db;
-      --secondary: #2c3e50;
-      --accent: #e74c3c;
-      --light: #ecf0f1;
-      --dark: #2c3e50;
-      --text: #34495e;
-      --text-light: #7f8c8d;
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-    }
-    
-    body {
-      background-color: #f9f9f9;
-      color: var(--text);
-      line-height: 1.6;
-    }
-    
-    header {
-      background: linear-gradient(135deg, var(--secondary), var(--dark));
-      color: white;
-      padding: 2rem 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-      opacity: 0.2;
-      z-index: 0;
-    }
-    
-    header .header-content {
-      position: relative;
-      z-index: 1;
-    }
-    
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-    
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    nav a {
-      color: var(--text);
-      padding: 1rem 1.5rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      position: relative;
-    }
-    
-    nav a:hover {
-      color: var(--primary);
-    }
-    
-    nav a.active {
-      color: var(--primary);
-    }
-    
-    nav a.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50%;
-      height: 3px;
-      background-color: var(--primary);
-      border-radius: 3px;
-    }
-    
-    .page {
-      display: none;
-      padding: 2rem 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .page.active {
-      display: block;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1528123778682-0a153dbd6f54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-    }
-    
-    .hero h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
-    }
-    
-    .btn {
-      display: inline-block;
-      background-color: var(--primary);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-    
-    .btn:hover {
-      background-color: #2980b9;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .btn-outline {
-      background: transparent;
-      border: 2px solid white;
-      margin-left: 1rem;
-    }
-    
-    .btn-outline:hover {
-      background: white;
-      color: var(--primary);
-    }
-    
-    .card {
-      background: white;
-      margin: 1.5rem 0;
-      padding: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-    
-    .card h2 {
-      color: var(--secondary);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-    
-    .card p {
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
-    
-    .card img {
-      width: 100%;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-    }
-    
-    .forts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .fort-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      height: 250px;
-    }
-    
-    .fort-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .fort-card:hover img {
-      transform: scale(1.1);
-    }
-    
-    .fort-card .overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      color: white;
-      padding: 1.5rem 1rem 1rem;
-    }
-    
-    .fort-card h3 {
-      margin-bottom: 0.5rem;
-    }
-    
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      height: 200px;
-      cursor: pointer;
-    }
-    
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-    
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
-    
-    .form-group textarea {
-      min-height: 150px;
-    }
-    
-    footer {
-      background-color: var(--secondary);
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-    }
-    
-    .social-links {
-      margin: 1rem 0;
-    }
-    
-    .social-links a {
-      color: white;
-      font-size: 1.5rem;
-      margin: 0 0.5rem;
-      transition: color 0.3s ease;
-    }
-    
-    .social-links a:hover {
-      color: var(--primary);
-    }
-    
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .testimonial {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    
-    .testimonial .quote {
-      font-style: italic;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-    
-    .testimonial .author {
-      display: flex;
-      align-items: center;
-    }
-    
-    .testimonial .author img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 1rem;
-    }
-    
-    .author-info h4 {
-      margin-bottom: 0.2rem;
-    }
-    
-    .author-info p {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-    
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .stat-card {
-      text-align: center;
-      padding: 1.5rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    
-    .stat-card .number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .stat-card .label {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-    
-    /* New Styles for Added Features */
-    .booking-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-    }
-    
-    .weather-widget {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-    }
-    
-    .newsletter {
-      background: var(--light);
-      padding: 2rem;
-      border-radius: 8px;
-      text-align: center;
-      margin: 2rem 0;
-    }
-    
-    .newsletter input[type="email"] {
-      padding: 0.8rem;
-      border-radius: 50px;
-      border: 1px solid #ddd;
-      width: 300px;
-      max-width: 100%;
-      margin-right: 1rem;
-    }
-    
-    .faq {
-      margin: 2rem 0;
-    }
-    
-    .faq-item {
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 1rem;
-    }
-    
-    .faq-question {
-      background: none;
-      border: none;
-      width: 100%;
-      text-align: left;
-      padding: 1rem 0;
-      font-weight: 600;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .faq-question::after {
-      content: '+';
-      font-size: 1.5rem;
-    }
-    
-    .faq-question.active::after {
-      content: '-';
-    }
-    
-    .faq-answer {
-      padding: 0 1rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    
-    .faq-answer.show {
-      max-height: 300px;
-      padding: 1rem;
-    }
-    
-    .rating {
-      margin: 1rem 0;
-    }
-    
-    .star {
-      font-size: 1.5rem;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    
-    .star:hover,
-    .star.active {
-      color: #FFD700;
-    }
-    
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .blog-post {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-    
-    .blog-post:hover {
-      transform: translateY(-5px);
-    }
-    
-    .blog-post img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    
-    .blog-post h3 {
-      padding: 1rem 1rem 0;
-      color: var(--secondary);
-    }
-    
-    .blog-post p {
-      padding: 0 1rem 1rem;
-      color: var(--text-light);
-    }
-    
-    .blog-post a {
-      display: inline-block;
-      margin: 0 1rem 1rem;
-    }
-    
-    @media (max-width: 768px) {
-      nav {
-        flex-wrap: wrap;
-      }
-      
-      nav a {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-      }
-      
-      .hero h2 {
-        font-size: 1.8rem;
-      }
-      
-      .btn {
-        display: block;
-        width: 100%;
-        margin-bottom: 1rem;
-      }
-      
-      .btn-outline {
-        margin-left: 0;
-      }
-      
-      .newsletter input[type="email"] {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        width: 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS Innovation - Innovative Tools for the Modern Creator</title>
+    <meta name="description" content="High-quality digital products for creators, entrepreneurs, and freelancers. Notion templates, AI prompts, website templates, and productivity tools.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['DM Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom CSS */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-transparent {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(14,165,233,0.1) 0%, rgba(139,92,246,0.1) 100%);
+        }
+        
+        /* Animation classes */
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .animate-delay-200 {
+            animation-delay: 0.2s;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <div class="header-content">
-      <h1>Trekkers of India</h1>
-      <p>Explore the Majestic Forts and Peaks of Incredible India</p>
-    </div>
-  </header>
-  
-  <nav>
-    <a href="#" class="active" onclick="navigate('home')"><i class="fas fa-home"></i> Home</a>
-    <a href="#" onclick="navigate('forts')"><i class="fas fa-mountain"></i> Popular Forts</a>
-    <a href="#" onclick="navigate('gallery')"><i class="fas fa-images"></i> Gallery</a>
-    <a href="#" onclick="navigate('blog')"><i class="fas fa-book"></i> Blog</a>
-    <a href="#" onclick="navigate('about')"><i class="fas fa-info-circle"></i> About</a>
-    <a href="#" onclick="navigate('contact')"><i class="fas fa-envelope"></i> Contact</a>
-  </nav>
-
-  <section id="home" class="page active">
-    <div class="hero">
-      <h2>Adventure Awaits in the Heart of India</h2>
-      <p>Join our community of passionate trekkers exploring the hidden gems of India's legendary forts and breathtaking peaks.</p>
-      <a href="#" class="btn" onclick="navigate('forts')">Explore Forts</a>
-      <a href="#" class="btn btn-outline" onclick="navigate('contact')">Join Our Community</a>
-    </div>
-    
-    <div class="card">
-      <h2>Why Trek With Us?</h2>
-      <p>Trekkers of India is more than just a community - we're a family of adventure seekers dedicated to preserving and exploring India's rich historical and natural heritage.</p>
-      
-      <div class="stats">
-        <div class="stat-card">
-          <div class="number">150+</div>
-          <div class="label">Organized Treks</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">5,000+</div>
-          <div class="label">Happy Trekkers</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">50+</div>
-          <div class="label">Historical Forts</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">12</div>
-          <div class="label">Years Experience</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <h2>Upcoming Treks</h2>
-      <p>Check out our scheduled treks for the next month:</p>
-      
-      <div class="forts-grid">
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rajgad Fort">
-          <div class="overlay">
-            <h3>Rajgad Fort</h3>
-            <p>June 15-16, 2023</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1585506942812-e72b29cef752?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Harishchandragad">
-          <div class="overlay">
-            <h3>Harishchandragad</h3>
-            <p>June 22-23, 2023</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pratapgad">
-          <div class="overlay">
-            <h3>Pratapgad</h3>
-            <p>July 6-7, 2023</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="booking-card" style="margin-top: 2rem;">
-        <h3>Book Your Trek</h3>
-        <form id="trek-booking-form">
-          <div class="form-group">
-            <label for="trek-location">Select Trek:</label>
-            <select id="trek-location" required>
-              <option value="">-- Choose a Trek --</option>
-              <option value="Rajgad Fort">Rajgad Fort (June 15-16)</option>
-              <option value="Harishchandragad">Harishchandragad (June 22-23)</option>
-              <option value="Pratapgad">Pratapgad (July 6-7)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="participants">Number of Participants:</label>
-            <input type="number" id="participants" min="1" max="10" required>
-          </div>
-          <button type="submit" class="btn">Confirm Booking</button>
-        </form>
-      </div>
-    </div>
-    
-    <div class="weather-widget">
-      <h3>Weather at Rajgad Fort</h3>
-      <div id="weather-data">
-        <p>Loading weather...</p>
-      </div>
-    </div>
-    
-    <div class="card">
-      <h2>What Our Trekkers Say</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p class="quote">"The trek to Sinhagad with Trekkers of India was an unforgettable experience. The guides were knowledgeable and the group was amazing!"</p>
-          <div class="author">
-            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Priya Sharma">
-            <div class="author-info">
-              <h4>Priya Sharma</h4>
-              <p>Mumbai, 5 treks with us</p>
+<body class="font-sans antialiased text-gray-800 bg-white">
+    <!-- Navigation -->
+    <header class="fixed w-full z-50 transition-all duration-300 nav-transparent">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-xl mr-2">TDS</div>
+                        <span class="text-xl font-display font-bold text-gray-900">TDS Innovation</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#products" class="font-medium hover:text-primary-600 transition">Products</a>
+                    <a href="#membership" class="font-medium hover:text-primary-600 transition">Membership</a>
+                    <a href="#testimonials" class="font-medium hover:text-primary-600 transition">Testimonials</a>
+                    <a href="#about" class="font-medium hover:text-primary-600 transition">About</a>
+                </nav>
+                
+                <!-- Right side icons -->
+                <div class="flex items-center space-x-4">
+                    <button id="search-btn" class="p-2 rounded-full hover:bg-gray-100 transition">
+                        <i class="fas fa-search text-gray-600"></i>
+                    </button>
+                    <button id="cart-btn" class="p-2 rounded-full hover:bg-gray-100 transition relative">
+                        <i class="fas fa-shopping-cart text-gray-600"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 transition">
+                        <i class="fas fa-moon text-gray-600"></i>
+                    </button>
+                    <button class="md:hidden" id="mobile-menu-btn">
+                        <i class="fas fa-bars text-gray-600 text-xl"></i>
+                    </button>
+                </div>
             </div>
-          </div>
-          <div class="rating">
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"As a beginner, I was nervous, but the team made sure everyone was comfortable. Can't wait for the next adventure!"</p>
-          <div class="author">
-            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Rahul Patel">
-            <div class="author-info">
-              <h4>Rahul Patel</h4>
-              <p>Pune, First trek</p>
-            </div>
-          </div>
-          <div class="rating">
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star">★</span>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"The night camping at Rajgad was magical. The organization was perfect and we learned so much about the fort's history."</p>
-          <div class="author">
-            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ananya Joshi">
-            <div class="author-info">
-              <h4>Ananya Joshi</h4>
-              <p>Bangalore, 3 treks with us</p>
-            </div>
-          </div>
-          <div class="rating">
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-            <span class="star active">★</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="review-card" style="margin-top: 2rem;">
-        <h3>Rate Your Experience</h3>
-        <div class="rating" id="user-rating">
-          <span class="star" onclick="rateTrek(1)">★</span>
-          <span class="star" onclick="rateTrek(2)">★</span>
-          <span class="star" onclick="rateTrek(3)">★</span>
-          <span class="star" onclick="rateTrek(4)">★</span>
-          <span class="star" onclick="rateTrek(5)">★</span>
-        </div>
-        <div class="form-group">
-          <textarea id="user-review" placeholder="Share your experience..."></textarea>
-        </div>
-        <button class="btn" onclick="submitReview()">Submit Review</button>
-      </div>
-    </div>
-    
-    <div class="newsletter">
-      <h3>Join Our Trekking Community</h3>
-      <p>Get updates on upcoming treks, tips, and exclusive offers!</p>
-      <form id="newsletter-form">
-        <input type="email" placeholder="Your email" required>
-        <button type="submit" class="btn">Subscribe</button>
-      </form>
-    </div>
-  </section>
-
-  <section id="forts" class="page">
-    <div class="card">
-      <h2>Popular Forts in India</h2>
-      <p>Explore these magnificent historical structures that combine adventure with rich history.</p>
-      
-      <div class="forts-grid">
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rajgad Fort">
-          <div class="overlay">
-            <h3>Rajgad Fort</h3>
-            <p>Maharashtra</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1585506942812-e72b29cef752?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Harishchandragad">
-          <div class="overlay">
-            <h3>Harishchandragad</h3>
-            <p>Maharashtra</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pratapgad">
-          <div class="overlay">
-            <h3>Pratapgad</h3>
-            <p>Maharashtra</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1581852017103-68e8115e1e47?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Chittorgarh Fort">
-          <div class="overlay">
-            <h3>Chittorgarh Fort</h3>
-            <p>Rajasthan</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1581852017103-68e8115e1e47?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mehrangarh Fort">
-          <div class="overlay">
-            <h3>Mehrangarh Fort</h3>
-            <p>Jodhpur, Rajasthan</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sinhagad Fort">
-          <div class="overlay">
-            <h3>Sinhagad Fort</h3>
-            <p>Maharashtra</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <h2>Fort Difficulty Levels</h2>
-      <p>Our grading system helps you choose treks according to your experience level:</p>
-      
-      <div class="forts-grid">
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beginner">
-          <div class="overlay">
-            <h3>Beginner</h3>
-            <p>Sinhagad, Lohagad</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1585506942812-e72b29cef752?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Intermediate">
-          <div class="overlay">
-            <h3>Intermediate</h3>
-            <p>Rajgad, Torna</p>
-          </div>
-        </div>
-        <div class="fort-card">
-          <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Advanced">
-          <div class="overlay">
-            <h3>Advanced</h3>
-            <p>Harishchandragad, Kalsubai</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <h2>Fort Locations</h2>
-      <div style="height: 400px; border-radius: 8px; overflow: hidden;">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.626315036736!2d73.8064153154677!3d18.4521759874535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2955a4d6e1f0d%3A0x7f3cee7c7f3e3e3e!2sSinhagad%20Fort!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-          width="100%" 
-          height="100%" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery" class="page">
-    <div class="card">
-      <h2>Trekker's Gallery</h2>
-      <p>Explore breathtaking moments captured by our community members.</p>
-      
-      <div class="gallery-container">
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Trekker on mountain">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sunrise view">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Group trekking">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mountain lake">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Forest trail">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Camping night">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fort architecture">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Panoramic view">
-        </div>
-      </div>
-      
-      <div style="text-align: center; margin-top: 2rem;">
-        <a href="#" class="btn">View More Photos</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="blog" class="page">
-    <div class="card">
-      <h2>Latest Trekking Stories</h2>
-      <p>Read about adventures, tips, and experiences from our community.</p>
-      
-      <div class="blog-grid">
-        <article class="blog-post">
-          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b" alt="Trekking in the Himalayas">
-          <h3>My First Himalayan Trek</h3>
-          <p>An unforgettable journey to Roopkund Lake that changed my perspective on trekking...</p>
-          <a href="#" class="btn">Read More</a>
-        </article>
-        <article class="blog-post">
-          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35" alt="Monsoon Trek">
-          <h3>Monsoon Trekking Safety Tips</h3>
-          <p>Essential gear and precautions you need to know before embarking on a rainy trek...</p>
-          <a href="#" class="btn">Read More</a>
-        </article>
-        <article class="blog-post">
-          <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5" alt="Night Trek">
-          <h3>The Magic of Night Treks</h3>
-          <p>Why night treks to Harishchandragad are becoming increasingly popular...</p>
-          <a href="#" class="btn">Read More</a>
-        </article>
-      </div>
-    </div>
-    
-    <div class="card">
-      <h2>Trekking Guides</h2>
-      <p>Comprehensive guides to help you prepare for your next adventure.</p>
-      
-      <div class="blog-grid">
-        <article class="blog-post">
-          <img src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3" alt="Trekking Gear">
-          <h3>Essential Trekking Gear</h3>
-          <p>The complete checklist of what to pack for different types of treks...</p>
-          <a href="#" class="btn">Read More</a>
-        </article>
-        <article class="blog-post">
-          <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda" alt="Fitness for Trekking">
-          <h3>Fitness Preparation for Treks</h3>
-          <p>How to get in shape before attempting challenging treks...</p>
-          <a href="#" class="btn">Read More</a>
-        </article>
-        <article class="blog-post">
-          <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509" alt="Photography">
-          <h3>Trekking Photography Tips</h3>
-          <p>Capture stunning landscapes without carrying heavy equipment...</p>
-          <a href="#" class="btn">Read More</a>
-        </article>
-      </div>
-    </div>
-    
-    <div class="faq">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <button class="faq-question">What should I carry for a trek?</button>
-        <div class="faq-answer">
-          <p>Essentials include:</p>
-          <ul>
-            <li>2-3 liters of water</li>
-            <li>Energy snacks and lunch</li>
-            <li>Good quality trekking shoes</li>
-            <li>First-aid kit</li>
-            <li>Raincoat/poncho (in monsoon)</li>
-            <li>Extra pair of clothes</li>
-            <li>Torch with extra batteries</li>
-            <li>Personal medications</li>
-          </ul>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Are beginners allowed on all treks?</button>
-        <div class="faq-answer">
-          <p>We have treks for all levels:</p>
-          <ul>
-            <li><strong>Beginner:</strong> Sinhagad, Lohagad, Tikona</li>
-            <li><strong>Intermediate:</strong> Rajgad, Torna, Purandar</li>
-            <li><strong>Advanced:</strong> Harishchandragad, Kalsubai, Sandhan Valley</li>
-          </ul>
-          <p>Our guides will assess your fitness level and recommend appropriate treks.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What is your cancellation policy?</button>
-        <div class="faq-answer">
-          <p>Cancellation charges:</p>
-          <ul>
-            <li>15+ days before trek: Full refund</li>
-            <li>7-14 days before: 50% refund</li>
-            <li>Less than 7 days: No refund</li>
-          </ul>
-          <p>In case of bad weather, we either reschedule or offer full refund.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="page">
-    <div class="card">
-      <h2>Our Story</h2>
-      <p>Founded in 2011 by a group of passionate trekkers, Trekkers of India has grown from a small hiking club to one of India's most respected trekking communities. What began as weekend trips to nearby forts has evolved into organized expeditions across the country.</p>
-      <p>We believe in responsible trekking that respects both nature and history. Our treks combine physical challenge with cultural education, creating experiences that stay with you long after you've descended the mountain.</p>
-    </div>
-    
-    <div class="card">
-      <h2>Our Mission</h2>
-      <p>To make trekking accessible to everyone while preserving India's natural and historical heritage. We aim to:</p>
-      <ul style="margin: 1rem 0 1rem 2rem; color: var(--text-light);">
-        <li>Promote outdoor activities and healthy lifestyles</li>
-        <li>Educate trekkers about historical sites and conservation</li>
-        <li>Build a supportive community of adventure enthusiasts</li>
-        <li>Organize safe, well-planned treks for all skill levels</li>
-        <li>Document and preserve lesser-known trails and routes</li>
-      </ul>
-    </div>
-    
-    <div class="card">
-      <h2>Meet The Team</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <div class="author">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Vikram Singh">
-            <div class="author-info">
-              <h4>Vikram Singh</h4>
-              <p>Founder & Lead Guide</p>
-              <p>15+ years trekking experience</p>
-            </div>
-          </div>
-          <p class="quote" style="margin-top: 1rem;">"Every fort has a story to tell, every trail a lesson to teach. Our goal is to help people experience this magic."</p>
-        </div>
-        <div class="testimonial">
-          <div class="author">
-            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Deshpande">
-            <div class="author-info">
-              <h4>Priya Deshpande</h4>
-              <p>Operations Manager</p>
-              <p>Certified Wilderness First Responder</p>
-            </div>
-          </div>
-          <p class="quote" style="margin-top: 1rem;">"Safety is our top priority, but we never forget that trekking should be fun!"</p>
-        </div>
-        <div class="testimonial">
-          <div class="author">
-            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Rahul Joshi">
-            <div class="author-info">
-              <h4>Rahul Joshi</h4>
-              <p>Historical Researcher</p>
-              <p>MA in Ancient Indian History</p>
-            </div>
-          </div>
-          <p class="quote" style="margin-top: 1rem;">"Understanding the history of these forts makes the trek infinitely more rewarding."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="page">
-    <div class="card">
-      <h2>Get In Touch</h2>
-      <p>Have questions or want to join our next trek? Reach out to us!</p>
-      
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
-        <div>
-          <h3>Contact Information</h3>
-          <p style="margin: 1rem 0;"><i class="fas fa-envelope"></i> trekkersofindia@gmail.com</p>
-          <p style="margin: 1rem 0;"><i class="fas fa-phone"></i> +91 98765 43210</p>
-          <p style="margin: 1rem 0;"><i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India</p>
-          
-          <h3 style="margin-top: 2rem;">Follow Us</h3>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
         </div>
         
-        <div class="contact-form">
-          <h3>Send Us a Message</h3>
-          <form id="contact-form">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" placeholder="Your name" required>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t py-4 px-4 absolute w-full shadow-lg">
+            <div class="flex flex-col space-y-3">
+                <a href="#products" class="font-medium hover:text-primary-600 transition py-2">Products</a>
+                <a href="#membership" class="font-medium hover:text-primary-600 transition py-2">Membership</a>
+                <a href="#testimonials" class="font-medium hover:text-primary-600 transition py-2">Testimonials</a>
+                <a href="#about" class="font-medium hover:text-primary-600 transition py-2">About</a>
             </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="Your email" required>
+        </div>
+        
+        <!-- Search Bar -->
+        <div id="search-bar" class="hidden bg-white border-t py-4 px-4 absolute w-full shadow-lg">
+            <div class="container mx-auto">
+                <div class="relative">
+                    <input type="text" placeholder="Search products..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                    <button class="absolute right-3 top-3 text-gray-500 hover:text-primary-600">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" placeholder="Your message" required></textarea>
-            </div>
-            <button type="submit" class="btn">Send Message</button>
-          </form>
         </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <h2>Join Our Next Trek</h2>
-      <p>Ready for adventure? Sign up for our upcoming treks:</p>
-      
-      <div style="margin-top: 1.5rem;">
-        <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
-          <h4>Rajgad Fort Trek</h4>
-          <p style="color: var(--text-light); margin: 0.5rem 0;">June 15-16, 2023</p>
-          <a href="#" class="btn" onclick="navigate('home')">Sign Up</a>
-        </div>
-        <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
-          <h4>Harishchandragad Night Trek</h4>
-          <p style="color: var(--text-light); margin: 0.5rem 0;">June 22-23, 2023</p>
-          <a href="#" class="btn" onclick="navigate('home')">Sign Up</a>
-        </div>
-        <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px;">
-          <h4>Beginner's Trek to Sinhagad</h4>
-          <p style="color: var(--text-light); margin: 0.5rem 0;">July 1, 2023</p>
-          <a href="#" class="btn" onclick="navigate('home')">Sign Up</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <footer>
-    <p>&copy; 2023 Trekkers of India. All rights reserved.</p>
-    <div class="social-links">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
-    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Built with ❤️ for adventure seekers</p>
-  </footer>
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
+                        Innovative Tools for the <span class="text-primary-600">Modern Creator</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        High-quality digital products to streamline your workflow and boost productivity. Templates, kits, and tools designed for creators.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#products" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 text-center shadow-lg hover:shadow-xl">
+                            Browse Products
+                        </a>
+                        <a href="#membership" class="border border-primary-600 text-primary-600 hover:bg-primary-50 font-medium py-3 px-6 rounded-lg transition duration-300 text-center">
+                            Join Membership
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-fade-in animate-delay-100">
+                    <img src="https://illustrations.popsy.co/amber/digital-nomad.svg" alt="Digital creator working" class="w-full max-w-md animate-float">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Navigation function
-    function navigate(pageId) {
-      // Update active navigation link
-      const navLinks = document.querySelectorAll('nav a');
-      navLinks.forEach(link => link.classList.remove('active'));
-      event.currentTarget.classList.add('active');
-      
-      // Show selected page
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => page.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
-      
-      // Scroll to top
-      window.scrollTo(0, 0);
-    }
-    
-    // Form submission handlers
-    document.getElementById('trek-booking-form')?.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const trek = document.getElementById('trek-location').value;
-      const participants = document.getElementById('participants').value;
-      alert(`Booking confirmed for ${trek} with ${participants} participants!\nWe'll contact you with details shortly.`);
-      this.reset();
-    });
-    
-    document.getElementById('contact-form')?.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your message! We will get back to you soon.');
-      this.reset();
-    });
-    
-    document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thanks for subscribing to our newsletter!');
-      this.reset();
-    });
-    
-    // Rating system
-    function rateTrek(rating) {
-      const stars = document.querySelectorAll('#user-rating .star');
-      stars.forEach((star, index) => {
-        star.classList.toggle('active', index < rating);
-      });
-    }
-    
-    function submitReview() {
-      const stars = document.querySelectorAll('#user-rating .star.active');
-      const reviewText = document.getElementById('user-review').value;
-      
-      if (stars.length === 0) {
-        alert('Please select a rating');
-        return;
-      }
-      
-      alert(`Thank you for your ${stars.length} star review!\n\n"${reviewText}"`);
-      document.getElementById('user-review').value = '';
-      document.querySelectorAll('#user-rating .star').forEach(star => {
-        star.classList.remove('active');
-      });
-    }
-    
-    // FAQ toggle
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        question.classList.toggle('active');
-        answer.classList.toggle('show');
-      });
-    });
-    
-    // Simulate weather API call
-    setTimeout(() => {
-      document.getElementById('weather-data').innerHTML = `
-        <p><i class="fas fa-temperature-high"></i> Temperature: 22°C</p>
-        <p><i class="fas fa-cloud"></i> Conditions: Partly Cloudy</p>
-        <p><i class="fas fa-wind"></i> Wind: 12 km/h</p>
-        <p><i class="fas fa-calendar-alt"></i> Best time to visit: October to February</p>
-      `;
-    }, 1000);
-  </script>
+    <!-- Featured Categories -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-display font-bold text-center mb-12">Shop by Category</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="#" class="category-card bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-table text-primary-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium">Notion Templates</h3>
+                    <p class="text-sm text-gray-500 mt-1">25 products</p>
+                </a>
+                
+                <a href="#" class="category-card bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium">AI Prompts</h3>
+                    <p class="text-sm text-gray-500 mt-1">18 products</p>
+                </a>
+                
+                <a href="#" class="category-card bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop-code text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium">Web Templates</h3>
+                    <p class="text-sm text-gray-500 mt-1">32 products</p>
+                </a>
+                
+                <a href="#" class="category-card bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tools text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium">Productivity</h3>
+                    <p class="text-sm text-gray-500 mt-1">14 products</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-display font-bold">Featured Products</h2>
+                <div class="flex space-x-2">
+                    <button class="filter-btn active px-4 py-2 rounded-lg bg-primary-600 text-white" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200" data-filter="notion">Notion</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200" data-filter="ai">AI</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200" data-filter="web">Web</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-grid">
+                <!-- Product cards will be dynamically loaded here -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="load-more" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 font-medium transition">
+                    Load More Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-display font-bold text-center mb-12">What Our Customers Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Sarah J.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "The Notion templates have completely transformed how I manage my freelance business. So intuitive and beautifully designed!"
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Michael T.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "The AI prompt pack helped me generate better content in half the time. Worth every penny for content creators!"
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Priya K.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "As a solopreneur, these tools have saved me countless hours. The website templates are especially well-documented."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership" class="py-16 bg-gradient-to-r from-primary-50 to-purple-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Join TDS Innovation Membership</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Get unlimited access to all our products, exclusive content, and early releases for one simple price.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-xl font-display font-medium mb-2">Free</h3>
+                        <p class="text-gray-600 mb-4">Basic access to free products</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$0</span>
+                            <span class="text-gray-500">/forever</span>
+                        </div>
+                        <button class="w-full py-2 px-4 border border-primary-600 text-primary-600 rounded-lg hover:bg-primary-50 transition">
+                            Current Plan
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Access to free products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Weekly newsletter</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times text-gray-300 mr-2"></i>
+                                <span>Premium products</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times text-gray-300 mr-2"></i>
+                                <span>Exclusive templates</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times text-gray-300 mr-2"></i>
+                                <span>Early access</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-primary-600 transform scale-105 z-10">
+                    <div class="bg-primary-600 text-white text-center py-2 text-sm font-medium">
+                        MOST POPULAR
+                    </div>
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-xl font-display font-medium mb-2">Pro</h3>
+                        <p class="text-gray-600 mb-4">Full access to all products</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$15</span>
+                            <span class="text-gray-500">/month</span>
+                        </div>
+                        <button class="w-full py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition">
+                            Upgrade Now
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>All free products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>All premium products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Exclusive templates</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Early access to new releases</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Members-only community</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-xl font-display font-medium mb-2">Yearly</h3>
+                        <p class="text-gray-600 mb-4">Best value - save 30%</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$126</span>
+                            <span class="text-gray-500">/year</span>
+                        </div>
+                        <button class="w-full py-2 px-4 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition">
+                            Choose Yearly
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>All Pro benefits</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>30% discount</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Priority support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Annual bonus products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Exclusive yearly gifts</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-8 md:p-12 text-white overflow-hidden relative">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-white bg-opacity-10 rounded-full"></div>
+                <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-white bg-opacity-10 rounded-full"></div>
+                
+                <div class="relative z-10 max-w-3xl mx-auto text-center">
+                    <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Get a Free Notion Template</h2>
+                    <p class="text-lg mb-8 opacity-90">
+                        Subscribe to our newsletter and receive a free Notion Productivity Template instantly. Plus get updates on new products and exclusive discounts.
+                    </p>
+                    
+                    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <input type="email" placeholder="Your email address" required class="flex-grow px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-25">
+                        <button type="submit" class="px-6 py-3 bg-white text-primary-600 font-medium rounded-lg hover:bg-gray-100 transition whitespace-nowrap">
+                            Get Free Template
+                        </button>
+                    </form>
+                    
+                    <p class="text-sm mt-4 opacity-70">
+                        We respect your privacy. Unsubscribe at any time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-2xl md:text-3xl font-display font-bold mb-6">About TDS Innovation</h2>
+                    <p class="text-gray-600 mb-4">
+                        Founded in 2022, TDS Innovation is dedicated to creating high-quality digital tools that help modern creators, entrepreneurs, and freelancers work smarter and more efficiently.
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        Our team of designers, developers, and productivity experts collaborate to build templates, kits, and tools that solve real problems with elegant solutions.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        We believe in the power of well-designed systems to transform workflows and unlock creative potential.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition">
+                            <i class="fab fa-twitter text-gray-700"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition">
+                            <i class="fab fa-instagram text-gray-700"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition">
+                            <i class="fab fa-discord text-gray-700"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition">
+                            <i class="fab fa-github text-gray-700"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://illustrations.popsy.co/amber/designer.svg" alt="TDS Innovation team" class="w-full max-w-md mx-auto rounded-lg shadow-sm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-xl mr-2">TDS</div>
+                        <span class="text-xl font-display font-bold">TDS Innovation</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Innovative digital products for modern creators.
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        © 2023 TDS Innovation. All rights reserved.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Notion Templates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">AI Prompt Packs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Website Templates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Design Kits</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Productivity Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Refund Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Licenses</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    tdsinnovation.store is not affiliated with Notion, Framer, or any other mentioned platforms.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition">
+                        <i class="fab fa-cc-visa text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">
+                        <i class="fab fa-cc-mastercard text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">
+                        <i class="fab fa-cc-paypal text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">
+                        <i class="fab fa-cc-stripe text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-display font-bold">Your Cart</h3>
+                <button id="close-cart" class="p-2 rounded-full hover:bg-gray-100 transition">
+                    <i class="fas fa-times text-gray-600"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="space-y-4 mb-6">
+                <!-- Cart items will be dynamically loaded here -->
+                <div class="text-center py-12 text-gray-500" id="empty-cart-message">
+                    <i class="fas fa-shopping-cart text-4xl mb-4 opacity-30"></i>
+                    <p>Your cart is empty</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-4 mb-6">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Subtotal</span>
+                    <span class="font-medium" id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Tax</span>
+                    <span class="font-medium" id="cart-tax">$0.00</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            
+            <button id="checkout-btn" class="w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Proceed to Checkout
+            </button>
+            
+            <div class="text-center mt-4">
+                <p class="text-sm text-gray-500">or <a href="#" class="text-primary-600 hover:underline">continue shopping</a></p>
+            </div>
+        </div>
+    </div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div id="modal-overlay" class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+            
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+            
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <button id="close-modal" class="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition">
+                            <i class="fas fa-times text-gray-600"></i>
+                        </button>
+                        
+                        <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 mb-6 md:mb-0 md:pr-6">
+                                    <img id="modal-image" src="" alt="" class="w-full rounded-lg shadow-sm">
+                                </div>
+                                <div class="md:w-1/2">
+                                    <h3 id="modal-title" class="text-2xl font-display font-bold mb-2"></h3>
+                                    <div id="modal-price" class="text-xl font-bold text-primary-600 mb-4"></div>
+                                    <div id="modal-description" class="text-gray-600 mb-6"></div>
+                                    
+                                    <div class="mb-6">
+                                        <h4 class="font-medium mb-2">Features</h4>
+                                        <ul id="modal-features" class="list-disc list-inside text-gray-600 space-y-1"></ul>
+                                    </div>
+                                    
+                                    <div class="flex items-center space-x-4">
+                                        <button id="modal-add-to-cart" class="flex-1 py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition">
+                                            Add to Cart
+                                        </button>
+                                        <button id="modal-buy-now" class="flex-1 py-3 px-4 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition">
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: "Ultimate Notion Dashboard",
+                description: "All-in-one workspace for creators with project management, content calendar, and finance tracker.",
+                price: 29.99,
+                image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm90aW9uJTIwZGFzaGJvYXJkfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                category: "notion",
+                features: [
+                    "Project management system",
+                    "Content calendar",
+                    "Finance tracker",
+                    "Habit tracker",
+                    "Customizable templates"
+                ]
+            },
+            {
+                id: 2,
+                name: "AI Prompt Pack - Content Creation",
+                description: "200+ high-quality prompts for ChatGPT to help with blog posts, social media, and marketing copy.",
+                price: 19.99,
+                image: "https://images.unsplash.com/photo-1677442135136-760c813a743e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFpJTIwcHJvbXB0c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                category: "ai",
+                features: [
+                    "200+ curated prompts",
+                    "Blog post templates",
+                    "Social media content",
+                    "Marketing copy",
+                    "SEO optimization"
+                ]
+            },
+            {
+                id: 3,
+                name: "Minimal Portfolio Template",
+                description: "Clean, responsive portfolio template for designers and developers with Framer and Webflow versions.",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cG9ydGZvbGlvJTIwd2Vic2l0ZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                category: "web",
+                features: [
+                    "Framer & Webflow versions",
+                    "Responsive design",
+                    "Dark/light mode",
+                    "CMS ready",
+                    "Easy customization"
+                ]
+            },
+            {
+                id: 4,
+                name: "Freelancer Finance Tracker",
+                description: "Notion template to manage invoices, expenses, and taxes for freelancers and solopreneurs.",
+                price: 24.99,
+                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZpbmFuY2UlMjB0cmFja2VyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                category: "notion",
+                features: [
+                    "Invoice tracking",
+                    "Expense management",
+                    "Tax preparation",
+                    "Income reports",
+                    "Client database"
+                ]
+            },
+            {
+                id: 5,
+                name: "AI Business Assistant Prompts",
+                description: "150 prompts to help with business strategy, market research, and competitor analysis using AI.",
+                price: 17.99,
+                image: "https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFpJTIwYnVzaW5lc3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                category: "ai",
+                features: [
+                    "Business strategy",
+                    "Market research",
+                    "Competitor analysis",
+                    "SWOT templates",
+                    "Product development"
+                ]
+            },
+            {
+                id: 6,
+                name: "SaaS Landing Page Kit",
+                description: "Complete design system for SaaS landing pages with Figma files and React components.",
+                price: 39.99,
+                image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c2FhcyUyMHdlYnNpdGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+                category: "web",
+                features: [
+                    "Figma design files",
+                    "React components",
+                    "Dark/light themes",
+                    "Responsive layout",
+                    "Customizable styles"
+                ]
+            },
+            {
+                id: 7,
+                name: "Content Creator's Toolkit",
+                description: "Notion system for content creators to plan, create, and publish content across platforms.",
+                price: 27.99,
+                image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbnRlbnQlMjBjcmVhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                category: "notion",
+                features: [
+                    "Content calendar",
+                    "Publishing checklist",
+                    "Idea bank",
+                    "Performance tracking",
+                    "Cross-platform planning"
+                ]
+            },
+            {
+                id: 8,
+                name: "UX Design Resource Pack",
+                description: "Curated collection of UI kits, wireframe templates, and design assets for UX designers.",
+                price: 34.99,
+                image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHV4JTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                category: "web",
+                features: [
+                    "UI kits",
+                    "Wireframe templates",
+                    "Design assets",
+                    "Figma components",
+                    "Style guides"
+                ]
+            }
+        ];
+
+        // Cart state
+        let cart = [];
+        
+        // DOM elements
+        const productsGrid = document.getElementById('products-grid');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartItems = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartTax = document.getElementById('cart-tax');
+        const cartTotal = document.getElementById('cart-total');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const productModal = document.getElementById('product-modal');
+        const modalOverlay = document.getElementById('modal-overlay');
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts(products);
+            setupEventListeners();
+            updateCartCount();
+        });
+        
+        // Render products to the grid
+        function renderProducts(productsToRender) {
+            productsGrid.innerHTML = '';
+            
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white rounded-xl overflow-hidden shadow-sm transition duration-300 border border-gray-100';
+                productCard.dataset.category = product.category;
+                
+                productCard.innerHTML = `
+                    <div class="h-48 overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display font-medium text-lg">${product.name}</h3>
+                            <span class="font-bold text-primary-600">$${product.price.toFixed(2)}</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">${product.description}</p>
+                        <div class="flex space-x-3">
+                            <button class="view-btn flex-1 py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition" data-id="${product.id}">
+                                View Details
+                            </button>
+                            <button class="add-to-cart-btn flex-1 py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition" data-id="${product.id}">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+            
+            // Search toggle
+            document.getElementById('search-btn').addEventListener('click', toggleSearch);
+            
+            // Cart toggle
+            document.getElementById('cart-btn').addEventListener('click', openCart);
+            document.getElementById('close-cart').addEventListener('click', closeCart);
+            cartOverlay.addEventListener('click', closeCart);
+            
+            // Theme toggle
+            document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+            
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', filterProducts);
+            });
+            
+            // Load more button
+            document.getElementById('load-more').addEventListener('click', loadMoreProducts);
+            
+            // Newsletter form
+            document.getElementById('newsletter-form').addEventListener('submit', handleNewsletterSubmit);
+            
+            // Modal close
+            document.getElementById('close-modal').addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', closeModal);
+            
+            // These are delegated events since product buttons are dynamically loaded
+            document.addEventListener('click', function(e) {
+                // View product details
+                if (e.target.classList.contains('view-btn')) {
+                    const productId = parseInt(e.target.dataset.id);
+                    const product = products.find(p => p.id === productId);
+                    openProductModal(product);
+                }
+                
+                // Add to cart
+                if (e.target.classList.contains('add-to-cart-btn')) {
+                    const productId = parseInt(e.target.dataset.id);
+                    const product = products.find(p => p.id === productId);
+                    addToCart(product);
+                    
+                    // Add animation to button
+                    e.target.innerHTML = '<i class="fas fa-check"></i> Added';
+                    e.target.classList.add('bg-green-500', 'hover:bg-green-600');
+                    e.target.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+                    
+                    // Reset button after animation
+                    setTimeout(() => {
+                        e.target.innerHTML = 'Add to Cart';
+                        e.target.classList.remove('bg-green-500', 'hover:bg-green-600');
+                        e.target.classList.add('bg-primary-600', 'hover:bg-primary-700');
+                    }, 1500);
+                }
+                
+                // Modal add to cart
+                if (e.target.id === 'modal-add-to-cart') {
+                    const productId = parseInt(e.target.dataset.id);
+                    const product = products.find(p => p.id === productId);
+                    addToCart(product);
+                    closeModal();
+                }
+                
+                // Modal buy now
+                if (e.target.id === 'modal-buy-now') {
+                    const productId = parseInt(e.target.dataset.id);
+                    const product = products.find(p => p.id === productId);
+                    addToCart(product);
+                    closeModal();
+                    openCart();
+                }
+            });
+            
+            // Checkout button
+            checkoutBtn.addEventListener('click', function() {
+                alert('Checkout would redirect to payment processor in a real implementation');
+                cart = [];
+                updateCart();
+                closeCart();
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        document.getElementById('mobile-menu').classList.add('hidden');
+                        
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Sticky navbar on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            });
+        }
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+            document.getElementById('search-bar').classList.add('hidden');
+        }
+        
+        // Toggle search bar
+        function toggleSearch() {
+            document.getElementById('search-bar').classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+        
+        // Open cart sidebar
+        function openCart() {
+            cartSidebar.classList.remove('translate-x-full');
+            cartOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            updateCart();
+        }
+        
+        // Close cart sidebar
+        function closeCart() {
+            cartSidebar.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        // Toggle dark/light theme
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeToggle.innerHTML = '<i class="fas fa-moon text-gray-600"></i>';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-400"></i>';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-sun text-yellow-400"></i>';
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-moon text-gray-600"></i>';
+        }
+        
+        // Filter products by category
+        function filterProducts(e) {
+            const filter = e.target.dataset.filter;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-primary-600', 'text-white');
+                btn.classList.add('bg-gray-100', 'hover:bg-gray-200');
+            });
+            
+            e.target.classList.add('active', 'bg-primary-600', 'text-white');
+            e.target.classList.remove('bg-gray-100', 'hover:bg-gray-200');
+            
+            // Filter products
+            if (filter === 'all') {
+                renderProducts(products);
+            } else {
+                const filteredProducts = products.filter(product => product.category === filter);
+                renderProducts(filteredProducts);
+            }
+        }
+        
+        // Load more products (simulated)
+        function loadMoreProducts() {
+            const loadMoreBtn = document.getElementById('load-more');
+            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Loading...';
+            loadMoreBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // In a real app, this would fetch more products from an API
+                alert('In a real implementation, this would load more products from an API');
+                loadMoreBtn.innerHTML = 'Load More Products';
+                loadMoreBtn.disabled = false;
+            }, 1500);
+        }
+        
+        // Handle newsletter form submission
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const email = form.querySelector('input[type="email"]').value;
+            
+            // Simulate form submission
+            form.querySelector('button').innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+            form.querySelector('button').disabled = true;
+            
+            setTimeout(() => {
+                alert(`Thank you for subscribing! Your free template has been sent to ${email}`);
+                form.reset();
+                form.querySelector('button').innerHTML = 'Get Free Template';
+                form.querySelector('button').disabled = false;
+            }, 1500);
+        }
+        
+        // Open product modal
+        function openProductModal(product) {
+            document.getElementById('modal-image').src = product.image;
+            document.getElementById('modal-image').alt = product.name;
+            document.getElementById('modal-title').textContent = product.name;
+            document.getElementById('modal-price').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('modal-description').textContent = product.description;
+            
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = '';
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+            
+            document.getElementById('modal-add-to-cart').dataset.id = product.id;
+            document.getElementById('modal-buy-now').dataset.id = product.id;
+            
+            productModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close product modal
+        function closeModal() {
+            productModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        // Add product to cart
+        function addToCart(product) {
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+            
+            updateCartCount();
+            
+            // Show cart notification
+            const cartBtn = document.getElementById('cart-btn');
+            cartBtn.innerHTML = '<i class="fas fa-shopping-cart text-gray-600"></i>';
+            
+            const notification = document.createElement('div');
+            notification.className = 'absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-ping';
+            notification.textContent = '+1';
+            cartBtn.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 1000);
+        }
+        
+        // Update cart count in navbar
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            if (count > 0) {
+                cartCount.textContent = count;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+        }
+        
+        // Update cart sidebar
+        function updateCart() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                checkoutBtn.disabled = true;
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                checkoutBtn.disabled = false;
+                
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'flex items-center border-b border-gray-200 pb-4';
+                    
+                    cartItem.innerHTML = `
+                        <div class="w-16 h-16 rounded-lg overflow-hidden mr-4">
+                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium">${item.name}</h4>
+                            <p class="text-sm text-gray-600">$${item.price.toFixed(2)} × ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-medium mr-4">$${(item.price * item.quantity).toFixed(2)}</span>
+                            <button class="remove-item text-gray-400 hover:text-red-500 transition" data-id="${item.id}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(cartItem);
+                });
+                
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const itemId = parseInt(this.dataset.id);
+                        removeFromCart(itemId);
+                    });
+                });
+            }
+            
+            // Update totals
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.1; // 10% tax for example
+            const total = subtotal + tax;
+            
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            cartTax.textContent = `$${tax.toFixed(2)}`;
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+        }
+        
+        // Remove item from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            updateCartCount();
+        }
+    </script>
 </body>
 </html>
