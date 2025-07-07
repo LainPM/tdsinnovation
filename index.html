@@ -10,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -69,37 +70,612 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
-        /* Custom CSS */
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-white dark:bg-gray-900 dark:text-gray-100">
+    <!-- Floating Buy Bundle Button -->
+    <button id="buy-bundle-btn" class="fixed bottom-5 right-5 bg-secondary-500 hover:bg-secondary-600 text-white font-medium py-3 px-5 rounded-lg shadow-lg transition-transform transform hover:scale-105 z-40 flex items-center">
+        <i class="fas fa-bolt mr-2"></i>
+        Buy All-Access Bundle
+    </button>
+
+    <!-- Navigation -->
+    <header class="fixed w-full z-50 transition-all duration-300 nav-transparent dark:bg-gray-900/80 dark:backdrop-blur-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-xl mr-2">TDS</div>
+                        <span class="text-xl font-display font-bold text-gray-900 dark:text-white">TDS Innovation</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#products" class="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition">Products</a>
+                    <a href="#membership" class="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition">Membership</a>
+                    <a href="#testimonials" class="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition">Testimonials</a>
+                    <a href="#about" class="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition">About</a>
+                </nav>
+                
+                <!-- Right side icons -->
+                <div class="flex items-center space-x-4">
+                    <button id="search-btn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-search text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <button id="cart-btn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition relative">
+                        <i class="fas fa-shopping-cart text-gray-600 dark:text-gray-300"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon text-gray-600 dark:text-yellow-400"></i>
+                    </button>
+                    <button class="md:hidden" id="mobile-menu-btn">
+                        <i class="fas fa-bars text-gray-600 dark:text-gray-300 text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         
-        .nav-transparent {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-        }
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700 py-4 px-4 absolute w-full shadow-lg">
+            <div class="flex flex-col space-y-3">
+                <a href="#products" class="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition py-2">Products</a>
+                <a href="#membership" class="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition py-2">Membership</a>
+                <a href="#testimonials" class="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition py-2">Testimonials</a>
+                <a href="#about" class="font-medium hover:text-primary-600 dark:hover:text-primary-400 transition py-2">About</a>
+            </div>
+        </div>
         
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(14,165,233,0.1) 0%, rgba(139,92,246,0.1) 100%);
+        <!-- Search Bar -->
+        <div id="search-bar" class="hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700 py-4 px-4 absolute w-full shadow-lg">
+            <div class="container mx-auto">
+                <div class="relative">
+                    <input type="text" placeholder="Search products..." class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                    <button class="absolute right-3 top-3 text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900 dark:to-purple-900">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
+                        Innovative Tools for the <span class="text-primary-600 dark:text-primary-400">Modern Creator</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                        High-quality digital products to streamline your workflow and boost productivity. Templates, kits, and tools designed for creators.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#products" class="bg-primary-600 hover:bg-primary-700 dark:hover:bg-primary-500 text-white font-medium py-3 px-6 rounded-lg transition duration-300 text-center shadow-lg hover:shadow-xl">
+                            Browse Products
+                        </a>
+                        <a href="#membership" class="border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 font-medium py-3 px-6 rounded-lg transition duration-300 text-center">
+                            Join Membership
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-fade-in animate-delay-100">
+                    <div class="light-lottie">
+                        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_v4isjbj5.json" background="transparent" speed="1" style="width: 100%; max-width: 500px;" loop autoplay></lottie-player>
+                    </div>
+                    <div class="dark-lottie hidden">
+                        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_3rqwsqnj.json" background="transparent" speed="1" style="width: 100%; max-width: 500px;" loop autoplay></lottie-player>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-12 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-display font-bold text-center mb-12">Shop by Category</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="#" class="category-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-table text-primary-600 dark:text-primary-400 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium dark:text-white">Notion Templates</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">25 products</p>
+                </a>
+                
+                <a href="#" class="category-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-purple-600 dark:text-purple-400 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium dark:text-white">AI Prompts</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">18 products</p>
+                </a>
+                
+                <a href="#" class="category-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop-code text-blue-600 dark:text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium dark:text-white">Web Templates</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">32 products</p>
+                </a>
+                
+                <a href="#" class="category-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tools text-green-600 dark:text-green-400 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium dark:text-white">Productivity</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">14 products</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-12 flex-col sm:flex-row gap-4 sm:gap-0">
+                <h2 class="text-2xl md:text-3xl font-display font-bold">Featured Products</h2>
+                <div class="flex space-x-2 overflow-x-auto pb-2 w-full sm:w-auto">
+                    <button class="filter-btn active px-4 py-2 rounded-lg bg-primary-600 text-white whitespace-nowrap" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 whitespace-nowrap" data-filter="notion">Notion</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 whitespace-nowrap" data-filter="ai">AI</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 whitespace-nowrap" data-filter="web">Web</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-grid">
+                <!-- Product cards will be dynamically loaded here -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="load-more" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition">
+                    Load More Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-display font-bold text-center mb-12">What Our Customers Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium dark:text-white">Sarah J.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "The Notion templates have completely transformed how I manage my freelance business. So intuitive and beautifully designed!"
+                    </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium dark:text-white">Michael T.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "The AI prompt pack helped me generate better content in half the time. Worth every penny for content creators!"
+                    </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium dark:text-white">Priya K.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "As a solopreneur, these tools have saved me countless hours. The website templates are especially well-documented."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership" class="py-16 bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900 dark:to-purple-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-display font-bold mb-4 dark:text-white">Join TDS Innovation Membership</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Get unlimited access to all our products, exclusive content, and early releases for one simple price.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-display font-medium mb-2 dark:text-white">Free</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Basic access to free products</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold dark:text-white">$0</span>
+                            <span class="text-gray-500 dark:text-gray-400">/forever</span>
+                        </div>
+                        <button class="w-full py-2 px-4 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/30 transition">
+                            Current Plan
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">Access to free products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">Weekly newsletter</span>
+                            </li>
+                            <li class="flex items-center text-gray-400 dark:text-gray-500">
+                                <i class="fas fa-times text-gray-300 dark:text-gray-500 mr-2"></i>
+                                <span>Premium products</span>
+                            </li>
+                            <li class="flex items-center text-gray-400 dark:text-gray-500">
+                                <i class="fas fa-times text-gray-300 dark:text-gray-500 mr-2"></i>
+                                <span>Exclusive templates</span>
+                            </li>
+                            <li class="flex items-center text-gray-400 dark:text-gray-500">
+                                <i class="fas fa-times text-gray-300 dark:text-gray-500 mr-2"></i>
+                                <span>Early access</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border-2 border-primary-600 dark:border-primary-400 transform scale-105 z-10">
+                    <div class="bg-primary-600 dark:bg-primary-700 text-white text-center py-2 text-sm font-medium">
+                        MOST POPULAR
+                    </div>
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-display font-medium mb-2 dark:text-white">Pro</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Full access to all products</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold dark:text-white">$15</span>
+                            <span class="text-gray-500 dark:text-gray-400">/month</span>
+                        </div>
+                        <button class="w-full py-2 px-4 bg-primary-600 hover:bg-primary-700 dark:hover:bg-primary-500 text-white rounded-lg transition">
+                            Upgrade Now
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">All free products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">All premium products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">Exclusive templates</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">Early access to new releases</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">Members-only community</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-display font-medium mb-2 dark:text-white">Yearly</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Best value - save 30%</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold dark:text-white">$126</span>
+                            <span class="text-gray-500 dark:text-gray-400">/year</span>
+                        </div>
+                        <button class="w-full py-2 px-4 bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 text-white rounded-lg transition">
+                            Choose Yearly
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">All Pro benefits</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">30% discount</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">Priority support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">Annual bonus products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="dark:text-gray-300">Exclusive yearly gifts</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-8 md:p-12 text-white overflow-hidden relative">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-white bg-opacity-10 rounded-full"></div>
+                <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-white bg-opacity-10 rounded-full"></div>
+                
+                <div class="relative z-10 max-w-3xl mx-auto text-center">
+                    <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Get a Free Notion Template</h2>
+                    <p class="text-lg mb-8 opacity-90">
+                        Subscribe to our newsletter and receive a free Notion Productivity Template instantly. Plus get updates on new products and exclusive discounts.
+                    </p>
+                    
+                    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <input type="email" placeholder="Your email address" required class="flex-grow px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-25">
+                        <button type="submit" class="px-6 py-3 bg-white text-primary-600 font-medium rounded-lg hover:bg-gray-100 transition whitespace-nowrap">
+                            Get Free Template
+                        </button>
+                    </form>
+                    
+                    <p class="text-sm mt-4 opacity-70">
+                        We respect your privacy. Unsubscribe at any time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-2xl md:text-3xl font-display font-bold mb-6 dark:text-white">About TDS Innovation</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Founded in 2022, TDS Innovation is dedicated to creating high-quality digital tools that help modern creators, entrepreneurs, and freelancers work smarter and more efficiently.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Our team of designers, developers, and productivity experts collaborate to build templates, kits, and tools that solve real problems with elegant solutions.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        We believe in the power of well-designed systems to transform workflows and unlock creative potential.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 flex items-center justify-center transition">
+                            <i class="fab fa-twitter text-gray-700 dark:text-gray-300"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 flex items-center justify-center transition">
+                            <i class="fab fa-instagram text-gray-700 dark:text-gray-300"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 flex items-center justify-center transition">
+                            <i class="fab fa-discord text-gray-700 dark:text-gray-300"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 flex items-center justify-center transition">
+                            <i class="fab fa-github text-gray-700 dark:text-gray-300"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://illustrations.popsy.co/amber/designer.svg" alt="TDS Innovation team" class="w-full max-w-md mx-auto rounded-lg shadow-sm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-xl mr-2">TDS</div>
+                        <span class="text-xl font-display font-bold">TDS Innovation</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Innovative digital products for modern creators.
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        © <span id="current-year"></span> TDS Innovation. All rights reserved.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Notion Templates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">AI Prompt Packs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Website Templates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Design Kits</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Productivity Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Refund Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Licenses</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    tdsinnovation.store is not affiliated with Notion, Framer, or any other mentioned platforms.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition">
+                        <i class="fab fa-cc-visa text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">
+                        <i class="fab fa-cc-mastercard text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">
+                        <i class="fab fa-cc-paypal text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">
+                        <i class="fab fa-cc-stripe text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-white dark:bg-gray-800 shadow-xl z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-display font-bold dark:text-white">Your Cart</h3>
+                <button id="close
+
+
+continue c oding 
+
+changes we want 
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS Innovation - Innovative Tools for the Modern Creator</title>
+    <meta name="description" content="High-quality digital products for creators, entrepreneurs, and freelancers. Notion templates, AI prompts, website templates, and productivity tools.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['DM Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
         }
-        
-        /* Animation classes */
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .animate-delay-100 {
-            animation-delay: 0.1s;
-        }
-        
-        .animate-delay-200 {
-            animation-delay: 0.2s;
-        }
-    </style>
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <!-- Dark Mode CSS -->
+    <link rel="stylesheet" href="dark-mode.css">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="font-sans antialiased text-gray-800 bg-white">
+    <!-- Floating Buy Bundle Button -->
+    <button id="buy-bundle-btn" class="fixed bottom-5 right-5 bg-secondary-500 hover:bg-secondary-600 text-white font-medium py-3 px-5 rounded-lg shadow-lg transition-transform transform hover:scale-105 z-40">
+        <i class="fas fa-bolt mr-2"></i>
+        Buy All-Access Bundle
+    </button>
+
     <!-- Navigation -->
     <header class="fixed w-full z-50 transition-all duration-300 nav-transparent">
         <div class="container mx-auto px-4 py-4">
@@ -183,7 +759,17 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center animate-fade-in animate-delay-100">
-                    <img src="https://illustrations.popsy.co/amber/digital-nomad.svg" alt="Digital creator working" class="w-full max-w-md animate-float">
+                    <div class="light-lottie">
+                        <div class="light-lottie">
+                            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_v4isjbj5.json" background="transparent" speed="1" style="width: 100%; max-width: 500px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="dark-lottie hidden">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_3rqwsqnj.json" background="transparent" speed="1" style="width: 100%; max-width: 500px;" loop autoplay></lottie-player>
+                        </div>
+                    </div>
+                    <div class="dark-lottie hidden">
+                        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_v4isjbj5.json" background="transparent" speed="1" style="width: 100%; max-width: 500px;" loop autoplay></lottie-player>
+                    </div>
                 </div>
             </div>
         </div>
@@ -536,7 +1122,7 @@
                         Innovative digital products for modern creators.
                     </p>
                     <p class="text-gray-400 text-sm">
-                        © 2023 TDS Innovation. All rights reserved.
+                        © <span id="current-year"></span> TDS Innovation. All rights reserved.
                     </p>
                 </div>
                 
@@ -687,6 +1273,768 @@
     </div>
 
     <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+.dark .dark\:bg-gray-900 {
+    background-color: #111827;
+}
+
+.dark .dark\:bg-gray-800 {
+    background-color: #1f2937;
+}
+
+.dark .dark\:bg-gray-700 {
+    background-color: #374151;
+}
+
+.dark .dark\:text-white {
+    color: #fff;
+}
+
+.dark .dark\:text-gray-300 {
+    color: #d1d5db;
+}
+
+.dark .dark\:text-gray-400 {
+    color: #9ca3af;
+}
+
+.dark .dark\:border-gray-700 {
+    border-color: #374151;
+}
+
+.dark .dark\:border-gray-800 {
+    border-color: #1f2937;
+}
+
+.dark .dark\:hover\:bg-gray-800:hover {
+    background-color: #1f2937;
+}
+
+.dark .dark\:hover\:bg-gray-700:hover {
+    background-color: #374151;
+}
+
+.dark .dark\:hover\:text-primary-400:hover {
+    color: #38bdf8;
+}
+
+.dark .dark\:nav-transparent-dark {
+    background-color: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.dark .dark\:from-primary-900 {
+    --tw-gradient-from: #0c4a6e;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(12, 74, 110, 0));
+}
+
+.dark .dark\:to-purple-900 {
+    --tw-gradient-to: #4c1d95;
+}
+
+.dark .dark\:bg-primary-900 {
+    background-color: #0c4a6e;
+}
+
+.dark .dark\:text-primary-400 {
+    color: #38bdf8;
+}
+
+.dark .dark\:border-primary-400 {
+    border-color: #38bdf8;
+}
+
+.dark .dark\:hover\:bg-primary-900:hover {
+    background-color: #0c4a6e;
+}
+
+.dark .dark\:bg-purple-900 {
+    background-color: #4c1d95;
+}
+
+.dark .dark\:text-purple-400 {
+    color: #a78bfa;
+}
+
+.dark .dark\:bg-blue-900 {
+    background-color: #1e3a8a;
+}
+
+.dark .dark\:text-blue-400 {
+    color: #60a5fa;
+}
+
+.dark .dark\:bg-green-900 {
+    background-color: #14532d;
+}
+
+.dark .dark\:text-green-400 {
+    color: #4ade80;
+}
+
+.dark .dark\:opacity-80 {
+    opacity: 0.8;
+}
+
+.dark .dark\:text-gray-500 {
+    color: #6b7280;
+}
+
+.dark .dark\:text-gray-600 {
+    color: #4b5563;
+}
+
+.dark .dark\:hover\:bg-gray-600:hover {
+    background-color: #4b5563;
+}
+
+.dark .dark\:hover\:text-red-400:hover {
+    color: #f87171;
+}
+
+.dark .light-lottie {
+    display: none;
+}
+
+.dark .dark-lottie {
+    display: block;
+}
+
+// Sample product data
+const products = [
+    {
+        id: 1,
+        name: "Ultimate Notion Dashboard",
+        description: "All-in-one workspace for creators with project management, content calendar, and finance tracker.",
+        price: 29.99,
+        image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm90aW9uJTIwZGFzaGJvYXJkfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+        category: "notion",
+        features: [
+            "Project management system",
+            "Content calendar",
+            "Finance tracker",
+            "Habit tracker",
+            "Customizable templates"
+        ]
+    },
+    {
+        id: 2,
+        name: "AI Prompt Pack - Content Creation",
+        description: "200+ high-quality prompts for ChatGPT to help with blog posts, social media, and marketing copy.",
+        price: 19.99,
+        image: "https://images.unsplash.com/photo-1677442135136-760c813a743e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFpJTIwcHJvbXB0c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        category: "ai",
+        features: [
+            "200+ curated prompts",
+            "Blog post templates",
+            "Social media content",
+            "Marketing copy",
+            "SEO optimization"
+        ]
+    },
+    {
+        id: 3,
+        name: "Minimal Portfolio Template",
+        description: "Clean, responsive portfolio template for designers and developers with Framer and Webflow versions.",
+        price: 49.99,
+        image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cG9ydGZvbGlvJTIwd2Vic2l0ZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        category: "web",
+        features: [
+            "Framer & Webflow versions",
+            "Responsive design",
+            "Dark/light mode",
+            "CMS ready",
+            "Easy customization"
+        ]
+    },
+    {
+        id: 4,
+        name: "Freelancer Finance Tracker",
+        description: "Notion template to manage invoices, expenses, and taxes for freelancers and solopreneurs.",
+        price: 24.99,
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZpbmFuY2UlMjB0cmFja2VyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+        category: "notion",
+        features: [
+            "Invoice tracking",
+            "Expense management",
+            "Tax preparation",
+            "Income reports",
+            "Client database"
+        ]
+    },
+    {
+        id: 5,
+        name: "AI Business Assistant Prompts",
+        description: "150 prompts to help with business strategy, market research, and competitor analysis using AI.",
+        price: 17.99,
+        image: "https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFpJTIwYnVzaW5lc3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+        category: "ai",
+        features: [
+            "Business strategy",
+            "Market research",
+            "Competitor analysis",
+            "SWOT templates",
+            "Product development"
+        ]
+    },
+    {
+        id: 6,
+        name: "SaaS Landing Page Kit",
+        description: "Complete design system for SaaS landing pages with Figma files and React components.",
+        price: 39.99,
+        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c2FhcyUyMHdlYnNpdGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+        category: "web",
+        features: [
+            "Figma design files",
+            "React components",
+            "Dark/light themes",
+            "Responsive layout",
+            "Customizable styles"
+        ]
+    },
+    {
+        id: 7,
+        name: "Content Creator's Toolkit",
+        description: "Notion system for content creators to plan, create, and publish content across platforms.",
+        price: 27.99,
+        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbnRlbnQlMjBjcmVhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        category: "notion",
+        features: [
+            "Content calendar",
+            "Publishing checklist",
+            "Idea bank",
+            "Performance tracking",
+            "Cross-platform planning"
+        ]
+    },
+    {
+        id: 8,
+        name: "UX Design Resource Pack",
+        description: "Curated collection of UI kits, wireframe templates, and design assets for UX designers.",
+        price: 34.99,
+        image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHV4JTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+        category: "web",
+        features: [
+            "UI kits",
+            "Wireframe templates",
+            "Design assets",
+            "Figma components",
+            "Style guides"
+        ]
+    }
+];
+
+// Cart state
+let cart = [];
+
+// DOM elements
+const productsGrid = document.getElementById('products-grid');
+const cartSidebar = document.getElementById('cart-sidebar');
+const cartOverlay = document.getElementById('cart-overlay');
+const cartItems = document.getElementById('cart-items');
+const cartCount = document.getElementById('cart-count');
+const cartSubtotal = document.getElementById('cart-subtotal');
+const cartTax = document.getElementById('cart-tax');
+const cartTotal = document.getElementById('cart-total');
+const checkoutBtn = document.getElementById('checkout-btn');
+const emptyCartMessage = document.getElementById('empty-cart-message');
+const productModal = document.getElementById('product-modal');
+const modalOverlay = document.getElementById('modal-overlay');
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+    renderProducts(products);
+    setupEventListeners();
+    updateCartCount();
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+});
+
+// Render products to the grid
+function renderProducts(productsToRender) {
+    productsGrid.innerHTML = '';
+    
+    productsToRender.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card bg-white rounded-xl overflow-hidden shadow-sm transition duration-300 border border-gray-100';
+        productCard.dataset.category = product.category;
+        
+        productCard.innerHTML = `
+            <div class="h-48 overflow-hidden">
+                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-display font-medium text-lg">${product.name}</h3>
+                    <span class="font-bold text-primary-600">$${product.price.toFixed(2)}</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">${product.description}</p>
+                <div class="flex space-x-3">
+                    <button class="view-btn flex-1 py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition" data-id="${product.id}">
+                        View Details
+                    </button>
+                    <button class="add-to-cart-btn flex-1 py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition" data-id="${product.id}">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        productsGrid.appendChild(productCard);
+    });
+}
+
+// Setup event listeners
+function setupEventListeners() {
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+    
+    // Search toggle
+    document.getElementById('search-btn').addEventListener('click', toggleSearch);
+    
+    // Cart toggle
+    document.getElementById('cart-btn').addEventListener('click', openCart);
+    document.getElementById('close-cart').addEventListener('click', closeCart);
+    cartOverlay.addEventListener('click', closeCart);
+    
+    // Theme toggle
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', filterProducts);
+    });
+    
+    // Load more button
+    document.getElementById('load-more').addEventListener('click', loadMoreProducts);
+    
+    // Newsletter form
+    document.getElementById('newsletter-form').addEventListener('submit', handleNewsletterSubmit);
+    
+    // Modal close
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+    
+    // These are delegated events since product buttons are dynamically loaded
+    document.addEventListener('click', function(e) {
+        // View product details
+        if (e.target.classList.contains('view-btn')) {
+            const productId = parseInt(e.target.dataset.id);
+            const product = products.find(p => p.id === productId);
+            openProductModal(product);
+        }
+        
+        // Add to cart
+        if (e.target.classList.contains('add-to-cart-btn')) {
+            const productId = parseInt(e.target.dataset.id);
+            const product = products.find(p => p.id === productId);
+            addToCart(product);
+            
+            // Add animation to button
+            e.target.innerHTML = '<i class="fas fa-check"></i> Added';
+            e.target.classList.add('bg-green-500', 'hover:bg-green-600');
+            e.target.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+            
+            // Reset button after animation
+            setTimeout(() => {
+                e.target.innerHTML = 'Add to Cart';
+                e.target.classList.remove('bg-green-500', 'hover:bg-green-600');
+                e.target.classList.add('bg-primary-600', 'hover:bg-primary-700');
+            }, 1500);
+        }
+        
+        // Modal add to cart
+        if (e.target.id === 'modal-add-to-cart') {
+            const productId = parseInt(e.target.dataset.id);
+            const product = products.find(p => p.id === productId);
+            addToCart(product);
+            closeModal();
+        }
+        
+        // Modal buy now
+        if (e.target.id === 'modal-buy-now') {
+            const productId = parseInt(e.target.dataset.id);
+            const product = products.find(p => p.id === productId);
+            addToCart(product);
+            closeModal();
+            openCart();
+        }
+    });
+    
+    // Checkout button
+    checkoutBtn.addEventListener('click', function() {
+        alert('Checkout would redirect to payment processor in a real implementation');
+        cart = [];
+        updateCart();
+        closeCart();
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+                
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Sticky navbar on scroll
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+}
+
+// Toggle mobile menu
+function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+    document.getElementById('search-bar').classList.add('hidden');
+}
+
+// Toggle search bar
+function toggleSearch() {
+    document.getElementById('search-bar').classList.toggle('hidden');
+    document.getElementById('mobile-menu').classList.add('hidden');
+}
+
+// Open cart sidebar
+function openCart() {
+    cartSidebar.classList.remove('translate-x-full');
+    cartOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    updateCart();
+}
+
+// Close cart sidebar
+function closeCart() {
+    cartSidebar.classList.add('translate-x-full');
+    cartOverlay.classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+// Toggle dark/light theme
+function toggleTheme() {
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const lightLottie = document.querySelector('.light-lottie');
+    const darkLottie = document.querySelector('.dark-lottie');
+    
+    if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        themeToggle.innerHTML = '<i class="fas fa-moon text-gray-600"></i>';
+        localStorage.setItem('theme', 'light');
+        document.querySelector('.light-lottie').classList.remove('hidden');
+        document.querySelector('.dark-lottie').classList.add('hidden');
+    } else {
+        html.classList.add('dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-400"></i>';
+        localStorage.setItem('theme', 'dark');
+        document.querySelector('.light-lottie').classList.add('hidden');
+        document.querySelector('.dark-lottie').classList.remove('hidden');
+    }
+}
+
+// Check for saved theme preference
+if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+    document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-sun text-yellow-400"></i>';
+} else {
+    document.documentElement.classList.remove('dark');
+    document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-moon text-gray-600"></i>';
+}
+
+// Filter products by category
+function filterProducts(e) {
+    const filter = e.target.dataset.filter;
+    
+    // Update active button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-primary-600', 'text-white');
+        btn.classList.add('bg-gray-100', 'hover:bg-gray-200');
+    });
+    
+    e.target.classList.add('active', 'bg-primary-600', 'text-white');
+    e.target.classList.remove('bg-gray-100', 'hover:bg-gray-200');
+    
+    // Filter products
+    if (filter === 'all') {
+        renderProducts(products);
+    } else {
+        const filteredProducts = products.filter(product => product.category === filter);
+        renderProducts(filteredProducts);
+    }
+}
+
+// Load more products (simulated)
+function loadMoreProducts() {
+    const loadMoreBtn = document.getElementById('load-more');
+    loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Loading...';
+    loadMoreBtn.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+        // In a real app, this would fetch more products from an API
+        alert('In a real implementation, this would load more products from an API');
+        loadMoreBtn.innerHTML = 'Load More Products';
+        loadMoreBtn.disabled = false;
+    }, 1500);
+}
+
+// Handle newsletter form submission
+function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.querySelector('input[type="email"]').value;
+    
+    // Simulate form submission
+    form.querySelector('button').innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+    form.querySelector('button').disabled = true;
+    
+    setTimeout(() => {
+        alert(`Thank you for subscribing! Your free template has been sent to ${email}`);
+        form.reset();
+        form.querySelector('button').innerHTML = 'Get Free Template';
+        form.querySelector('button').disabled = false;
+    }, 1500);
+}
+
+// Open product modal
+function openProductModal(product) {
+    document.getElementById('modal-image').src = product.image;
+    document.getElementById('modal-image').alt = product.name;
+    document.getElementById('modal-title').textContent = product.name;
+    document.getElementById('modal-price').textContent = `$${product.price.toFixed(2)}`;
+    document.getElementById('modal-description').textContent = product.description;
+    
+    const featuresList = document.getElementById('modal-features');
+    featuresList.innerHTML = '';
+    product.features.forEach(feature => {
+        const li = document.createElement('li');
+        li.textContent = feature;
+        featuresList.appendChild(li);
+    });
+    
+    document.getElementById('modal-add-to-cart').dataset.id = product.id;
+    document.getElementById('modal-buy-now').dataset.id = product.id;
+    
+    productModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close product modal
+function closeModal() {
+    productModal.classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+// Add product to cart
+function addToCart(product) {
+    const existingItem = cart.find(item => item.id === product.id);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+        });
+    }
+    
+    updateCartCount();
+    
+    // Show cart notification
+    const cartBtn = document.getElementById('cart-btn');
+    cartBtn.innerHTML = '<i class="fas fa-shopping-cart text-gray-600"></i>';
+    
+    const notification = document.createElement('div');
+    notification.className = 'absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-ping';
+    notification.textContent = '+1';
+    cartBtn.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 1000);
+}
+
+// Update cart count in navbar
+function updateCartCount() {
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    if (count > 0) {
+        cartCount.textContent = count;
+        cartCount.classList.remove('hidden');
+    } else {
+        cartCount.classList.add('hidden');
+    }
+}
+
+// Update cart sidebar
+function updateCart() {
+    cartItems.innerHTML = '';
+    
+    if (cart.length === 0) {
+        emptyCartMessage.classList.remove('hidden');
+        checkoutBtn.disabled = true;
+    } else {
+        emptyCartMessage.classList.add('hidden');
+        checkoutBtn.disabled = false;
+        
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.className = 'flex items-center border-b border-gray-200 pb-4';
+            
+            cartItem.innerHTML = `
+                <div class="w-16 h-16 rounded-lg overflow-hidden mr-4">
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-medium">${item.name}</h4>
+                    <p class="text-sm text-gray-600">$${item.price.toFixed(2)} × ${item.quantity}</p>
+                </div>
+                <div class="flex items-center">
+                    <span class="font-medium mr-4">$${(item.price * item.quantity).toFixed(2)}</span>
+                    <button class="remove-item text-gray-400 hover:text-red-500 transition" data-id="${item.id}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            cartItems.appendChild(cartItem);
+        });
+        
+        // Add event listeners to remove buttons
+        document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const itemId = parseInt(this.dataset.id);
+                removeFromCart(itemId);
+            });
+        });
+    }
+    
+    // Update totals
+    const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const tax = subtotal * 0.1; // 10% tax for example
+    const total = subtotal + tax;
+    
+    cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+    cartTax.textContent = `$${tax.toFixed(2)}`;
+    cartTotal.textContent = `$${total.toFixed(2)}`;
+}
+
+// Remove item from cart
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    updateCart();
+    updateCartCount();
+}
+                <button id="close-cart" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                    <i class="fas fa-times text-gray-600 dark:text-gray-300"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="space-y-4 mb-6">
+                <!-- Cart items will be dynamically loaded here -->
+                <div class="text-center py-12 text-gray-500 dark:text-gray-400" id="empty-cart-message">
+                    <i class="fas fa-shopping-cart text-4xl mb-4 opacity-30"></i>
+                    <p>Your cart is empty</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-4 mb-6">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600 dark:text-gray-400">Subtotal</span>
+                    <span class="font-medium" id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600 dark:text-gray-400">Tax</span>
+                    <span class="font-medium" id="cart-tax">$0.00</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg">
+                    <span class="dark:text-white">Total</span>
+                    <span id="cart-total" class="dark:text-white">$0.00</span>
+                </div>
+            </div>
+            
+            <button id="checkout-btn" class="w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 dark:hover:bg-primary-500 text-white rounded-lg font-medium transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Proceed to Checkout
+            </button>
+            
+            <div class="text-center mt-4">
+                <p class="text-sm text-gray-500 dark:text-gray-400">or <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline">continue shopping</a></p>
+            </div>
+        </div>
+    </div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div id="modal-overlay" class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+            
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+            
+            <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <button id="close-modal" class="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                            <i class="fas fa-times text-gray-600 dark:text-gray-300"></i>
+                        </button>
+                        
+                        <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 mb-6 md:mb-0 md:pr-6">
+                                    <img id="modal-image" src="" alt="" class="w-full rounded-lg shadow-sm">
+                                </div>
+                                <div class="md:w-1/2">
+                                    <h3 id="modal-title" class="text-2xl font-display font-bold mb-2 dark:text-white"></h3>
+                                    <div id="modal-price" class="text-xl font-bold text-primary-600 dark:text-primary-400 mb-4"></div>
+                                    <div id="modal-description" class="text-gray-600 dark:text-gray-300 mb-6"></div>
+                                    
+                                    <div class="mb-6">
+                                        <h4 class="font-medium mb-2 dark:text-white">Features</h4>
+                                        <ul id="modal-features" class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1"></ul>
+                                    </div>
+                                    
+                                    <div class="flex items-center space-x-4">
+                                        <button id="modal-add-to-cart" class="flex-1 py-3 px-4 bg-primary-600 hover:bg-primary-700 dark:hover:bg-primary-500 text-white rounded-lg font-medium transition">
+                                            Add to Cart
+                                        </button>
+                                        <button id="modal-buy-now" class="flex-1 py-3 px-4 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-lg font-medium transition">
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
         // Sample product data
         const products = [
@@ -814,7 +2162,7 @@
 
         // Cart state
         let cart = [];
-        
+
         // DOM elements
         const productsGrid = document.getElementById('products-grid');
         const cartSidebar = document.getElementById('cart-sidebar');
@@ -828,21 +2176,22 @@
         const emptyCartMessage = document.getElementById('empty-cart-message');
         const productModal = document.getElementById('product-modal');
         const modalOverlay = document.getElementById('modal-overlay');
-        
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             renderProducts(products);
             setupEventListeners();
             updateCartCount();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
-        
+
         // Render products to the grid
         function renderProducts(productsToRender) {
             productsGrid.innerHTML = '';
             
             productsToRender.forEach(product => {
                 const productCard = document.createElement('div');
-                productCard.className = 'product-card bg-white rounded-xl overflow-hidden shadow-sm transition duration-300 border border-gray-100';
+                productCard.className = 'product-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-sm transition duration-300 border border-gray-100 dark:border-gray-600';
                 productCard.dataset.category = product.category;
                 
                 productCard.innerHTML = `
@@ -851,15 +2200,15 @@
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-display font-medium text-lg">${product.name}</h3>
-                            <span class="font-bold text-primary-600">$${product.price.toFixed(2)}</span>
+                            <h3 class="font-display font-medium text-lg dark:text-white">${product.name}</h3>
+                            <span class="font-bold text-primary-600 dark:text-primary-400">$${product.price.toFixed(2)}</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">${product.description}</p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">${product.description}</p>
                         <div class="flex space-x-3">
-                            <button class="view-btn flex-1 py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition" data-id="${product.id}">
+                            <button class="view-btn flex-1 py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition" data-id="${product.id}">
                                 View Details
                             </button>
-                            <button class="add-to-cart-btn flex-1 py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition" data-id="${product.id}">
+                            <button class="add-to-cart-btn flex-1 py-2 px-4 bg-primary-600 hover:bg-primary-700 dark:hover:bg-primary-500 text-white rounded-lg transition" data-id="${product.id}">
                                 Add to Cart
                             </button>
                         </div>
@@ -869,7 +2218,7 @@
                 productsGrid.appendChild(productCard);
             });
         }
-        
+
         // Setup event listeners
         function setupEventListeners() {
             // Mobile menu toggle
@@ -985,19 +2334,19 @@
                 }
             });
         }
-        
+
         // Toggle mobile menu
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
             document.getElementById('search-bar').classList.add('hidden');
         }
-        
+
         // Toggle search bar
         function toggleSearch() {
             document.getElementById('search-bar').classList.toggle('hidden');
             document.getElementById('mobile-menu').classList.add('hidden');
         }
-        
+
         // Open cart sidebar
         function openCart() {
             cartSidebar.classList.remove('translate-x-full');
@@ -1005,39 +2354,49 @@
             document.body.style.overflow = 'hidden';
             updateCart();
         }
-        
+
         // Close cart sidebar
         function closeCart() {
             cartSidebar.classList.add('translate-x-full');
             cartOverlay.classList.add('hidden');
             document.body.style.overflow = '';
         }
-        
+
         // Toggle dark/light theme
         function toggleTheme() {
             const html = document.documentElement;
             const themeToggle = document.getElementById('theme-toggle');
+            const lightLottie = document.querySelector('.light-lottie');
+            const darkLottie = document.querySelector('.dark-lottie');
             
             if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
                 themeToggle.innerHTML = '<i class="fas fa-moon text-gray-600"></i>';
                 localStorage.setItem('theme', 'light');
+                document.querySelector('.light-lottie').classList.remove('hidden');
+                document.querySelector('.dark-lottie').classList.add('hidden');
             } else {
                 html.classList.add('dark');
                 themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-400"></i>';
                 localStorage.setItem('theme', 'dark');
+                document.querySelector('.light-lottie').classList.add('hidden');
+                document.querySelector('.dark-lottie').classList.remove('hidden');
             }
         }
-        
+
         // Check for saved theme preference
         if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
             document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-sun text-yellow-400"></i>';
+            document.querySelector('.light-lottie').classList.add('hidden');
+            document.querySelector('.dark-lottie').classList.remove('hidden');
         } else {
             document.documentElement.classList.remove('dark');
             document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-moon text-gray-600"></i>';
+            document.querySelector('.light-lottie').classList.remove('hidden');
+            document.querySelector('.dark-lottie').classList.add('hidden');
         }
-        
+
         // Filter products by category
         function filterProducts(e) {
             const filter = e.target.dataset.filter;
@@ -1045,11 +2404,11 @@
             // Update active button
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active', 'bg-primary-600', 'text-white');
-                btn.classList.add('bg-gray-100', 'hover:bg-gray-200');
+                btn.classList.add('bg-gray-100', 'dark:bg-gray-700', 'hover:bg-gray-200', 'dark:hover:bg-gray-600');
             });
             
             e.target.classList.add('active', 'bg-primary-600', 'text-white');
-            e.target.classList.remove('bg-gray-100', 'hover:bg-gray-200');
+            e.target.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'hover:bg-gray-200', 'dark:hover:bg-gray-600');
             
             // Filter products
             if (filter === 'all') {
@@ -1059,7 +2418,7 @@
                 renderProducts(filteredProducts);
             }
         }
-        
+
         // Load more products (simulated)
         function loadMoreProducts() {
             const loadMoreBtn = document.getElementById('load-more');
@@ -1074,7 +2433,7 @@
                 loadMoreBtn.disabled = false;
             }, 1500);
         }
-        
+
         // Handle newsletter form submission
         function handleNewsletterSubmit(e) {
             e.preventDefault();
@@ -1092,7 +2451,7 @@
                 form.querySelector('button').disabled = false;
             }, 1500);
         }
-        
+
         // Open product modal
         function openProductModal(product) {
             document.getElementById('modal-image').src = product.image;
@@ -1115,13 +2474,13 @@
             productModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
-        
+
         // Close product modal
         function closeModal() {
             productModal.classList.add('hidden');
             document.body.style.overflow = '';
         }
-        
+
         // Add product to cart
         function addToCart(product) {
             const existingItem = cart.find(item => item.id === product.id);
@@ -1142,7 +2501,7 @@
             
             // Show cart notification
             const cartBtn = document.getElementById('cart-btn');
-            cartBtn.innerHTML = '<i class="fas fa-shopping-cart text-gray-600"></i>';
+            cartBtn.innerHTML = '<i class="fas fa-shopping-cart text-gray-600 dark:text-gray-300"></i>';
             
             const notification = document.createElement('div');
             notification.className = 'absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-ping';
@@ -1153,7 +2512,7 @@
                 notification.remove();
             }, 1000);
         }
-        
+
         // Update cart count in navbar
         function updateCartCount() {
             const count = cart.reduce((total, item) => total + item.quantity, 0);
@@ -1165,7 +2524,7 @@
                 cartCount.classList.add('hidden');
             }
         }
-        
+
         // Update cart sidebar
         function updateCart() {
             cartItems.innerHTML = '';
@@ -1179,19 +2538,19 @@
                 
                 cart.forEach(item => {
                     const cartItem = document.createElement('div');
-                    cartItem.className = 'flex items-center border-b border-gray-200 pb-4';
+                    cartItem.className = 'flex items-center border-b border-gray-200 dark:border-gray-700 pb-4';
                     
                     cartItem.innerHTML = `
                         <div class="w-16 h-16 rounded-lg overflow-hidden mr-4">
                             <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
                         </div>
                         <div class="flex-1">
-                            <h4 class="font-medium">${item.name}</h4>
-                            <p class="text-sm text-gray-600">$${item.price.toFixed(2)} × ${item.quantity}</p>
+                            <h4 class="font-medium dark:text-white">${item.name}</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">$${item.price.toFixed(2)} × ${item.quantity}</p>
                         </div>
                         <div class="flex items-center">
-                            <span class="font-medium mr-4">$${(item.price * item.quantity).toFixed(2)}</span>
-                            <button class="remove-item text-gray-400 hover:text-red-500 transition" data-id="${item.id}">
+                            <span class="font-medium mr-4 dark:text-white">$${(item.price * item.quantity).toFixed(2)}</span>
+                            <button class="remove-item text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition" data-id="${item.id}">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
@@ -1218,7 +2577,7 @@
             cartTax.textContent = `$${tax.toFixed(2)}`;
             cartTotal.textContent = `$${total.toFixed(2)}`;
         }
-        
+
         // Remove item from cart
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
