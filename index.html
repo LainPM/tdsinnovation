@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDS Innovation - Mental Health Support</title>
+    <meta name="description" content="Free mental health support platform for India. Get counseling, resources, and community support.">
+    <title>TDS Innovation - Free Mental Health Support | India</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #5d9cec;
-            --primary-light: #8ab8f0;
-            --secondary: #48cfad;
-            --accent: #ac92ec;
-            --light: #f5f7fa;
-            --dark: #434a54;
-            --text: #4a4a4a;
+            --primary: #3a86ff;
+            --primary-light: #8bb8ff;
+            --primary-dark: #2667cc;
+            --secondary: #4cc9f0;
+            --accent: #7209b7;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #343a40;
             --white: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --radius: 12px;
-            --transition: all 0.3s ease;
+            --off-white: #f5f5f5;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --max-width: 1200px;
         }
 
+        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -35,12 +42,18 @@
             line-height: 1.6;
             background-color: var(--light);
             overflow-x: hidden;
+            font-size: 1rem;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5 {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        p {
             margin-bottom: 1rem;
         }
 
@@ -50,20 +63,76 @@
             transition: var(--transition);
         }
 
-        a:hover {
-            color: var(--primary-light);
+        a:hover, a:focus {
+            color: var(--primary-dark);
+            outline: none;
         }
 
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Layout */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.5rem;
         }
 
-        .btn {
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.25rem;
+            position: relative;
             display: inline-block;
-            padding: 12px 24px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text);
+            opacity: 0.9;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
             background-color: var(--primary);
             color: var(--white);
             border-radius: var(--radius);
@@ -72,28 +141,42 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            text-align: center;
+            gap: 0.5rem;
         }
 
-        .btn:hover {
-            background-color: var(--primary-light);
+        .btn:hover, .btn:focus {
+            background-color: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: var(--shadow);
+            outline: none;
         }
 
         .btn-secondary {
             background-color: var(--secondary);
         }
 
-        .btn-secondary:hover {
-            background-color: #37bc9b;
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: #3ab7e0;
         }
 
         .btn-accent {
             background-color: var(--accent);
         }
 
-        .btn-accent:hover {
-            background-color: #967adc;
+        .btn-accent:hover, .btn-accent:focus {
+            background-color: #5e0a99;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover, .btn-outline:focus {
+            background-color: var(--primary);
+            color: var(--white);
         }
 
         /* Header */
@@ -110,7 +193,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 1rem 0;
         }
 
         .logo {
@@ -119,29 +202,39 @@
             color: var(--primary);
             display: flex;
             align-items: center;
+            gap: 0.5rem;
         }
 
         .logo i {
-            margin-right: 10px;
             color: var(--secondary);
         }
 
-        nav ul {
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+        }
+
+        .main-nav ul {
             display: flex;
             list-style: none;
+            gap: 1.5rem;
         }
 
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
+        .main-nav a {
             color: var(--dark);
             font-weight: 500;
+            padding: 0.5rem;
+            border-radius: var(--radius);
         }
 
-        nav ul li a:hover {
+        .main-nav a:hover, .main-nav a:focus {
             color: var(--primary);
+            background-color: rgba(58, 134, 255, 0.1);
         }
 
         .mobile-menu-btn {
@@ -151,13 +244,20 @@
             font-size: 1.5rem;
             color: var(--dark);
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+        }
+
+        .mobile-menu-btn:hover, .mobile-menu-btn:focus {
+            background-color: rgba(0, 0, 0, 0.05);
+            outline: none;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             color: var(--white);
-            padding: 180px 0 100px;
+            padding: 8rem 0 5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -166,12 +266,12 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
-            background-size: 100% 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path fill="%23f8f9fa" d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path fill="%23f8f9fa" d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path fill="%23f8f9fa" d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg>');
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: bottom;
         }
@@ -184,94 +284,115 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.75rem;
             margin-bottom: 1.5rem;
+            color: var(--white);
+            line-height: 1.3;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         /* Features Section */
         .features {
-            padding: 100px 0;
             background-color: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-        }
-
-        .section-title p {
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--text);
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
 
         .feature-card {
             background-color: var(--white);
-            border-radius: var(--radius);
-            padding: 30px;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(58, 134, 255, 0.1);
             color: var(--primary);
-            margin-bottom: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
         }
 
         .feature-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
 
-        /* Get Help Section */
-        .get-help {
-            padding: 100px 0;
-            background-color: var(--light);
+        .feature-card p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        .helplines {
-            background-color: var(--white);
+        /* Emergency Section */
+        .emergency {
+            background-color: var(--off-white);
+        }
+
+        .emergency-alert {
+            background-color: #fff8f8;
+            border-left: 4px solid #ff6b6b;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
             border-radius: var(--radius);
-            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .emergency-alert i {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+        }
+
+        .helplines-container {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
             box-shadow: var(--shadow);
-            margin-bottom: 50px;
+            margin-bottom: 3rem;
         }
 
         .helpline-item {
             display: flex;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            align-items: flex-start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            gap: 1.5rem;
         }
 
         .helpline-item:last-child {
@@ -279,175 +400,196 @@
         }
 
         .helpline-icon {
+            flex-shrink: 0;
             width: 50px;
             height: 50px;
-            background-color: var(--primary-light);
-            color: var(--white);
+            background-color: rgba(58, 134, 255, 0.1);
+            color: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 20px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
         }
 
         .helpline-info h3 {
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
         }
 
         .helpline-info p {
             color: var(--text);
             opacity: 0.8;
+            margin-bottom: 0.5rem;
         }
 
-        /* Quiz Section */
-        .quiz-container {
+        .helpline-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .helpline-actions .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Assessment Section */
+        .assessment-container {
             background-color: var(--white);
-            border-radius: var(--radius);
-            padding: 40px;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
             box-shadow: var(--shadow);
         }
 
-        .quiz-header {
+        .assessment-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
         }
 
-        .quiz-progress {
-            height: 10px;
-            background-color: #eee;
-            border-radius: 5px;
-            margin-bottom: 20px;
+        .assessment-progress {
+            height: 8px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
             overflow: hidden;
         }
 
-        .quiz-progress-bar {
+        .assessment-progress-bar {
             height: 100%;
-            background-color: var(--secondary);
+            background-color: var(--primary);
             width: 0%;
             transition: width 0.3s ease;
         }
 
-        .quiz-question {
-            margin-bottom: 30px;
+        .assessment-question {
+            margin-bottom: 2rem;
             display: none;
         }
 
-        .quiz-question.active {
+        .assessment-question.active {
             display: block;
         }
 
-        .quiz-options {
+        .assessment-options {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
         }
 
-        .quiz-option {
-            padding: 15px;
-            background-color: var(--light);
+        .assessment-option {
+            padding: 1rem 1.5rem;
+            background-color: var(--off-white);
             border-radius: var(--radius);
             cursor: pointer;
             transition: var(--transition);
             border: 2px solid transparent;
+            text-align: left;
         }
 
-        .quiz-option:hover {
-            background-color: #e6e9ed;
+        .assessment-option:hover {
+            background-color: #e9ecef;
         }
 
-        .quiz-option.selected {
+        .assessment-option.selected {
             border-color: var(--primary);
-            background-color: rgba(93, 156, 236, 0.1);
+            background-color: rgba(58, 134, 255, 0.1);
         }
 
-        .quiz-navigation {
+        .assessment-navigation {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
+            margin-top: 2rem;
         }
 
-        .quiz-results {
+        .assessment-results {
             display: none;
             text-align: center;
-            padding: 30px;
+            padding: 2rem;
         }
 
-        .quiz-results h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+        .assessment-results h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
         }
 
-        .quiz-results p {
-            margin-bottom: 30px;
+        .assessment-results p {
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
         }
 
-        /* Self-Help Tools */
-        .self-help {
-            padding: 100px 0;
+        .result-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Resources Section */
+        .resources {
             background-color: var(--white);
         }
 
         .resources-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
 
         .resource-card {
-            background-color: var(--light);
-            border-radius: var(--radius);
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .resource-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         .resource-image {
-            height: 200px;
-            background-color: var(--primary-light);
+            height: 180px;
+            background-color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
 
         .resource-content {
-            padding: 25px;
+            padding: 1.5rem;
         }
 
         .resource-content h3 {
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
 
         .resource-content p {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
             color: var(--text);
         }
 
-        /* About Us */
+        /* About Section */
         .about {
-            padding: 100px 0;
-            background-color: var(--light);
+            background-color: var(--off-white);
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 3rem;
             align-items: center;
         }
 
         .about-image {
             position: relative;
             height: 400px;
-            background-color: var(--accent);
-            border-radius: var(--radius);
+            background-color: var(--primary);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -457,104 +599,252 @@
         }
 
         .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
         }
 
         .about-text p {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
         .mission-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 40px;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .stat-item {
             text-align: center;
-            padding: 20px;
+            padding: 1.5rem 1rem;
             background-color: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             color: var(--text);
             opacity: 0.8;
         }
 
-        /* Contact Form */
-        .contact {
-            padding: 100px 0;
+        /* Testimonials */
+        .testimonials {
             background-color: var(--white);
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background-color: var(--off-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            margin: 0 1rem;
+        }
+
+        .testimonial-content {
+            font-size: 1.125rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-content::before,
+        .testimonial-content::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-content::before {
+            top: -10px;
+            left: -15px;
+        }
+
+        .testimonial-content::after {
+            bottom: -20px;
+            right: -15px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .author-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-title {
+            font-size: 0.875rem;
+            color: var(--text);
+            opacity: 0.7;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--off-white);
         }
 
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 3rem;
         }
 
         .contact-info {
-            padding: 30px;
+            padding: 1.5rem;
         }
 
         .contact-info h3 {
             font-size: 1.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
         .contact-details {
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
         }
 
         .contact-detail {
             display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
         }
 
         .contact-detail i {
             width: 40px;
             height: 40px;
-            background-color: var(--light);
+            background-color: rgba(58, 134, 255, 0.1);
             color: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-detail-content p, 
+        .contact-detail-content a {
+            color: var(--text);
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(58, 134, 255, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: var(--white);
         }
 
         .contact-form {
-            background-color: var(--light);
-            padding: 40px;
-            border-radius: var(--radius);
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             font-weight: 500;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 15px;
+            padding: 0.75rem 1rem;
             border: 1px solid #ddd;
             border-radius: var(--radius);
             font-family: inherit;
@@ -565,7 +855,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(93, 156, 236, 0.2);
+            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
         }
 
         textarea.form-control {
@@ -577,20 +867,20 @@
         footer {
             background-color: var(--dark);
             color: var(--white);
-            padding: 60px 0 20px;
+            padding: 4rem 0 1.5rem;
         }
 
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .footer-col h3 {
             color: var(--white);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
         }
 
         .footer-col ul {
@@ -598,25 +888,32 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 0.75rem;
         }
 
         .footer-col ul li a {
             color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
         }
 
         .footer-col ul li a:hover {
             color: var(--white);
+            padding-left: 5px;
         }
 
-        .social-links {
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
             display: flex;
-            gap: 15px;
+            gap: 0.75rem;
         }
 
-        .social-links a {
-            width: 40px;
-            height: 40px;
+        .footer-social a {
+            width: 36px;
+            height: 36px;
             background-color: rgba(255, 255, 255, 0.1);
             color: var(--white);
             border-radius: 50%;
@@ -626,23 +923,28 @@
             transition: var(--transition);
         }
 
-        .social-links a:hover {
+        .footer-social a:hover {
             background-color: var(--primary);
+            transform: translateY(-3px);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         /* Chat Widget */
         .chat-widget {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 2rem;
+            right: 2rem;
             z-index: 999;
         }
 
@@ -656,112 +958,90 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 4px 20px rgba(93, 156, 236, 0.3);
+            box-shadow: 0 4px 20px rgba(58, 134, 255, 0.3);
             cursor: pointer;
             transition: var(--transition);
             border: none;
         }
 
-        .chat-btn:hover {
-            background-color: var(--primary-light);
+        .chat-btn:hover, .chat-btn:focus {
+            background-color: var(--primary-dark);
             transform: scale(1.1);
+            outline: none;
         }
 
-        /* Page-specific styles */
-        .page-header {
-            padding: 120px 0 60px;
+        /* Accessibility Controls */
+        .accessibility-toolbar {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background-color: var(--white);
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius) 0 0 var(--radius);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem;
+        }
+
+        .accessibility-btn {
+            width: 40px;
+            height: 40px;
+            background-color: var(--off-white);
+            color: var(--dark);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .accessibility-btn:last-child {
+            margin-bottom: 0;
+        }
+
+        .accessibility-btn:hover, .accessibility-btn:focus {
             background-color: var(--primary);
             color: var(--white);
-            text-align: center;
+            outline: none;
         }
 
-        .page-header h1 {
-            font-size: 2.5rem;
-        }
-
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        .breadcrumb a {
+        .accessibility-btn.active {
+            background-color: var(--primary);
             color: var(--white);
-            opacity: 0.8;
         }
 
-        .breadcrumb a:hover {
-            opacity: 1;
+        /* High Contrast Mode */
+        .high-contrast {
+            --primary: #0057b7;
+            --primary-light: #0078d4;
+            --primary-dark: #004b9c;
+            --secondary: #008575;
+            --accent: #7719aa;
+            --light: #ffffff;
+            --dark: #000000;
+            --text: #000000;
+            --white: #ffffff;
+            --off-white: #f0f0f0;
+            
+            background-color: var(--white) !important;
+            color: var(--dark) !important;
         }
 
-        .breadcrumb span {
-            margin: 0 10px;
-            opacity: 0.8;
+        .high-contrast .section {
+            background-color: var(--white) !important;
         }
 
-        /* Blog Section */
-        .blog {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .blog-card {
-            background-color: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-image {
-            height: 200px;
-            background-color: var(--secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 2rem;
-        }
-
-        .blog-content {
-            padding: 25px;
-        }
-
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--text);
-            opacity: 0.8;
-        }
-
-        .blog-meta span {
-            margin-right: 15px;
-        }
-
-        .blog-meta i {
-            margin-right: 5px;
-        }
-
-        .blog-content h3 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .blog-content p {
-            margin-bottom: 20px;
-            color: var(--text);
+        .high-contrast .feature-card,
+        .high-contrast .helplines-container,
+        .high-contrast .assessment-container,
+        .high-contrast .resource-card,
+        .high-contrast .contact-form {
+            border: 2px solid var(--dark) !important;
         }
 
         /* Responsive Styles */
@@ -775,19 +1055,38 @@
                 height: 300px;
                 order: -1;
             }
+
+            .mission-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
-                gap: 15px;
             }
 
-            .btn {
+            .hero-buttons .btn {
                 width: 100%;
             }
 
@@ -795,148 +1094,201 @@
                 display: block;
             }
 
-            nav {
+            .main-nav {
                 position: fixed;
                 top: 80px;
                 left: 0;
                 width: 100%;
                 background-color: var(--white);
                 box-shadow: var(--shadow);
-                padding: 20px;
+                padding: 1rem;
                 transform: translateY(-150%);
                 transition: transform 0.3s ease;
                 z-index: 999;
             }
 
-            nav.active {
+            .main-nav.active {
                 transform: translateY(0);
             }
 
-            nav ul {
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .main-nav ul li {
+                margin: 0;
+            }
+
+            .main-nav a {
+                display: block;
+                padding: 0.75rem;
+            }
+
+            .newsletter-form {
                 flex-direction: column;
             }
 
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            .mission-stats {
-                grid-template-columns: 1fr;
+            .newsletter-input,
+            .newsletter-btn {
+                width: 100%;
             }
         }
 
         @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+
             .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title h2 {
                 font-size: 2rem;
             }
 
             .feature-card,
             .resource-card,
-            .blog-card {
-                padding: 20px;
+            .helplines-container,
+            .assessment-container,
+            .contact-form {
+                padding: 1.5rem;
             }
 
-            .helplines,
-            .quiz-container,
-            .contact-form {
-                padding: 20px;
+            .mission-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .result-actions {
+                flex-direction: column;
+            }
+
+            .result-actions .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Accessibility Toolbar -->
+    <div class="accessibility-toolbar">
+        <button class="accessibility-btn" id="fontIncrease" aria-label="Increase font size">
+            <i class="fas fa-text-height"></i>
+        </button>
+        <button class="accessibility-btn" id="fontDecrease" aria-label="Decrease font size">
+            <i class="fas fa-text-width"></i>
+        </button>
+        <button class="accessibility-btn" id="highContrast" aria-label="Toggle high contrast mode">
+            <i class="fas fa-adjust"></i>
+        </button>
+        <button class="accessibility-btn" id="readPage" aria-label="Read page aloud">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-heart"></i>
+                <i class="fas fa-brain"></i>
                 <span>TDS Innovation</span>
             </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="get-help.html">Get Help</a></li>
-                    <li><a href="self-help.html">Self-Help Tools</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+            
+            <div class="nav-container">
+                <nav class="main-nav" id="mainNav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>You're not alone — we're here to help</h1>
-            <p>Free emotional support and mental health resources for young people in India. No judgments, just care.</p>
+            <h1>Mental Health Support for Everyone in India</h1>
+            <p>Free, confidential, and culturally sensitive mental health resources and counseling services. You're not alone - we're here to help.</p>
             <div class="hero-buttons">
-                <a href="get-help.html" class="btn btn-secondary">Get Immediate Help</a>
-                <a href="self-help.html" class="btn btn-accent">Self-Help Resources</a>
+                <a href="#emergency" class="btn btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Emergency Help
+                </a>
+                <a href="#assessment" class="btn btn-accent">
+                    <i class="fas fa-clipboard-check"></i> Self-Assessment
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="section features" id="services">
         <div class="container">
             <div class="section-title">
-                <h2>How We Can Support You</h2>
-                <p>Accessible mental health support designed for young Indians who need someone to talk to or resources to help themselves.</p>
+                <h2>Our Services</h2>
+                <p>We offer a range of free mental health services tailored to the needs of the Indian community.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-phone-alt"></i>
+                        <i class="fas fa-headset"></i>
                     </div>
-                    <h3>Helplines</h3>
-                    <p>Connect with trained counselors through our network of Indian mental health helplines, available in multiple languages.</p>
+                    <h3>24/7 Helpline</h3>
+                    <p>Immediate support from trained counselors available in multiple Indian languages, anytime you need it.</p>
+                    <a href="#emergency" class="btn btn-outline">Learn More</a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-user-friends"></i>
                     </div>
-                    <h3>Self-Help Tools</h3>
-                    <p>Practical guides and exercises for managing anxiety, stress, depression, and other common challenges.</p>
+                    <h3>Peer Support</h3>
+                    <p>Connect with others who understand what you're going through in our moderated support groups.</p>
+                    <a href="#" class="btn btn-outline">Join Community</a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-calendar-check"></i>
                     </div>
-                    <h3>Live Chat</h3>
-                    <p>Talk anonymously with our trained volunteers when you need someone to listen, available 24/7.</p>
+                    <h3>Professional Counseling</h3>
+                    <p>Free sessions with licensed therapists via video, phone, or chat - available in regional languages.</p>
+                    <a href="#" class="btn btn-outline">Book Session</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Get Help Section -->
-    <section class="get-help">
+    <!-- Emergency Section -->
+    <section class="section emergency" id="emergency">
         <div class="container">
             <div class="section-title">
-                <h2>Immediate Help Resources</h2>
-                <p>If you're in crisis or need someone to talk to right now, these services can help.</p>
+                <h2>Emergency Support</h2>
+                <p>If you're in crisis or need immediate help, these services are available 24/7.</p>
             </div>
-            <div class="helplines">
-                <h3>Indian Mental Health Helplines</h3>
+            
+            <div class="emergency-alert">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>In an emergency?</strong> Call our crisis helpline at <a href="tel:+919876543210">+91 98765 43210</a> or text "HELP" to 12345.
+                </div>
+            </div>
+            
+            <div class="helplines-container">
+                <h3>Mental Health Helplines in India</h3>
                 <div class="helpline-item">
                     <div class="helpline-icon">
                         <i class="fas fa-phone-alt"></i>
                     </div>
                     <div class="helpline-info">
                         <h3>iCall Psychosocial Helpline</h3>
-                        <p>9152987821 | Mon-Sat, 10am-8pm | Email: icall@tiss.edu</p>
+                        <p>9152987821 | Mon-Sat, 10am-8pm</p>
+                        <p>Email: icall@tiss.edu | Languages: English, Hindi</p>
+                        <div class="helpline-actions">
+                            <a href="tel:9152987821" class="btn btn-secondary">Call Now</a>
+                            <a href="mailto:icall@tiss.edu" class="btn btn-outline">Email</a>
+                        </div>
                     </div>
                 </div>
                 <div class="helpline-item">
@@ -945,7 +1297,11 @@
                     </div>
                     <div class="helpline-info">
                         <h3>AASRA Suicide Prevention</h3>
-                        <p>9820466726 | 24/7 | Languages: English, Hindi</p>
+                        <p>9820466726 | 24/7</p>
+                        <p>Languages: English, Hindi</p>
+                        <div class="helpline-actions">
+                            <a href="tel:9820466726" class="btn btn-secondary">Call Now</a>
+                        </div>
                     </div>
                 </div>
                 <div class="helpline-item">
@@ -954,80 +1310,99 @@
                     </div>
                     <div class="helpline-info">
                         <h3>Vandrevala Foundation</h3>
-                        <p>18602662345 | 24/7 | WhatsApp: +91 7304599836</p>
-                    </div>
-                </div>
-                <div class="helpline-item">
-                    <div class="helpline-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="helpline-info">
-                        <h3>COOJ Mental Health Foundation</h3>
-                        <p>0832-2252525 | 1pm-7pm | Goa-based</p>
+                        <p>18602662345 | 24/7</p>
+                        <p>WhatsApp: +91 7304599836</p>
+                        <div class="helpline-actions">
+                            <a href="tel:18602662345" class="btn btn-secondary">Call Now</a>
+                            <a href="https://wa.me/917304599836" class="btn btn-outline">WhatsApp</a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Assessment Section -->
+    <section class="section get-help" id="assessment">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mental Health Check-in</h2>
+                <p>Take this brief assessment to understand your current mental wellbeing.</p>
+            </div>
             
-            <div class="quiz-container">
-                <div class="quiz-header">
-                    <h3>Mental Health Check-in</h3>
-                    <p>Take this brief quiz to understand how you've been feeling lately.</p>
-                </div>
-                <div class="quiz-progress">
-                    <div class="quiz-progress-bar" id="quizProgress"></div>
+            <div class="assessment-container">
+                <div class="assessment-header">
+                    <h3>How have you been feeling lately?</h3>
+                    <p>This is not a diagnosis, but it can help you understand your mental health better.</p>
                 </div>
                 
-                <div class="quiz-question active" id="question1">
+                <div class="assessment-progress">
+                    <div class="assessment-progress-bar" id="assessmentProgress"></div>
+                </div>
+                
+                <div class="assessment-question active" id="question1">
                     <h4>Over the past 2 weeks, how often have you felt down, depressed, or hopeless?</h4>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-value="0">Not at all</div>
-                        <div class="quiz-option" data-value="1">Several days</div>
-                        <div class="quiz-option" data-value="2">More than half the days</div>
-                        <div class="quiz-option" data-value="3">Nearly every day</div>
+                    <div class="assessment-options">
+                        <div class="assessment-option" data-value="0">Not at all</div>
+                        <div class="assessment-option" data-value="1">Several days</div>
+                        <div class="assessment-option" data-value="2">More than half the days</div>
+                        <div class="assessment-option" data-value="3">Nearly every day</div>
                     </div>
                 </div>
                 
-                <div class="quiz-question" id="question2">
+                <div class="assessment-question" id="question2">
                     <h4>Over the past 2 weeks, how often have you felt little interest or pleasure in doing things?</h4>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-value="0">Not at all</div>
-                        <div class="quiz-option" data-value="1">Several days</div>
-                        <div class="quiz-option" data-value="2">More than half the days</div>
-                        <div class="quiz-option" data-value="3">Nearly every day</div>
+                    <div class="assessment-options">
+                        <div class="assessment-option" data-value="0">Not at all</div>
+                        <div class="assessment-option" data-value="1">Several days</div>
+                        <div class="assessment-option" data-value="2">More than half the days</div>
+                        <div class="assessment-option" data-value="3">Nearly every day</div>
                     </div>
                 </div>
                 
-                <div class="quiz-question" id="question3">
+                <div class="assessment-question" id="question3">
                     <h4>How often have you been bothered by feeling nervous, anxious, or on edge?</h4>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-value="0">Not at all</div>
-                        <div class="quiz-option" data-value="1">Several days</div>
-                        <div class="quiz-option" data-value="2">More than half the days</div>
-                        <div class="quiz-option" data-value="3">Nearly every day</div>
+                    <div class="assessment-options">
+                        <div class="assessment-option" data-value="0">Not at all</div>
+                        <div class="assessment-option" data-value="1">Several days</div>
+                        <div class="assessment-option" data-value="2">More than half the days</div>
+                        <div class="assessment-option" data-value="3">Nearly every day</div>
                     </div>
                 </div>
                 
-                <div class="quiz-results" id="quizResults">
-                    <h3>Your Results</h3>
-                    <p id="resultText"></p>
-                    <a href="get-help.html" class="btn">Get Help</a>
-                    <a href="self-help.html" class="btn btn-secondary">Self-Help Resources</a>
+                <div class="assessment-question" id="question4">
+                    <h4>How often have you been bothered by not being able to stop or control worrying?</h4>
+                    <div class="assessment-options">
+                        <div class="assessment-option" data-value="0">Not at all</div>
+                        <div class="assessment-option" data-value="1">Several days</div>
+                        <div class="assessment-option" data-value="2">More than half the days</div>
+                        <div class="assessment-option" data-value="3">Nearly every day</div>
+                    </div>
                 </div>
                 
-                <div class="quiz-navigation">
-                    <button class="btn btn-secondary" id="prevBtn" disabled>Previous</button>
+                <div class="assessment-results" id="assessmentResults">
+                    <h3>Your Mental Health Check-in Results</h3>
+                    <p id="resultText">Based on your responses, you may be experiencing some challenges with your mental health. This is not a diagnosis, but we recommend connecting with one of our counselors to discuss how you're feeling.</p>
+                    <div class="result-actions">
+                        <a href="#emergency" class="btn btn-secondary">Talk to Someone Now</a>
+                        <a href="#resources" class="btn btn-outline">View Resources</a>
+                    </div>
+                </div>
+                
+                <div class="assessment-navigation">
+                    <button class="btn btn-outline" id="prevBtn" disabled>Previous</button>
                     <button class="btn" id="nextBtn">Next</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Self-Help Tools Section -->
-    <section class="self-help">
+    <!-- Resources Section -->
+    <section class="section resources" id="resources">
         <div class="container">
             <div class="section-title">
-                <h2>Self-Help Tools</h2>
-                <p>Practical resources to help you manage your mental health and wellbeing.</p>
+                <h2>Self-Help Resources</h2>
+                <p>Tools and information to support your mental health journey.</p>
             </div>
             <div class="resources-grid">
                 <div class="resource-card">
@@ -1064,27 +1439,27 @@
         </div>
     </section>
 
-    <!-- About Us Section -->
-    <section class="about">
+    <!-- About Section -->
+    <section class="section about" id="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
                     <h2>About TDS Innovation</h2>
-                    <p>TDS Innovation was founded in 2020 with a simple mission: to make mental health support accessible to every young person in India, regardless of their ability to pay or their comfort with traditional therapy settings.</p>
-                    <p>We believe that everyone deserves compassionate support for their emotional wellbeing, and that mental health resources should be culturally relevant, stigma-free, and available when people need them most.</p>
+                    <p>TDS Innovation is a nonprofit organization dedicated to making mental health support accessible to everyone in India. We believe that mental healthcare should be free, culturally sensitive, and available when people need it most.</p>
+                    <p>Our team includes mental health professionals, counselors, and volunteers who are passionate about breaking the stigma around mental health in Indian society.</p>
                     
                     <div class="mission-stats">
                         <div class="stat-item">
-                            <div class="stat-number">10,000+</div>
+                            <div class="stat-number">15,000+</div>
                             <div class="stat-label">People Helped</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Trained Volunteers</div>
+                            <div class="stat-number">80+</div>
+                            <div class="stat-label">Trained Counselors</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Support Available</div>
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Languages Supported</div>
                         </div>
                     </div>
                 </div>
@@ -1095,94 +1470,87 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section class="blog">
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>From Our Blog</h2>
-                <p>Personal stories, mental wellness tips, and insights from our community.</p>
+                <h2>Stories of Hope</h2>
+                <p>Hear from people who have found support through our services.</p>
             </div>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-spa"></i>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        After losing my job during the pandemic, I fell into depression. TDS Innovation's counselors helped me rebuild my confidence and find new purpose. The support groups made me realize I wasn't alone.
                     </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> June 15, 2023</span>
-                            <span><i class="far fa-user"></i> Priya Sharma</span>
-                        </div>
-                        <h3>5 Mindfulness Practices for Daily Stress</h3>
-                        <p>Simple techniques you can incorporate into your routine to reduce anxiety and stay grounded.</p>
-                        <a href="#" class="btn btn-secondary">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> May 28, 2023</span>
-                            <span><i class="far fa-user"></i> Rahul Mehta</span>
-                        </div>
-                        <h3>Breaking the Stigma: Mental Health in Indian Families</h3>
-                        <p>How to navigate conversations about mental health with traditional family structures.</p>
-                        <a href="#" class="btn btn-secondary">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-moon"></i>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> May 10, 2023</span>
-                            <span><i class="far fa-user"></i> Ananya Patel</span>
-                        </div>
-                        <h3>Improving Sleep for Better Mental Health</h3>
-                        <p>Evidence-based tips to establish healthy sleep habits and their impact on emotional wellbeing.</p>
-                        <a href="#" class="btn btn-secondary">Read More</a>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-name">Rahul, 28</div>
+                        <div class="author-title">New Delhi</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Connected</h2>
+            <p>Subscribe to our newsletter for mental health tips, resources, and updates.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-secondary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section class="contact">
+    <section class="section contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Get In Touch</h2>
+                <h2>Contact Us</h2>
                 <p>Have questions or want to get involved? We'd love to hear from you.</p>
             </div>
+            
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
+                    <h3>Our Information</h3>
                     <div class="contact-details">
                         <div class="contact-detail">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Wellness Road, Mumbai 400001, India</span>
+                            <div class="contact-detail-content">
+                                <h4>Address</h4>
+                                <p>123 Wellness Road, Mumbai 400001, India</p>
+                            </div>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
-                            <span>hello@tdsinnovation.org</span>
+                            <div class="contact-detail-content">
+                                <h4>Email</h4>
+                                <a href="mailto:hello@tdsinnovation.org">hello@tdsinnovation.org</a>
+                            </div>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-phone-alt"></i>
-                            <span>+91 9876543210</span>
+                            <div class="contact-detail-content">
+                                <h4>Phone</h4>
+                                <a href="tel:+919876543210">+91 98765 43210</a>
+                            </div>
                         </div>
                     </div>
+                    
                     <h3>Follow Us</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+                
                 <div class="contact-form">
-                    <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" class="form-control" required>
@@ -1210,45 +1578,48 @@
     <footer>
         <div class="container">
             <div class="footer-container">
-                <div class="footer-col">
+                <div class="footer-col footer-about">
                     <h3>TDS Innovation</h3>
-                    <p>Making mental health support accessible and stigma-free for young people in India.</p>
+                    <p>Making mental health support accessible and stigma-free for everyone in India.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="get-help.html">Get Help</a></li>
-                        <li><a href="self-help.html">Self-Help Tools</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#emergency">Emergency Help</a></li>
+                        <li><a href="#">Counseling</a></li>
+                        <li><a href="#">Support Groups</a></li>
+                        <li><a href="#">Workshops</a></li>
+                        <li><a href="#">Community Forum</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Resources</h3>
                     <ul>
-                        <li><a href="#">Anxiety Resources</a></li>
-                        <li><a href="#">Depression Help</a></li>
-                        <li><a href="#">Stress Management</a></li>
-                        <li><a href="#">Mental Health Quiz</a></li>
-                        <li><a href="#">Helpline Numbers</a></li>
+                        <li><a href="#">Self-Help Guides</a></li>
+                        <li><a href="#">Mental Health Articles</a></li>
+                        <li><a href="#">Therapist Directory</a></li>
+                        <li><a href="#">Crisis Resources</a></li>
+                        <li><a href="#">FAQs</a></li>
                     </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><a href="mailto:hello@tdsinnovation.org">hello@tdsinnovation.org</a></li>
-                        <li><a href="tel:+919876543210">+91 9876543210</a></li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2023 TDS Innovation. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
@@ -1257,7 +1628,7 @@
 
     <!-- Chat Widget -->
     <div class="chat-widget">
-        <button class="chat-btn" id="chatBtn">
+        <button class="chat-btn" id="chatBtn" aria-label="Open chat">
             <i class="fas fa-comment-dots"></i>
         </button>
     </div>
@@ -1269,8 +1640,9 @@
         const mainNav = document.getElementById('mainNav');
         
         mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+            const isExpanded = mainNav.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            mobileMenuBtn.innerHTML = isExpanded ? 
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
 
@@ -1278,156 +1650,8 @@
         document.querySelectorAll('#mainNav a').forEach(link => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // Quiz Functionality
-        const quizQuestions = document.querySelectorAll('.quiz-question');
-        const quizProgress = document.getElementById('quizProgress');
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        const quizResults = document.getElementById('quizResults');
-        const resultText = document.getElementById('resultText');
-        
-        let currentQuestion = 0;
-        let score = 0;
-        
-        // Initialize quiz
-        showQuestion(currentQuestion);
-        
-        // Next button click handler
-        nextBtn.addEventListener('click', () => {
-            if (currentQuestion < quizQuestions.length - 1) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            } else {
-                calculateResults();
-            }
-        });
-        
-        // Previous button click handler
-        prevBtn.addEventListener('click', () => {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                showQuestion(currentQuestion);
-            }
-        });
-        
-        // Option selection handler
-        document.querySelectorAll('.quiz-option').forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selected class from all options in this question
-                const options = this.parentElement.querySelectorAll('.quiz-option');
-                options.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
-                this.classList.add('selected');
-                
-                // Enable next button
-                nextBtn.disabled = false;
-            });
-        });
-        
-        // Show current question
-        function showQuestion(index) {
-            quizQuestions.forEach((question, i) => {
-                question.classList.toggle('active', i === index);
-            });
-            
-            // Update progress bar
-            const progress = ((index + 1) / (quizQuestions.length + 1)) * 100;
-            quizProgress.style.width = `${progress}%`;
-            
-            // Update button states
-            prevBtn.disabled = index === 0;
-            
-            if (index === quizQuestions.length - 1) {
-                nextBtn.textContent = 'See Results';
-            } else {
-                nextBtn.textContent = 'Next';
-            }
-            
-            // Disable next button until an option is selected
-            nextBtn.disabled = true;
-        }
-        
-        // Calculate and show results
-        function calculateResults() {
-            score = 0;
-            
-            quizQuestions.forEach(question => {
-                const selectedOption = question.querySelector('.quiz-option.selected');
-                if (selectedOption) {
-                    score += parseInt(selectedOption.dataset.value);
-                }
-            });
-            
-            // Hide quiz questions
-            quizQuestions.forEach(question => {
-                question.style.display = 'none';
-            });
-            
-            // Hide navigation
-            document.querySelector('.quiz-navigation').style.display = 'none';
-            
-            // Show results
-            let resultMessage = '';
-            
-            if (score <= 2) {
-                resultMessage = 'Your responses suggest you\'re doing well overall. Remember that it\'s always okay to reach out if you need support.';
-            } else if (score <= 5) {
-                resultMessage = 'You may be experiencing some mild challenges. Our self-help resources could be helpful for you.';
-            } else if (score <= 9) {
-                resultMessage = 'Your responses indicate you might be dealing with significant challenges. Consider reaching out to one of our helplines or chatting with a counselor.';
-            } else {
-                resultMessage = 'Your responses suggest you may be experiencing severe difficulties. We strongly encourage you to reach out for professional support immediately.';
-            }
-            
-            resultText.textContent = resultMessage;
-            quizResults.style.display = 'block';
-            
-            // Update progress bar to 100%
-            quizProgress.style.width = '100%';
-        }
-
-        // Chat widget functionality
-        const chatBtn = document.getElementById('chatBtn');
-        
-        // Replace with your actual Tawk.to or other chat widget code
-        chatBtn.addEventListener('click', () => {
-            // In a real implementation, this would load the chat widget
-            alert('Chat support would open here. In a real implementation, this would load Tawk.to or another chat widget.');
-        });
-
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            
-            // In a real implementation, this would send to Formspree
-            fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Thank you for your message! We\'ll get back to you soon.');
-                    this.reset();
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => {
-                alert('There was a problem sending your message. Please try again later.');
-                console.error('Error:', error);
             });
         });
 
@@ -1441,12 +1665,224 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, targetId);
                 }
             });
+        });
+
+        // Assessment Functionality
+        const assessmentQuestions = document.querySelectorAll('.assessment-question');
+        const assessmentProgress = document.getElementById('assessmentProgress');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const assessmentResults = document.getElementById('assessmentResults');
+        const resultText = document.getElementById('resultText');
+        
+        let currentQuestion = 0;
+        let score = 0;
+        
+        // Initialize assessment
+        showQuestion(currentQuestion);
+        
+        // Next button click handler
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < assessmentQuestions.length - 1) {
+                // Save selected answer
+                const selectedOption = assessmentQuestions[currentQuestion].querySelector('.assessment-option.selected');
+                if (selectedOption) {
+                    score += parseInt(selectedOption.dataset.value);
+                }
+                
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                calculateResults();
+            }
+        });
+        
+        // Previous button click handler
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                // Remove previous answer from score
+                const selectedOption = assessmentQuestions[currentQuestion].querySelector('.assessment-option.selected');
+                if (selectedOption) {
+                    score -= parseInt(selectedOption.dataset.value);
+                }
+                
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        });
+        
+        // Option selection handler
+        document.querySelectorAll('.assessment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options in this question
+                const options = this.parentElement.querySelectorAll('.assessment-option');
+                options.forEach(opt => opt.classList.remove('selected'));
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Enable next button
+                nextBtn.disabled = false;
+            });
+        });
+        
+        // Show current question
+        function showQuestion(index) {
+            assessmentQuestions.forEach((question, i) => {
+                question.classList.toggle('active', i === index);
+            });
+            
+            // Update progress bar
+            const progress = ((index + 1) / (assessmentQuestions.length + 1)) * 100;
+            assessmentProgress.style.width = `${progress}%`;
+            
+            // Update button states
+            prevBtn.disabled = index === 0;
+            
+            if (index === assessmentQuestions.length - 1) {
+                nextBtn.textContent = 'See Results';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+            
+            // Disable next button until an option is selected
+            nextBtn.disabled = true;
+        }
+        
+        // Calculate and show results
+        function calculateResults() {
+            // Add last question's score
+            const selectedOption = assessmentQuestions[currentQuestion].querySelector('.assessment-option.selected');
+            if (selectedOption) {
+                score += parseInt(selectedOption.dataset.value);
+            }
+            
+            // Hide assessment questions
+            assessmentQuestions.forEach(question => {
+                question.style.display = 'none';
+            });
+            
+            // Hide navigation
+            document.querySelector('.assessment-navigation').style.display = 'none';
+            
+            // Show results with appropriate message
+            let resultMessage = '';
+            let severity = '';
+            
+            if (score <= 4) {
+                severity = 'minimal';
+                resultMessage = 'Your responses suggest minimal symptoms of depression or anxiety. While you seem to be doing well overall, remember that it\'s always okay to reach out if you need support.';
+            } else if (score <= 9) {
+                severity = 'mild';
+                resultMessage = 'Your responses suggest mild symptoms of depression or anxiety. Our self-help resources could be helpful for you, and consider reaching out to a counselor if these feelings persist.';
+            } else if (score <= 14) {
+                severity = 'moderate';
+                resultMessage = 'Your responses indicate moderate symptoms of depression or anxiety. We recommend connecting with one of our counselors to discuss how you\'re feeling and explore support options.';
+            } else {
+                severity = 'severe';
+                resultMessage = 'Your responses suggest severe symptoms of depression or anxiety. We strongly encourage you to reach out for professional support immediately. You don\'t have to face this alone.';
+            }
+            
+            // Add severity class to results for styling if needed
+            assessmentResults.className = `assessment-results severity-${severity}`;
+            
+            resultText.textContent = resultMessage;
+            assessmentResults.style.display = 'block';
+            
+            // Update progress bar to 100%
+            assessmentProgress.style.width = '100%';
+        }
+
+        // Chat widget functionality
+        const chatBtn = document.getElementById('chatBtn');
+        
+        chatBtn.addEventListener('click', () => {
+            // In a real implementation, this would load the chat widget
+            alert('Chat support would open here. In production, this would load Tawk.to or another chat widget.');
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                this.reset();
+            }, 500);
+        });
+
+        // Newsletter form handling
+        const newsletterForm = document.querySelector('.newsletter-form');
+        
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = this.querySelector('input[type="email"]');
+            
+            // Simple validation
+            if (emailInput.value && emailInput.value.includes('@')) {
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        // Accessibility Features
+        const fontIncreaseBtn = document.getElementById('fontIncrease');
+        const fontDecreaseBtn = document.getElementById('fontDecrease');
+        const highContrastBtn = document.getElementById('highContrast');
+        const readPageBtn = document.getElementById('readPage');
+        
+        // Font size controls
+        fontIncreaseBtn.addEventListener('click', () => {
+            const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+            document.body.style.fontSize = `${currentSize + 1}px`;
+        });
+        
+        fontDecreaseBtn.addEventListener('click', () => {
+            const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+            if (currentSize > 14) {
+                document.body.style.fontSize = `${currentSize - 1}px`;
+            }
+        });
+        
+        // High contrast toggle
+        highContrastBtn.addEventListener('click', () => {
+            document.body.classList.toggle('high-contrast');
+            highContrastBtn.classList.toggle('active');
+        });
+        
+        // Read page aloud
+        readPageBtn.addEventListener('click', () => {
+            alert('This would activate text-to-speech functionality in a production environment.');
+        });
+
+        // Initialize any other interactive elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add any initialization code here
         });
     </script>
 </body>
