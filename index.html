@@ -3,1888 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free mental health support platform for India. Get counseling, resources, and community support.">
-    <title>TDS Innovation - Free Mental Health Support | India</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Research Nexus | Interactive Academic Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3a86ff;
-            --primary-light: #8bb8ff;
-            --primary-dark: #2667cc;
-            --secondary: #4cc9f0;
-            --accent: #7209b7;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --text: #343a40;
-            --white: #ffffff;
-            --off-white: #f5f5f5;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --radius: 8px;
-            --radius-lg: 12px;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --max-width: 1200px;
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
         }
-
-        /* Base Styles */
-        * {
+        
+        body {
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--light);
+            background-color: #f9f9f9;
+            color: #333;
             overflow-x: hidden;
-            font-size: 1rem;
         }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        a:hover, a:focus {
-            color: var(--primary-dark);
-            outline: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        /* Layout */
-        .container {
-            width: 100%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.25rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--text);
-            opacity: 0.9;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary);
-            color: var(--white);
-            border-radius: var(--radius);
-            font-weight: 500;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: center;
-            gap: 0.5rem;
-        }
-
-        .btn:hover, .btn:focus {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-            outline: none;
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary);
-        }
-
-        .btn-secondary:hover, .btn-secondary:focus {
-            background-color: #3ab7e0;
-        }
-
-        .btn-accent {
-            background-color: var(--accent);
-        }
-
-        .btn-accent:hover, .btn-accent:focus {
-            background-color: #5e0a99;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover, .btn-outline:focus {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-
-        /* Header */
+        
+        /* Animated header */
         header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
         }
-
-        .header-container {
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Interactive navigation */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
+        
+        .nav-links {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            gap: 2rem;
         }
-
-        .logo i {
-            color: var(--secondary);
-        }
-
-        /* Navigation */
-        .nav-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .main-nav {
-            display: flex;
-        }
-
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        .main-nav a {
-            color: var(--dark);
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem;
-            border-radius: var(--radius);
-        }
-
-        .main-nav a:hover, .main-nav a:focus {
-            color: var(--primary);
-            background-color: rgba(58, 134, 255, 0.1);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: var(--radius);
-        }
-
-        .mobile-menu-btn:hover, .mobile-menu-btn:focus {
-            background-color: rgba(0, 0, 0, 0.05);
-            outline: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: var(--white);
-            padding: 8rem 0 5rem;
-            text-align: center;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
-
-        .hero::before {
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path fill="%23f8f9fa" d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path fill="%23f8f9fa" d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path fill="%23f8f9fa" d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg>');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: bottom;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 2.75rem;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-            line-height: 1.3;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        /* Features Section */
-        .features {
-            background-color: var(--white);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(58, 134, 255, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p {
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        /* Emergency Section */
-        .emergency {
-            background-color: var(--off-white);
-        }
-
-        .emergency-alert {
-            background-color: #fff8f8;
-            border-left: 4px solid #ff6b6b;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .emergency-alert i {
-            color: #ff6b6b;
-            font-size: 1.5rem;
-        }
-
-        .helplines-container {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 3rem;
-        }
-
-        .helpline-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            gap: 1.5rem;
-        }
-
-        .helpline-item:last-child {
-            border-bottom: none;
-        }
-
-        .helpline-icon {
-            flex-shrink: 0;
-            width: 50px;
-            height: 50px;
-            background-color: rgba(58, 134, 255, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-        }
-
-        .helpline-info h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .helpline-info p {
-            color: var(--text);
-            opacity: 0.8;
-            margin-bottom: 0.5rem;
-        }
-
-        .helpline-actions {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 0.75rem;
-        }
-
-        .helpline-actions .btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-        }
-
-        /* Assessment Section */
-        .assessment-container {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .assessment-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .assessment-progress {
-            height: 8px;
-            background-color: rgba(0, 0, 0, 0.05);
-            border-radius: 4px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
-
-        .assessment-progress-bar {
-            height: 100%;
-            background-color: var(--primary);
-            width: 0%;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
             transition: width 0.3s ease;
         }
-
-        .assessment-question {
-            margin-bottom: 2rem;
-            display: none;
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
-
-        .assessment-question.active {
-            display: block;
-        }
-
-        .assessment-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .assessment-option {
-            padding: 1rem 1.5rem;
-            background-color: var(--off-white);
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            text-align: left;
-        }
-
-        .assessment-option:hover {
-            background-color: #e9ecef;
-        }
-
-        .assessment-option.selected {
-            border-color: var(--primary);
-            background-color: rgba(58, 134, 255, 0.1);
-        }
-
-        .assessment-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        .assessment-results {
-            display: none;
+        
+        /* Hero section */
+        .hero {
             text-align: center;
-            padding: 2rem;
+            padding: 4rem 0;
         }
-
-        .assessment-results h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
         }
-
-        .assessment-results p {
-            margin-bottom: 2rem;
-            font-size: 1.125rem;
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s 0.2s ease both;
         }
-
-        .result-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+        
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            animation: fadeInUp 1s 0.4s ease both;
         }
-
-        /* Resources Section */
-        .resources {
-            background-color: var(--white);
+        
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-
-        .resources-grid {
+        
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+        
+        /* Disciplines section */
+        .disciplines {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        .discipline-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
-        .resource-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
+        
+        .discipline-card {
+            background-color: white;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .resource-image {
-            height: 180px;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 2.5rem;
-        }
-
-        .resource-content {
-            padding: 1.5rem;
-        }
-
-        .resource-content h3 {
-            margin-bottom: 1rem;
-        }
-
-        .resource-content p {
-            margin-bottom: 1.5rem;
-            color: var(--text);
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--off-white);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-            height: 400px;
-            background-color: var(--primary);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 3rem;
-        }
-
-        .about-text h2 {
-            font-size: 2.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .mission-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            background-color: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--text);
-            opacity: 0.8;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background-color: var(--white);
-        }
-
-        .testimonials-slider {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial {
-            background-color: var(--off-white);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            text-align: center;
-            margin: 0 1rem;
-        }
-
-        .testimonial-content {
-            font-size: 1.125rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
             position: relative;
         }
-
-        .testimonial-content::before,
-        .testimonial-content::after {
-            content: '"';
-            font-size: 2rem;
-            color: var(--primary);
-            opacity: 0.3;
-            position: absolute;
+        
+        .discipline-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
-
-        .testimonial-content::before {
-            top: -10px;
-            left: -15px;
-        }
-
-        .testimonial-content::after {
-            bottom: -20px;
-            right: -15px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .author-name {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-title {
-            font-size: 0.875rem;
-            color: var(--text);
-            opacity: 0.7;
-        }
-
-        /* Newsletter */
-        .newsletter {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            color: var(--white);
-            margin-bottom: 1rem;
-        }
-
-        .newsletter p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-
-        .newsletter-form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .newsletter-input {
-            flex-grow: 1;
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: var(--radius);
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .newsletter-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--off-white);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            padding: 1.5rem;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-details {
-            margin-bottom: 2rem;
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            gap: 1rem;
-        }
-
-        .contact-detail i {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(58, 134, 255, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-detail-content h4 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-detail-content p, 
-        .contact-detail-content a {
-            color: var(--text);
-            opacity: 0.9;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(58, 134, 255, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-
-        .contact-form {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-control {
+        
+        .discipline-card img {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: var(--radius);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
+            height: 180px;
+            object-fit: cover;
         }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+        
+        .discipline-card .content {
+            padding: 1.5rem;
         }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        
+        .discipline-card h3 {
+            margin-top: 0;
+            color: var(--primary);
         }
-
+        
+        .discipline-card p {
+            color: #666;
+        }
+        
+        /* Featured research */
+        .featured-research {
+            background-color: var(--light);
+            padding: 4rem 2rem;
+        }
+        
+        .research-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .research-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .research-card {
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+        }
+        
+        .research-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .research-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .research-card .content {
+            padding: 1.5rem;
+        }
+        
+        .research-card .meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .research-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* Footer */
         footer {
             background-color: var(--dark);
-            color: var(--white);
-            padding: 4rem 0 1.5rem;
+            color: white;
+            padding: 3rem 2rem;
         }
-
-        .footer-container {
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
         }
-
-        .footer-col h3 {
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 1.125rem;
+        
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
         }
-
-        .footer-col ul {
+        
+        .footer-column ul {
             list-style: none;
+            padding: 0;
         }
-
-        .footer-col ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-col ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            transition: var(--transition);
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--white);
-            padding-left: 5px;
-        }
-
-        .footer-about p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .footer-social a {
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .footer-social a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.875rem;
-        }
-
-        .footer-bottom a {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Chat Widget */
-        .chat-widget {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 999;
-        }
-
-        .chat-btn {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 20px rgba(58, 134, 255, 0.3);
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-        }
-
-        .chat-btn:hover, .chat-btn:focus {
-            background-color: var(--primary-dark);
-            transform: scale(1.1);
-            outline: none;
-        }
-
-        /* Accessibility Controls */
-        .accessibility-toolbar {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            background-color: var(--white);
-            box-shadow: var(--shadow-lg);
-            border-radius: var(--radius) 0 0 var(--radius);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            padding: 0.5rem;
-        }
-
-        .accessibility-btn {
-            width: 40px;
-            height: 40px;
-            background-color: var(--off-white);
-            color: var(--dark);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        
+        .footer-column ul li {
             margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
         }
-
-        .accessibility-btn:last-child {
-            margin-bottom: 0;
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-
-        .accessibility-btn:hover, .accessibility-btn:focus {
-            background-color: var(--primary);
-            color: var(--white);
-            outline: none;
+        
+        .footer-column ul li a:hover {
+            color: white;
         }
-
-        .accessibility-btn.active {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-
-        /* High Contrast Mode */
-        .high-contrast {
-            --primary: #0057b7;
-            --primary-light: #0078d4;
-            --primary-dark: #004b9c;
-            --secondary: #008575;
-            --accent: #7719aa;
-            --light: #ffffff;
-            --dark: #000000;
-            --text: #000000;
-            --white: #ffffff;
-            --off-white: #f0f0f0;
-            
-            background-color: var(--white) !important;
-            color: var(--dark) !important;
-        }
-
-        .high-contrast .section {
-            background-color: var(--white) !important;
-        }
-
-        .high-contrast .feature-card,
-        .high-contrast .helplines-container,
-        .high-contrast .assessment-container,
-        .high-contrast .resource-card,
-        .high-contrast .contact-form {
-            border: 2px solid var(--dark) !important;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                height: 300px;
-                order: -1;
-            }
-
-            .mission-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section {
-                padding: 3rem 0;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .hero {
-                padding: 6rem 0 3rem;
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .main-nav {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                box-shadow: var(--shadow);
-                padding: 1rem;
-                transform: translateY(-150%);
-                transition: transform 0.3s ease;
-                z-index: 999;
-            }
-
-            .main-nav.active {
-                transform: translateY(0);
-            }
-
-            .main-nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .main-nav ul li {
-                margin: 0;
-            }
-
-            .main-nav a {
-                display: block;
-                padding: 0.75rem;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .newsletter-input,
-            .newsletter-btn {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .feature-card,
-            .resource-card,
-            .helplines-container,
-            .assessment-container,
-            .contact-form {
-                padding: 1.5rem;
-            }
-
-            .mission-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .result-actions {
-                flex-direction: column;
-            }
-
-            .result-actions .btn {
-                width: 100%;
-            }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
-    <!-- Accessibility Toolbar -->
-    <div class="accessibility-toolbar">
-        <button class="accessibility-btn" id="fontIncrease" aria-label="Increase font size">
-            <i class="fas fa-text-height"></i>
-        </button>
-        <button class="accessibility-btn" id="fontDecrease" aria-label="Decrease font size">
-            <i class="fas fa-text-width"></i>
-        </button>
-        <button class="accessibility-btn" id="highContrast" aria-label="Toggle high contrast mode">
-            <i class="fas fa-adjust"></i>
-        </button>
-        <button class="accessibility-btn" id="readPage" aria-label="Read page aloud">
-            <i class="fas fa-volume-up"></i>
-        </button>
-    </div>
-
-    <!-- Header -->
+    <!-- Animated Header -->
     <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-brain"></i>
-                <span>TDS Innovation</span>
-            </a>
+        <canvas id="particles" class="particles"></canvas>
+        <div class="header-content">
+            <nav>
+                <div class="logo">
+                    <h2>Research Nexus</h2>
+                </div>
+                <div class="nav-links">
+                    <a href="#disciplines">Disciplines</a>
+                    <a href="#research">Research</a>
+                    <a href="#library">Library</a>
+                    <a href="#contribute">Contribute</a>
+                    <a href="#about">About</a>
+                </div>
+            </nav>
             
-            <div class="nav-container">
-                <nav class="main-nav" id="mainNav">
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#resources">Resources</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
-                    <i class="fas fa-bars"></i>
-                </button>
+            <div class="hero">
+                <h1>Explore the Frontiers of Knowledge</h1>
+                <p>A dynamic platform connecting researchers across disciplines with interactive tools and collaborative features to advance human understanding.</p>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search across 1,284,907 research items...">
+                    <button>Discover</button>
+                </div>
             </div>
         </div>
     </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Mental Health Support for Everyone in India</h1>
-            <p>Free, confidential, and culturally sensitive mental health resources and counseling services. You're not alone - we're here to help.</p>
-            <div class="hero-buttons">
-                <a href="#emergency" class="btn btn-secondary">
-                    <i class="fas fa-phone-alt"></i> Emergency Help
-                </a>
-                <a href="#assessment" class="btn btn-accent">
-                    <i class="fas fa-clipboard-check"></i> Self-Assessment
-                </a>
-            </div>
+    
+    <!-- Disciplines Section -->
+    <section class="disciplines" id="disciplines">
+        <div class="section-header">
+            <h2>Explore by Discipline</h2>
+            <p>Navigate through our interconnected web of knowledge</p>
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="section features" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <p>We offer a range of free mental health services tailored to the needs of the Indian community.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>24/7 Helpline</h3>
-                    <p>Immediate support from trained counselors available in multiple Indian languages, anytime you need it.</p>
-                    <a href="#emergency" class="btn btn-outline">Learn More</a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
-                    <h3>Peer Support</h3>
-                    <p>Connect with others who understand what you're going through in our moderated support groups.</p>
-                    <a href="#" class="btn btn-outline">Join Community</a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3>Professional Counseling</h3>
-                    <p>Free sessions with licensed therapists via video, phone, or chat - available in regional languages.</p>
-                    <a href="#" class="btn btn-outline">Book Session</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Emergency Section -->
-    <section class="section emergency" id="emergency">
-        <div class="container">
-            <div class="section-title">
-                <h2>Emergency Support</h2>
-                <p>If you're in crisis or need immediate help, these services are available 24/7.</p>
-            </div>
-            
-            <div class="emergency-alert">
-                <i class="fas fa-exclamation-triangle"></i>
-                <div>
-                    <strong>In an emergency?</strong> Call our crisis helpline at <a href="tel:+919876543210">+91 98765 43210</a> or text "HELP" to 12345.
+        
+        <div class="discipline-grid">
+            <div class="discipline-card">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d" alt="Science">
+                <div class="content">
+                    <h3>Science</h3>
+                    <p>From quantum physics to marine biology, explore the natural world</p>
                 </div>
             </div>
             
-            <div class="helplines-container">
-                <h3>Mental Health Helplines in India</h3>
-                <div class="helpline-item">
-                    <div class="helpline-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="helpline-info">
-                        <h3>iCall Psychosocial Helpline</h3>
-                        <p>9152987821 | Mon-Sat, 10am-8pm</p>
-                        <p>Email: icall@tiss.edu | Languages: English, Hindi</p>
-                        <div class="helpline-actions">
-                            <a href="tel:9152987821" class="btn btn-secondary">Call Now</a>
-                            <a href="mailto:icall@tiss.edu" class="btn btn-outline">Email</a>
-                        </div>
-                    </div>
+            <div class="discipline-card">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Technology">
+                <div class="content">
+                    <h3>Technology</h3>
+                    <p>Cutting-edge developments in AI, blockchain, and beyond</p>
                 </div>
-                <div class="helpline-item">
-                    <div class="helpline-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="helpline-info">
-                        <h3>AASRA Suicide Prevention</h3>
-                        <p>9820466726 | 24/7</p>
-                        <p>Languages: English, Hindi</p>
-                        <div class="helpline-actions">
-                            <a href="tel:9820466726" class="btn btn-secondary">Call Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="helpline-item">
-                    <div class="helpline-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="helpline-info">
-                        <h3>Vandrevala Foundation</h3>
-                        <p>18602662345 | 24/7</p>
-                        <p>WhatsApp: +91 7304599836</p>
-                        <div class="helpline-actions">
-                            <a href="tel:18602662345" class="btn btn-secondary">Call Now</a>
-                            <a href="https://wa.me/917304599836" class="btn btn-outline">WhatsApp</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Assessment Section -->
-    <section class="section get-help" id="assessment">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mental Health Check-in</h2>
-                <p>Take this brief assessment to understand your current mental wellbeing.</p>
             </div>
             
-            <div class="assessment-container">
-                <div class="assessment-header">
-                    <h3>How have you been feeling lately?</h3>
-                    <p>This is not a diagnosis, but it can help you understand your mental health better.</p>
+            <div class="discipline-card">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8" alt="Humanities">
+                <div class="content">
+                    <h3>Humanities</h3>
+                    <p>Philosophy, literature, history and the human experience</p>
                 </div>
-                
-                <div class="assessment-progress">
-                    <div class="assessment-progress-bar" id="assessmentProgress"></div>
-                </div>
-                
-                <div class="assessment-question active" id="question1">
-                    <h4>Over the past 2 weeks, how often have you felt down, depressed, or hopeless?</h4>
-                    <div class="assessment-options">
-                        <div class="assessment-option" data-value="0">Not at all</div>
-                        <div class="assessment-option" data-value="1">Several days</div>
-                        <div class="assessment-option" data-value="2">More than half the days</div>
-                        <div class="assessment-option" data-value="3">Nearly every day</div>
-                    </div>
-                </div>
-                
-                <div class="assessment-question" id="question2">
-                    <h4>Over the past 2 weeks, how often have you felt little interest or pleasure in doing things?</h4>
-                    <div class="assessment-options">
-                        <div class="assessment-option" data-value="0">Not at all</div>
-                        <div class="assessment-option" data-value="1">Several days</div>
-                        <div class="assessment-option" data-value="2">More than half the days</div>
-                        <div class="assessment-option" data-value="3">Nearly every day</div>
-                    </div>
-                </div>
-                
-                <div class="assessment-question" id="question3">
-                    <h4>How often have you been bothered by feeling nervous, anxious, or on edge?</h4>
-                    <div class="assessment-options">
-                        <div class="assessment-option" data-value="0">Not at all</div>
-                        <div class="assessment-option" data-value="1">Several days</div>
-                        <div class="assessment-option" data-value="2">More than half the days</div>
-                        <div class="assessment-option" data-value="3">Nearly every day</div>
-                    </div>
-                </div>
-                
-                <div class="assessment-question" id="question4">
-                    <h4>How often have you been bothered by not being able to stop or control worrying?</h4>
-                    <div class="assessment-options">
-                        <div class="assessment-option" data-value="0">Not at all</div>
-                        <div class="assessment-option" data-value="1">Several days</div>
-                        <div class="assessment-option" data-value="2">More than half the days</div>
-                        <div class="assessment-option" data-value="3">Nearly every day</div>
-                    </div>
-                </div>
-                
-                <div class="assessment-results" id="assessmentResults">
-                    <h3>Your Mental Health Check-in Results</h3>
-                    <p id="resultText">Based on your responses, you may be experiencing some challenges with your mental health. This is not a diagnosis, but we recommend connecting with one of our counselors to discuss how you're feeling.</p>
-                    <div class="result-actions">
-                        <a href="#emergency" class="btn btn-secondary">Talk to Someone Now</a>
-                        <a href="#resources" class="btn btn-outline">View Resources</a>
-                    </div>
-                </div>
-                
-                <div class="assessment-navigation">
-                    <button class="btn btn-outline" id="prevBtn" disabled>Previous</button>
-                    <button class="btn" id="nextBtn">Next</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section class="section resources" id="resources">
-        <div class="container">
-            <div class="section-title">
-                <h2>Self-Help Resources</h2>
-                <p>Tools and information to support your mental health journey.</p>
-            </div>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-image">
-                        <i class="fas fa-wind"></i>
-                    </div>
-                    <div class="resource-content">
-                        <h3>Managing Anxiety</h3>
-                        <p>Learn grounding techniques, breathing exercises, and cognitive strategies to reduce anxiety symptoms.</p>
-                        <a href="#" class="btn btn-secondary">View Guide</a>
-                    </div>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-image">
-                        <i class="fas fa-cloud-sun"></i>
-                    </div>
-                    <div class="resource-content">
-                        <h3>Coping with Depression</h3>
-                        <p>Practical steps to improve mood, increase energy, and break negative thought patterns.</p>
-                        <a href="#" class="btn btn-secondary">View Guide</a>
-                    </div>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-image">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <div class="resource-content">
-                        <h3>Stress Management</h3>
-                        <p>Evidence-based techniques to reduce stress and build resilience in daily life.</p>
-                        <a href="#" class="btn btn-secondary">View Guide</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About TDS Innovation</h2>
-                    <p>TDS Innovation is a nonprofit organization dedicated to making mental health support accessible to everyone in India. We believe that mental healthcare should be free, culturally sensitive, and available when people need it most.</p>
-                    <p>Our team includes mental health professionals, counselors, and volunteers who are passionate about breaking the stigma around mental health in Indian society.</p>
-                    
-                    <div class="mission-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">15,000+</div>
-                            <div class="stat-label">People Helped</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">80+</div>
-                            <div class="stat-label">Trained Counselors</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">10+</div>
-                            <div class="stat-label">Languages Supported</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <i class="fas fa-hands-helping"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Stories of Hope</h2>
-                <p>Hear from people who have found support through our services.</p>
             </div>
             
-            <div class="testimonials-slider">
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        After losing my job during the pandemic, I fell into depression. TDS Innovation's counselors helped me rebuild my confidence and find new purpose. The support groups made me realize I wasn't alone.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">R</div>
-                        <div class="author-name">Rahul, 28</div>
-                        <div class="author-title">New Delhi</div>
-                    </div>
+            <div class="discipline-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" alt="Social Sciences">
+                <div class="content">
+                    <h3>Social Sciences</h3>
+                    <p>Psychology, sociology, economics and human behavior</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Stay Connected</h2>
-            <p>Subscribe to our newsletter for mental health tips, resources, and updates.</p>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Your email address" required>
-                <button type="submit" class="btn btn-secondary">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Have questions or want to get involved? We'd love to hear from you.</p>
+    
+    <!-- Featured Research -->
+    <section class="featured-research" id="research">
+        <div class="research-container">
+            <div class="section-header">
+                <h2>Featured Research</h2>
+                <p>Groundbreaking studies from our global community</p>
             </div>
             
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Our Information</h3>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="contact-detail-content">
-                                <h4>Address</h4>
-                                <p>123 Wellness Road, Mumbai 400001, India</p>
-                            </div>
+            <div class="research-slider">
+                <div class="research-card">
+                    <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc" alt="AI Research">
+                    <div class="content">
+                        <div class="meta">
+                            <span>Artificial Intelligence</span>
+                            <span>Jun 2023</span>
                         </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-envelope"></i>
-                            <div class="contact-detail-content">
-                                <h4>Email</h4>
-                                <a href="mailto:hello@tdsinnovation.org">hello@tdsinnovation.org</a>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-phone-alt"></i>
-                            <div class="contact-detail-content">
-                                <h4>Phone</h4>
-                                <a href="tel:+919876543210">+91 98765 43210</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3>Follow Us</h3>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <h3>Neural Networks for Climate Modeling</h3>
+                        <p>Novel approaches to predicting climate patterns using deep learning architectures</p>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
+                <div class="research-card">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173" alt="Psychology Research">
+                    <div class="content">
+                        <div class="meta">
+                            <span>Psychology</span>
+                            <span>May 2023</span>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                        <h3>The Digital Mindfulness Paradox</h3>
+                        <p>Examining how technology both distracts and enables mindfulness practices</p>
+                    </div>
+                </div>
+                
+                <div class="research-card">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Space Research">
+                    <div class="content">
+                        <div class="meta">
+                            <span>Astrophysics</span>
+                            <span>Apr 2023</span>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        <h3>Exoplanet Atmospheric Composition</h3>
+                        <p>New spectroscopic methods for analyzing distant planetary atmospheres</p>
+                    </div>
+                </div>
+                
+                <div class="research-card">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85" alt="Economics Research">
+                    <div class="content">
+                        <div class="meta">
+                            <span>Economics</span>
+                            <span>Mar 2023</span>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                        <h3>Cryptocurrency Market Dynamics</h3>
+                        <p>Behavioral economic analysis of digital currency adoption patterns</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col footer-about">
-                    <h3>TDS Innovation</h3>
-                    <p>Making mental health support accessible and stigma-free for everyone in India.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#resources">Resources</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#emergency">Emergency Help</a></li>
-                        <li><a href="#">Counseling</a></li>
-                        <li><a href="#">Support Groups</a></li>
-                        <li><a href="#">Workshops</a></li>
-                        <li><a href="#">Community Forum</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Self-Help Guides</a></li>
-                        <li><a href="#">Mental Health Articles</a></li>
-                        <li><a href="#">Therapist Directory</a></li>
-                        <li><a href="#">Crisis Resources</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul>
-                </div>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Research Nexus</h3>
+                <p>Connecting knowledge, empowering discovery</p>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2023 TDS Innovation. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Disciplines</a></li>
+                    <li><a href="#">Research Topics</a></li>
+                    <li><a href="#">Methodologies</a></li>
+                    <li><a href="#">Research Tools</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contribute</h3>
+                <ul>
+                    <li><a href="#">Submit Research</a></li>
+                    <li><a href="#">Peer Review</a></li>
+                    <li><a href="#">Collaborate</a></li>
+                    <li><a href="#">Funding</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
-
-    <!-- Chat Widget -->
-    <div class="chat-widget">
-        <button class="chat-btn" id="chatBtn" aria-label="Open chat">
-            <i class="fas fa-comment-dots"></i>
-        </button>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
         
-        mobileMenuBtn.addEventListener('click', () => {
-            const isExpanded = mainNav.classList.toggle('active');
-            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
-            mobileMenuBtn.innerHTML = isExpanded ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        <div class="copyright">
+            <p>&copy; 2023 Research Nexus. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Particle animation for header
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = document.querySelector('header').offsetHeight;
+        
+        // Particle class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.1})`;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Create particles
+        const particles = [];
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+        
+        // Connect particles
+        function connect() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    const distance = Math.sqrt(
+                        Math.pow(particles[a].x - particles[b].x, 2) + 
+                        Math.pow(particles[a].y - particles[b].y, 2)
+                    );
+                    
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance/100})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            
+            connect();
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Resize handler
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = document.querySelector('header').offsetHeight;
         });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mainNav a').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        
+        // Interactive discipline cards
+        const cards = document.querySelectorAll('.discipline-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2) / 20}deg) rotateY(${-(x - rect.width/2) / 20}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
             });
         });
-
-        // Smooth scrolling for anchor links
+        
+        // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Close mobile menu if open
-                    if (mainNav.classList.contains('active')) {
-                        mainNav.classList.remove('active');
-                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update URL without page reload
-                    history.pushState(null, null, targetId);
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
-        });
-
-        // Assessment Functionality
-        const assessmentQuestions = document.querySelectorAll('.assessment-question');
-        const assessmentProgress = document.getElementById('assessmentProgress');
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        const assessmentResults = document.getElementById('assessmentResults');
-        const resultText = document.getElementById('resultText');
-        
-        let currentQuestion = 0;
-        let score = 0;
-        
-        // Initialize assessment
-        showQuestion(currentQuestion);
-        
-        // Next button click handler
-        nextBtn.addEventListener('click', () => {
-            if (currentQuestion < assessmentQuestions.length - 1) {
-                // Save selected answer
-                const selectedOption = assessmentQuestions[currentQuestion].querySelector('.assessment-option.selected');
-                if (selectedOption) {
-                    score += parseInt(selectedOption.dataset.value);
-                }
-                
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            } else {
-                calculateResults();
-            }
-        });
-        
-        // Previous button click handler
-        prevBtn.addEventListener('click', () => {
-            if (currentQuestion > 0) {
-                // Remove previous answer from score
-                const selectedOption = assessmentQuestions[currentQuestion].querySelector('.assessment-option.selected');
-                if (selectedOption) {
-                    score -= parseInt(selectedOption.dataset.value);
-                }
-                
-                currentQuestion--;
-                showQuestion(currentQuestion);
-            }
-        });
-        
-        // Option selection handler
-        document.querySelectorAll('.assessment-option').forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selected class from all options in this question
-                const options = this.parentElement.querySelectorAll('.assessment-option');
-                options.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
-                this.classList.add('selected');
-                
-                // Enable next button
-                nextBtn.disabled = false;
-            });
-        });
-        
-        // Show current question
-        function showQuestion(index) {
-            assessmentQuestions.forEach((question, i) => {
-                question.classList.toggle('active', i === index);
-            });
-            
-            // Update progress bar
-            const progress = ((index + 1) / (assessmentQuestions.length + 1)) * 100;
-            assessmentProgress.style.width = `${progress}%`;
-            
-            // Update button states
-            prevBtn.disabled = index === 0;
-            
-            if (index === assessmentQuestions.length - 1) {
-                nextBtn.textContent = 'See Results';
-            } else {
-                nextBtn.textContent = 'Next';
-            }
-            
-            // Disable next button until an option is selected
-            nextBtn.disabled = true;
-        }
-        
-        // Calculate and show results
-        function calculateResults() {
-            // Add last question's score
-            const selectedOption = assessmentQuestions[currentQuestion].querySelector('.assessment-option.selected');
-            if (selectedOption) {
-                score += parseInt(selectedOption.dataset.value);
-            }
-            
-            // Hide assessment questions
-            assessmentQuestions.forEach(question => {
-                question.style.display = 'none';
-            });
-            
-            // Hide navigation
-            document.querySelector('.assessment-navigation').style.display = 'none';
-            
-            // Show results with appropriate message
-            let resultMessage = '';
-            let severity = '';
-            
-            if (score <= 4) {
-                severity = 'minimal';
-                resultMessage = 'Your responses suggest minimal symptoms of depression or anxiety. While you seem to be doing well overall, remember that it\'s always okay to reach out if you need support.';
-            } else if (score <= 9) {
-                severity = 'mild';
-                resultMessage = 'Your responses suggest mild symptoms of depression or anxiety. Our self-help resources could be helpful for you, and consider reaching out to a counselor if these feelings persist.';
-            } else if (score <= 14) {
-                severity = 'moderate';
-                resultMessage = 'Your responses indicate moderate symptoms of depression or anxiety. We recommend connecting with one of our counselors to discuss how you\'re feeling and explore support options.';
-            } else {
-                severity = 'severe';
-                resultMessage = 'Your responses suggest severe symptoms of depression or anxiety. We strongly encourage you to reach out for professional support immediately. You don\'t have to face this alone.';
-            }
-            
-            // Add severity class to results for styling if needed
-            assessmentResults.className = `assessment-results severity-${severity}`;
-            
-            resultText.textContent = resultMessage;
-            assessmentResults.style.display = 'block';
-            
-            // Update progress bar to 100%
-            assessmentProgress.style.width = '100%';
-        }
-
-        // Chat widget functionality
-        const chatBtn = document.getElementById('chatBtn');
-        
-        chatBtn.addEventListener('click', () => {
-            // In a real implementation, this would load the chat widget
-            alert('Chat support would open here. In production, this would load Tawk.to or another chat widget.');
-        });
-
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            
-            // Simulate form submission
-            setTimeout(() => {
-                alert('Thank you for your message! We\'ll get back to you soon.');
-                this.reset();
-            }, 500);
-        });
-
-        // Newsletter form handling
-        const newsletterForm = document.querySelector('.newsletter-form');
-        
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const emailInput = this.querySelector('input[type="email"]');
-            
-            // Simple validation
-            if (emailInput.value && emailInput.value.includes('@')) {
-                alert('Thank you for subscribing to our newsletter!');
-                emailInput.value = '';
-            } else {
-                alert('Please enter a valid email address.');
-            }
-        });
-
-        // Accessibility Features
-        const fontIncreaseBtn = document.getElementById('fontIncrease');
-        const fontDecreaseBtn = document.getElementById('fontDecrease');
-        const highContrastBtn = document.getElementById('highContrast');
-        const readPageBtn = document.getElementById('readPage');
-        
-        // Font size controls
-        fontIncreaseBtn.addEventListener('click', () => {
-            const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
-            document.body.style.fontSize = `${currentSize + 1}px`;
-        });
-        
-        fontDecreaseBtn.addEventListener('click', () => {
-            const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
-            if (currentSize > 14) {
-                document.body.style.fontSize = `${currentSize - 1}px`;
-            }
-        });
-        
-        // High contrast toggle
-        highContrastBtn.addEventListener('click', () => {
-            document.body.classList.toggle('high-contrast');
-            highContrastBtn.classList.toggle('active');
-        });
-        
-        // Read page aloud
-        readPageBtn.addEventListener('click', () => {
-            alert('This would activate text-to-speech functionality in a production environment.');
-        });
-
-        // Initialize any other interactive elements
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add any initialization code here
         });
     </script>
 </body>
 </html>
-
