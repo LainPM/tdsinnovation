@@ -1,1022 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TDS Innovation - Advancing Research and Collaboration">
-    <title>TDS Innovation | Research & Collaboration Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Coming Soon</title>
     <style>
+      *, *:after, *:before {
+          box-sizing: border;
+        }
+
         :root {
-            --primary: #2c3e50; /* Deep blue for professionalism */
-            --secondary: #3498db; /* Vibrant blue for energy */
-            --accent: #e74c3c; /* Bold red for highlights */
-            --light: #ecf0f1;
-            --dark: #1a252f;
-            --success: #2ecc71;
-            --warning: #f39c12;
+          font-size: 0.75vw;
+          --bg:#FF8A65;
+          --anime-speed: 0.2s;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: white;
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo h2 {
-            margin: 0;
-            font-size: 2rem;
-            background: linear-gradient(to right, var(--light), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientShift 8s ease infinite;
-            background-size: 200% 200%;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        #auth-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-left: 1rem;
-        }
-
-        #auth-buttons a {
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        #login-btn {
-            background-color: transparent;
-            border: 1px solid white;
-        }
-
-        #signup-btn {
-            background-color: var(--accent);
-            border: 1px solid var(--accent);
-        }
-
-        #login-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        #signup-btn:hover {
-            background-color: #c0392b;
-            border-color: #c0392b;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 1s 0.2s ease both;
-        }
-
-        .search-bar {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            animation: fadeInUp 1s 0.4s ease both;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            border: none;
-            font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .search-bar button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 0.7rem 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .search-bar button:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
-        }
-
-        /* Ticker */
-        .research-ticker {
-            background: var(--primary);
-            color: white;
-            padding: 1rem;
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 1.2rem;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            margin-bottom: 2rem;
-        }
-
-        .research-ticker span {
-            display: inline-block;
-            padding-left: 100%;
-            animation: ticker 10s linear infinite;
-        }
-
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Disciplines Section */
-        .disciplines {
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--accent);
-        }
-
-        .section-header p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-top: 1rem;
-        }
-
-        .discipline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .discipline-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            transform-style: preserve-3d;
-        }
-
-        .discipline-card:hover {
-            transform: translateY(-10px) perspective(1000px) rotateX(5deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .discipline-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .discipline-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .discipline-card .content {
-            padding: 1.5rem;
-        }
-
-        .discipline-card h3 {
-            margin-top: 0;
-            color: var(--primary);
-            transition: color 0.3s;
-        }
-
-        .discipline-card:hover h3 {
-            color: var(--secondary);
-        }
-
-        /* Featured Research */
-        .featured-research {
-            background-color: var(--light);
-            padding: 4rem 2rem;
-        }
-
-        .research-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .research-slider {
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            padding: 1rem 0;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-        }
-
-        .research-slider::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .research-slider::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        .research-slider::-webkit-scrollbar-thumb {
-            background: var(--secondary);
-            border-radius: 10px;
-        }
-
-        .research-slider::-webkit-scrollbar-thumb:hover {
-            background: #2980b9;
-        }
-
-        .research-card {
-            min-width: 300px;
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            scroll-snap-align: start;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .research-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .research-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .research-card .content {
-            padding: 1.5rem;
-        }
-
-        .research-card .meta {
-            display: flex;
-            justify-content: space-between;
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .research-card .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--accent);
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* Contribute Section */
-        .contribute {
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* Search Results Section */
-        .search-results-page {
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .search-result-item {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .search-result-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .search-result-item h3 {
-            margin-top: 0;
-            color: var(--primary);
-        }
-
-        .search-result-item .meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .search-result-item .snippet {
-            color: #444;
-            margin-bottom: 0.5rem;
-        }
-
-        .search-result-item a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .search-result-item a:hover {
-            text-decoration: underline;
-        }
-
-        /* Teleportation Overlay */
-        .teleport-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(52,152,219,0.8), rgba(0,0,0,0.9));
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+          height: 100vh;
+          font-family: arial;
+          background: var(--bg);
+          overflow: hidden;
+        }
+
+        .cow {
+          width: 30rem;
+          aspect-ratio: 2/1;
+          border-radius: 4rem/15%;
+          background-color: #fefefe;
+          position: absolute;
+          top: 40%;
+          z-index: 10;
+          transform-origin: 100% 150%;
+          left: 38%;
+          transform: translateY(15rem) rotate(90deg);
+          animation: jmb var(--anime-speed) linear, move calc(var(--anime-speed) * 10) linear;
+        }
+        .cow:before {
+          content: "";
+          position: absolute;
+          left: 11%;
+          top: 0;
+          width: 40%;
+          height: 60%;
+          color: #000;
+          background: currentcolor;
+          border-radius: 0 0 100% 50%;
+          box-shadow: 9rem -2rem 0 -2rem, 15rem -3rem 0 -3rem;
+        }
+        .cow:after {
+          content: "";
+          position: absolute;
+          left: 20%;
+          bottom: 6%;
+          color: #000;
+          background: currentcolor;
+          box-shadow: 8rem -4rem 0 -1rem;
+          width: 5rem;
+          aspect-ratio: 1/1;
+          border-radius: 43% 57% 51% 49%/51% 55% 45% 49%;
+        }
+        .cow .head {
+          position: absolute;
+          top: 0;
+          left: 100%;
+          z-index: 1;
+        }
+        .cow .head .face {
+          width: 11rem;
+          aspect-ratio: 12.5/7.5;
+          background: #fff;
+          box-shadow: -2rem 4.5rem #000 inset;
+          border-radius: 10% 100% 50% 45%/44% 72% 26% 25%;
+          transform: rotateX(180deg) rotate(-55deg) translate(-25%, -55%);
+          position: relative;
+          z-index: 10;
+        }
+        .cow .head:after, .cow .head:before {
+          content: "";
+          position: absolute;
+          top: -3.5rem;
+          left: -5.5rem;
+          transform: rotate(-25deg);
+          background: #000;
+          width: 4rem;
+          height: 5rem;
+          z-index: 20;
+          box-shadow: 0.2rem 0.1rem 0 0.2rem #fff inset;
+          border-radius: 0% 100% 38% 62%/41% 73% 27% 59%;
+        }
+        .cow .head:before {
+          z-index: 2;
+          top: -4rem;
+          left: -5rem;
+          transform: rotate(-5deg);
+        }
+        .cow .leg {
+          position: absolute;
+          top: 95%;
+          background: #FFF;
+          width: 1.5rem;
+          height: 3rem;
+          transform-origin: top center;
+        }
+        .cow .leg:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 90%;
+          width: 100%;
+          height: 2.5rem;
+          background: #FFF;
+          border-bottom: 1.5rem solid #000;
+        }
+        .cow .leg.b {
+          left: 4%;
+          animation: legMoveB var(--anime-speed) alternate infinite;
+        }
+        .cow .leg.b.l {
+          left: 13%;
+        }
+        .cow .leg.b.l:after {
+          left: 10%;
+          top: 75%;
+          background: #FFF;
+          transform: rotate(-5deg);
+        }
+        .cow .leg.b.r {
+          animation-delay: var(--anime-speed);
+        }
+        .cow .leg.b.r:after {
+          left: 32%;
+          top: 90%;
+          background: #FFF;
+          transform: rotate(-15deg);
+        }
+        .cow .leg.f {
+          right: 5%;
+          animation: legMoveF var(--anime-speed) alternate infinite;
+        }
+        .cow .leg.f.l {
+          right: 10%;
+          animation-delay: var(--anime-speed);
+        }
+        .cow .leg.f.l:after {
+          right: 10%;
+          left: auto;
+          top: 75%;
+          background: #FFF;
+          transform: rotate(5deg);
+        }
+        .cow .leg.f.r:after {
+          right: 20%;
+          left: auto;
+          top: 90%;
+          background: #FFF;
+          transform: rotate(10deg);
+        }
+        .cow .tail {
+          position: absolute;
+          right: 98%;
+          top: 12%;
+          width: 2rem;
+          height: 10rem;
+          border-left: 0.5rem solid #fff;
+          border-top: 0.5rem solid #fff;
+          border-radius: 100% 0% 51% 49%/42% 100% 0% 58%;
+          transform-origin: top left;
+          animation: tail 0.75s alternate infinite;
+        }
+        .cow .tail:after {
+          content: "";
+          position: absolute;
+          left: 7%;
+          top: 100%;
+          background: #000;
+          width: 1.5rem;
+          height: 1.75rem;
+          border-radius: 70% 30% 100% 0%/100% 30% 70% 0%;
+          transform: rotate(-60deg);
+        }
+
+        .well {
+          background: #000;
+          width: 30rem;
+          height: 2rem;
+          position: absolute;
+          top: calc(40% + 19rem);
+          left: 60%;
+          border-radius: 50%;
+        }
+        .well:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0%;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          box-shadow: 0 -1.2rem 0.25rem #000 inset;
+          z-index: 110;
+        }
+        .well::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 100%;
+          height: 24rem;
+          background: var(--bg);
+          z-index: 100;
+        }
+
+        .home-btn {
+          position: absolute;
+          left: -190%;
+          top: 2rem;
+          font-size: 2.5rem;
+          font-weight: bold;
+          color: #000;
+          background: #FFD600;
+          display: inline-block;
+          text-decoration: none;
+          padding: 1.5rem 3rem;
+          border-radius: 1rem;
+          transition: background 0.3s ease-in;
+          transform-origin: 45rem 45rem;
+          animation: btnAnim calc(var(--anime-speed) * 20) linear;
+        }
+        .home-btn:hover {
+          background: #FBC02D;
+        }
+
+        .text-box {
+          font-family: "Cabin Sketch", serif;
+          font-weight: 700;
+          color: #fff;
+          text-align: center;
+          position: absolute;
+          left: 10%;
+          top: 28%;
+          animation: textAnim calc(var(--anime-speed) * 18) linear;
+        }
+        .text-box h1 {
+          font-size: 24rem;
+          margin: 0;
+          line-height: 18rem;
+        }
+        .text-box p {
+          width: 42rem;
+          font-size: 5rem;
+          line-height: 1;
+          margin: 0;
+        }
+
+        @keyframes btnAnim {
+          0%, 48% {
+            transform: translateX(-10rem) rotate(95deg);
+          }
+          55%, 100% {
+            transform: translateX(0rem) rotate(0deg);
+          }
+        }
+        @keyframes textAnim {
+          0%, 60% {
+            top: 0%;
+            transform: translatey(0);
             opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s;
-        }
-
-        .teleport-overlay.active {
+          }
+          70%, 76%, 85% {
+            top: 28%;
+            transform: translatey(5%);
             opacity: 1;
-            pointer-events: auto;
+          }
+          73%, 79% {
+            top: 28%;
+            transform: translatey(-15%);
+            opacity: 1;
+          }
+          100% {
+            top: 28%;
+            transform: translatey(0);
+          }
         }
-
-        .teleport-content {
-            text-align: center;
-            transform: scale(0.8);
-            transition: transform 0.5s;
+        @keyframes move {
+          0% {
+            left: 0%;
+            transform: translateY(0) rotate(0deg);
+          }
+          85% {
+            left: 38%;
+            transform: translateY(0) rotate(0deg);
+          }
+          90% {
+            left: 40%;
+            transform: translateY(0) rotate(5deg);
+          }
+          95% {
+            left: 38%;
+            transform: translateY(0) rotate(90deg);
+          }
+          100% {
+            left: 38%;
+            transform: translateY(15rem) rotate(90deg);
+          }
         }
-
-        .teleport-overlay.active .teleport-content {
-            transform: scale(1);
+        @keyframes jmb {
+          0%, 100% {
+            transform: translatey(0);
+          }
+          50% {
+            transform: translatey(5px);
+          }
         }
-
-        .teleport-loader {
-            width: 60px;
-            height: 60px;
-            border: 6px solid var(--light);
-            border-top-color: var(--secondary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-            box-shadow: 0 0 20px rgba(52,152,219,0.5);
+        @keyframes legMoveB {
+          0% {
+            transform: rotate(2deg) translatey(0%);
+          }
+          100% {
+            transform: rotate(-5deg) translatey(-5%);
+          }
         }
-
-        .teleport-content h2 {
-            font-size: 2rem;
-            color: white;
+        @keyframes legMoveF {
+          0% {
+            transform: rotate(0deg) translatey(0%);
+          }
+          100% {
+            transform: rotate(-15deg) translatey(-5%);
+          }
         }
-
-        .teleport-content p {
-            color: #ddd;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-column h3 {
-            font-family: 'Playfair Display', serif;
-            margin-top: 0;
-        }
-
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-column ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-column ul li a:hover {
-            color: white;
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
-            }
-
-            .discipline-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            #auth-buttons {
-                margin-left: 0;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
+        @keyframes tail {
+          0% {
+            transform: rotate(3deg);
+            height: 10rem;
+          }
+          100% {
+            transform: rotate(-3deg);
+            height: 8rem;
+          }
         }
     </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <canvas id="particles" class="particles"></canvas>
-        <div class="header-content">
-            <nav>
-                <div class="logo">
-                    <h2>TDS Innovation</h2>
-                </div>
-                <div class="nav-links">
-                    <a href="#disciplines">Disciplines</a>
-                    <a href="#research">Research</a>
-                    <a href="#contribute">Contribute</a>
-                    <a href="#connect">Connect</a>
-                    <div id="auth-buttons">
-                        <a href="#" id="login-btn">Login</a>
-                        <a href="#" id="signup-btn">Sign Up</a>
-                    </div>
-                </div>
-            </nav>
-            <div class="hero">
-                <h1>Advance the Future of Research</h1>
-                <p>Empowering researchers, innovators, and collaborators to solve global challenges through cutting-edge tools and interdisciplinary partnerships.</p>
-                <div class="search-bar">
-                    <input type="text" id="search-input" placeholder="Search across 2,500,000+ research items...">
-                    <button id="search-button"><i class="fas fa-search"></i> Discover</button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Research Ticker -->
-    <section class="research-ticker">
-        <span id="ticker-text">Trending: AI in Precision Medicine Breakthroughs</span>
-    </section>
-
-    <!-- Disciplines Section -->
-    <section class="disciplines" id="disciplines">
-        <div class="section-header">
-            <h2>Explore Disciplines</h2>
-            <p>Discover interconnected fields driving innovation</p>
-        </div>
-        <div class="discipline-grid">
-            <div class="discipline-card" data-topic="Artificial Intelligence">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d" alt="AI">
-                <div class="content">
-                    <h3>Artificial Intelligence</h3>
-                    <p>Machine learning, neural networks, and cognitive computing</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Data Science">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Data Science">
-                <div class="content">
-                    <h3>Data Science</h3>
-                    <p>Big data analytics, visualization, and statistical modeling</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Sustainable Technologies">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8" alt="Sustainability">
-                <div class="content">
-                    <h3>Sustainable Technologies</h3>
-                    <p>Green energy, circular economy, and environmental solutions</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Healthcare Innovation">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" alt="Healthcare">
-                <div class="content">
-                    <h3>Healthcare Innovation</h3>
-                    <p>Medical technologies, digital health, and biotechnology</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Research -->
-    <section class="featured-research" id="research">
-        <div class="research-container">
-            <div class="section-header">
-                <h2>Featured Research</h2>
-                <p>Groundbreaking studies from our global community</p>
-            </div>
-            <div class="research-slider">
-                <div class="research-card">
-                    <span class="badge">New</span>
-                    <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc" alt="AI Research">
-                    <div class="content">
-                        <div class="meta">
-                            <span>Artificial Intelligence</span>
-                            <span>Jul 2025</span>
-                        </div>
-                        <h3>AI in Precision Medicine</h3>
-                        <p>Novel AI algorithms for personalized treatment plans</p>
-                    </div>
-                </div>
-                <div class="research-card">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173" alt="Data Science">
-                    <div class="content">
-                        <div class="meta">
-                            <span>Data Science</span>
-                            <span>Jun 2025</span>
-                        </div>
-                        <h3>Smart Cities Analytics</h3>
-                        <p>Data-driven urban planning with IoT integration</p>
-                    </div>
-                </div>
-                <div class="research-card">
-                    <span class="badge">Popular</span>
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Sustainability">
-                    <div class="content">
-                        <div class="meta">
-                            <span>Sustainability</span>
-                            <span>May 2025</span>
-                        </div>
-                        <h3>Climate Resilience Tech</h3>
-                        <p>Innovative solutions for climate adaptation</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contribute Section -->
-    <section class="contribute" id="contribute">
-        <div class="section-header">
-            <h2>Contribute to Innovation</h2>
-            <p>Join our community to share knowledge and drive impact</p>
-        </div>
-        <div class="discipline-grid">
-            <div class="discipline-card" data-topic="Submit Research">
-                <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff" alt="Submit Research">
-                <div class="content">
-                    <h3>Submit Research</h3>
-                    <p>Share your white papers, case studies, or prototypes</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Peer Review">
-                <img src="https://images.unsplash.com/photo-1516321310762-479437144403" alt="Peer Review">
-                <div class="content">
-                    <h3>Peer Review</h3>
-                    <p>Join our double-blind review process to ensure quality</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Collaborate">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Collaborate">
-                <div class="content">
-                    <h3>Collaborate</h3>
-                    <p>Partner with universities, startups, or researchers</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Funding">
-                <img src="https://images.unsplash.com/photo-1551288049-b1bd52206d36" alt="Funding">
-                <div class="content">
-                    <h3>Funding</h3>
-                    <p>Explore grants and sponsorship opportunities</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Connect Section -->
-    <section class="connect" id="connect">
-        <div class="section-header">
-            <h2>Connect with Us</h2>
-            <p>Engage with our community and stay updated</p>
-        </div>
-        <div class="discipline-grid">
-            <div class="discipline-card" data-topic="About Us">
-                <img src="https://images.unsplash.com/photo-1516321310762-479437144403" alt="About Us">
-                <div class="content">
-                    <h3>About Us</h3>
-                    <p>Learn about our mission to advance global research</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Contact">
-                <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff" alt="Contact">
-                <div class="content">
-                    <h3>Contact</h3>
-                    <p>Reach out for inquiries or collaborations</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Blog">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Blog">
-                <div class="content">
-                    <h3>Blog</h3>
-                    <p>Read insights, trends, and research stories</p>
-                </div>
-            </div>
-            <div class="discipline-card" data-topic="Events">
-                <img src="https://images.unsplash.com/photo-1551288049-b1bd52206d36" alt="Events">
-                <div class="content">
-                    <h3>Events</h3>
-                    <p>Join our webinars, hackathons, and symposiums</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Search Results Section -->
-    <section id="search-results" class="search-results-page" style="display: none;">
-        <div class="section-header">
-            <h2>Search Results</h2>
-            <p id="results-count">Showing results for "<span id="search-query"></span>"</p>
-        </div>
-        <div id="search-results-container"></div>
-    </section>
-
-    <!-- Teleportation Overlay -->
-    <div id="teleport-overlay" class="teleport-overlay">
-        <div class="teleport-content">
-            <div class="teleport-loader"></div>
-            <h2>Teleporting to <span id="teleport-topic"></span></h2>
-            <p>Exploring cutting-edge research...</p>
-        </div>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+        
+    <div class="cow">
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="leg b l"></div>
+      <div class="leg b r"></div>
+      <div class="leg f l"></div>
+      <div class="leg f r"></div>
+      <div class="tail"></div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>TDS Innovation</h3>
-                <p>Connecting knowledge, empowering discovery</p>
-            </div>
-            <div class="footer-column">
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="#disciplines">Disciplines</a></li>
-                    <li><a href="#research">Research Topics</a></li>
-                    <li><a href="#research">Methodologies</a></li>
-                    <li><a href="#research">Research Tools</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contribute</h3>
-                <ul>
-                    <li><a href="#contribute">Submit Research</a></li>
-                    <li><a href="#contribute">Peer Review</a></li>
-                    <li><a href="#contribute">Collaborate</a></li>
-                    <li><a href="#contribute">Funding</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Connect</h3>
-                <ul>
-                    <li><a href="#connect">About Us</a></li>
-                    <li><a href="#connect">Contact</a></li>
-                    <li><a href="#connect">Blog</a></li>
-                    <li><a href="#connect">Events</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>© <span id="year"></span> TDS Innovation. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Simulated research data
-        const researchItems = [
-            { title: "AI in Precision Medicine", content: "Novel AI algorithms for personalized treatment plans.", category: "Artificial Intelligence", img: "https://images.unsplash.com/photo-1575505586569-646b2ca898fc", date: "Jul 2025", citations: "42" },
-            { title: "Smart Cities Analytics", content: "Data-driven urban planning with IoT integration.", category: "Data Science", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173", date: "Jun 2025", citations: "28" },
-            { title: "Climate Resilience Tech", content: "Innovative solutions for climate adaptation.", category: "Sustainable Technologies", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa", date: "May 2025", citations: "15" },
-            { title: "Quantum Computing Applications", content: "Exploring quantum algorithms for complex problems.", category: "Artificial Intelligence", img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85", date: "Apr 2025", citations: "10" }
-        ];
-
-        // Research ticker
-        let currentResearchIndex = 0;
-        function updateTicker() {
-            document.getElementById('ticker-text').textContent = `Trending: ${researchItems[currentResearchIndex].title}`;
-            currentResearchIndex = (currentResearchIndex + 1) % researchItems.length;
-        }
-        updateTicker();
-        setInterval(updateTicker, 5000); // Update every 5 seconds
-
-        // Search functionality
-        document.getElementById('search-button').addEventListener('click', performSearch);
-        document.getElementById('search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') performSearch();
-        });
-
-        function performSearch() {
-            const query = document.getElementById('search-input').value.trim();
-            if (query) {
-                document.querySelectorAll('section:not(#search-results)').forEach(section => section.style.display = 'none');
-                document.getElementById('search-results').style.display = 'block';
-                document.getElementById('search-query').textContent = query;
-
-                const resultsContainer = document.getElementById('search-results-container');
-                resultsContainer.innerHTML = '';
-
-                const filteredResults = researchItems.filter(item => 
-                    item.title.toLowerCase().includes(query.toLowerCase()) || 
-                    item.content.toLowerCase().includes(query.toLowerCase()) ||
-                    item.category.toLowerCase().includes(query.toLowerCase())
-                );
-
-                filteredResults.forEach(result => {
-                    const resultElement = document.createElement('div');
-                    resultElement.className = 'search-result-item';
-                    resultElement.innerHTML = `
-                        <h3>${result.title}</h3>
-                        <div class="meta">${result.category} | ${result.date} | Cited by ${result.citations}</div>
-                        <p class="snippet">${result.content}</p>
-                        <a href="#" target="_blank">View Research</a>
-                    `;
-                    resultsContainer.appendChild(resultElement);
-                });
-
-                document.getElementById('results-count').textContent = `Showing ${filteredResults.length} results for "${query}"`;
-                window.scrollTo({ top: document.getElementById('search-results').offsetTop - 80, behavior: 'smooth' });
-            }
-        }
-
-        // Teleportation
-        document.querySelectorAll('.discipline-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const topic = this.getAttribute('data-topic');
-                teleportToTopic(topic);
-            });
-        });
-
-        function teleportToTopic(topic) {
-            const overlay = document.getElementById('teleport-overlay');
-            const topicElement = document.getElementById('teleport-topic');
-            topicElement.textContent = topic;
-            overlay.classList.add('active');
-
-            setTimeout(() => {
-                document.getElementById('search-input').value = topic;
-                performSearch();
-                setTimeout(() => overlay.classList.remove('active'), 1000);
-            }, 2000);
-        }
-
-        // Particle animation
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = document.querySelector('header').offsetHeight;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
-                this.color = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.1})`;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        const particles = [];
-        for (let i = 0; i < 100; i++) {
-            particles.push(new Particle());
-        }
-
-        function connect() {
-            for (let a = 0; a < particles.length; a++) {
-                for (let b = a; b < particles.length; b++) {
-                    const distance = Math.sqrt(
-                        Math.pow(particles[a].x - particles[b].x, 2) + 
-                        Math.pow(particles[a].y - particles[b].y, 2)
-                    );
-                    if (distance < 100) {
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance/100})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[a].x, particles[a].y);
-                        ctx.lineTo(particles[b].x, particles[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-            }
-            connect();
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        window.addEventListener('resize', function() {
-            canvas.width = window.innerWidth;
-            canvas.height = document.querySelector('header').offsetHeight;
-        });
-
-        // Navigation smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-</body>
+    <div class="well"><a class="home-btn">Go Home</a></div>
+    <div class="text-box">
+      <h1>COMING</h1>
+      <p>Something awesome is arriving in December!</p>
+    </div>
+  </body>
 </html>
