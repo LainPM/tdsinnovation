@@ -225,6 +225,131 @@
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
+        
+        /* FAQ Animations */
+        .faq-question {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(14, 165, 233, 0.05);
+        }
+        
+        .faq-answer {
+            transition: all 0.3s ease;
+        }
+        
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+        
+        /* Contact Form Animations */
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+        
+        /* Social Media Hover Effects */
+        .social-link {
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Social Modal Animations */
+        .social-step {
+            transition: all 0.3s ease;
+        }
+        
+        .social-step.completed {
+            background-color: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+        }
+        
+        .social-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .social-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Floating Shapes Animation */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(14, 165, 233, 0.1));
+            border-radius: 50%;
+            animation: floatShape 20s infinite linear;
+        }
+        
+        .shape-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+        
+        .shape-3 {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+        
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            right: 30%;
+            animation-delay: -15s;
+        }
+        
+        .shape-5 {
+            width: 70px;
+            height: 70px;
+            top: 40%;
+            left: 60%;
+            animation-delay: -7s;
+        }
+        
+        @keyframes floatShape {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800 bg-white">
@@ -244,6 +369,7 @@
                     <a href="#home" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
                     <a href="#products" class="text-gray-700 hover:text-primary-600 transition-colors">Products</a>
                     <a href="#about" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
+                    <a href="#faq" class="text-gray-700 hover:text-primary-600 transition-colors">FAQ</a>
                     <a href="#contact" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
                 </div>
                 
@@ -271,29 +397,88 @@
             <a href="#home" class="block text-gray-700 hover:text-primary-600 transition-colors">Home</a>
             <a href="#products" class="block text-gray-700 hover:text-primary-600 transition-colors">Products</a>
             <a href="#about" class="block text-gray-700 hover:text-primary-600 transition-colors">About</a>
+            <a href="#faq" class="block text-gray-700 hover:text-primary-600 transition-colors">FAQ</a>
             <a href="#contact" class="block text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-20 pb-16 hero-gradient">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="home" class="pt-20 pb-16 hero-gradient relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
+                <div class="mb-8">
+                    <div class="inline-flex items-center space-x-2 bg-white bg-opacity-10 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
+                        <span class="animate-pulse w-2 h-2 bg-green-400 rounded-full"></span>
+                        <span class="text-white text-sm font-medium">🚀 10,000+ Creators Trust Us</span>
+                    </div>
+                </div>
+                
                 <h1 class="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-6 animate-float">
                     Innovative Tools for the 
                     <span class="interactive-text">Modern Creator</span>
                 </h1>
+                
                 <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto animate-float animate-delay-100">
                     High-quality digital products designed to boost your productivity and creativity. 
-                    From Notion templates to AI prompts, we've got everything you need to succeed.
+                    <span class="font-semibold text-green-600">Everything is FREE!</span> Just follow our social media and join our community.
                 </p>
+                
+                <!-- Stats Section -->
+                <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-primary-600 counter" data-target="10000">0</div>
+                        <div class="text-sm text-gray-600">Happy Customers</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-primary-600 counter" data-target="50">0</div>
+                        <div class="text-sm text-gray-600">Products</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-primary-600 counter" data-target="99">0</div>
+                        <div class="text-sm text-gray-600">% Satisfaction</div>
+                    </div>
+                </div>
+                
                 <div class="flex flex-col sm:flex-row gap-4 justify-center animate-float animate-delay-200">
-                    <a href="#products" class="teleport-button bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
-                        Explore Products
+                    <a href="#products" class="teleport-button bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors group">
+                        <span class="flex items-center space-x-2">
+                            <span>Explore Products</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </a>
-                    <a href="#about" class="teleport-button border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors">
-                        Learn More
+                    <a href="#about" class="teleport-button border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors group">
+                        <span class="flex items-center space-x-2">
+                            <span>Learn More</span>
+                            <i class="fas fa-play group-hover:scale-110 transition-transform"></i>
+                        </span>
                     </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="mt-12 flex flex-wrap justify-center items-center gap-8 opacity-60">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-gift text-green-500"></i>
+                        <span class="text-sm text-gray-600">100% Free</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-users text-blue-500"></i>
+                        <span class="text-sm text-gray-600">Join Community</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-headset text-purple-500"></i>
+                        <span class="text-sm text-gray-600">24/7 Support</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -304,30 +489,72 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">Our Products</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Discover our collection of premium digital products designed to enhance your workflow
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover our collection of premium digital products designed to enhance your workflow. 
+                    Each product is carefully crafted by our team of experts to help you work smarter and achieve more.
                 </p>
+            </div>
+            
+            <!-- Product Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="product-filter teleport-button px-6 py-2 bg-primary-600 text-white rounded-full text-sm font-medium hover:bg-primary-700 transition-colors" data-category="all">
+                    All Products
+                </button>
+                <button class="product-filter teleport-button px-6 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-primary-600 hover:text-white transition-colors" data-category="templates">
+                    Productivity Kits
+                </button>
+                <button class="product-filter teleport-button px-6 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-primary-600 hover:text-white transition-colors" data-category="ai">
+                    AI Tools & Prompt Packs
+                </button>
+                <button class="product-filter teleport-button px-6 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-primary-600 hover:text-white transition-colors" data-category="resources">
+                    Launch-Ready Website Kits
+                </button>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Product 1 -->
-                <div class="product-card bg-white rounded-xl shadow-lg p-6 transition-all duration-300">
-                    <div class="w-full h-48 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-4 flex items-center justify-center">
+                <div class="product-card bg-white rounded-xl shadow-lg p-6 transition-all duration-300" data-category="templates">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
                         <i class="fas fa-file-alt text-4xl text-primary-600"></i>
+                        <div class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">BEST SELLER</div>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Notion Productivity Template</h3>
-                    <p class="text-gray-600 mb-4">Complete project management system with task tracking, goal setting, and habit tracking.</p>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-2xl font-bold text-primary-600">$29</span>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-primary-600 font-medium">PRODUCTIVITY KIT</span>
                         <div class="flex items-center space-x-1">
-                            <i class="fas fa-star text-yellow-400"></i>
-                            <span class="text-gray-600">4.8 (127)</span>
+                            <i class="fas fa-star text-yellow-400 text-sm"></i>
+                            <span class="text-gray-600 text-sm">4.8 (127)</span>
                         </div>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Productivity Kit</h3>
+                    <p class="text-gray-600 mb-4 text-sm">All-in-one digital system for creators and teams — planning, tracking, and automation in seamless workflows.</p>
+                    
+                    <!-- Features -->
+                    <div class="mb-4">
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">Task Management</span>
+                        </div>
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">Goal Tracking</span>
+                        </div>
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">Team Collaboration</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl font-bold text-green-600">FREE</span>
+                            <span class="text-sm text-gray-500 line-through">$49</span>
+                        </div>
+                        <span class="text-xs text-green-600 font-medium">100% FREE</span>
+                    </div>
                     <div class="flex space-x-2">
-                        <button onclick="addToCart('notion-template', 'Notion Productivity Template', 29)" class="teleport-button flex-1 bg-primary-600 text-white py-2 px-4 rounded-lg hover:bg-primary-700 transition-colors">
-                            Add to Cart
-                        </button>
+                        <a href="https://www.notion.com/product" target="_blank" rel="noopener" class="teleport-button flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+                            <i class="fas fa-download mr-2"></i>Get Free
+                        </a>
                         <button onclick="toggleWishlist('notion-template')" class="teleport-button p-2 text-gray-400 hover:text-red-500 transition-colors">
                             <i class="fas fa-heart"></i>
                         </button>
@@ -335,23 +562,48 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="product-card bg-white rounded-xl shadow-lg p-6 transition-all duration-300">
-                    <div class="w-full h-48 bg-gradient-to-br from-secondary-100 to-primary-100 rounded-lg mb-4 flex items-center justify-center">
+                <div class="product-card bg-white rounded-xl shadow-lg p-6 transition-all duration-300" data-category="ai">
+                    <div class="w-full h-48 bg-gradient-to-br from-secondary-100 to-primary-100 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
                         <i class="fas fa-robot text-4xl text-secondary-600"></i>
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">NEW</div>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">AI Prompt Collection</h3>
-                    <p class="text-gray-600 mb-4">500+ carefully crafted prompts for ChatGPT, Midjourney, and other AI tools.</p>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-2xl font-bold text-primary-600">$19</span>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-secondary-600 font-medium">AI TOOLS & PROMPT PACK</span>
                         <div class="flex items-center space-x-1">
-                            <i class="fas fa-star text-yellow-400"></i>
-                            <span class="text-gray-600">4.9 (89)</span>
+                            <i class="fas fa-star text-yellow-400 text-sm"></i>
+                            <span class="text-gray-600 text-sm">4.9 (89)</span>
                         </div>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">AI Tools & Prompt Pack</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Ready-to-use tools and expert-crafted prompt collections for content creation, strategy, automation, and more.</p>
+                    
+                    <!-- Features -->
+                    <div class="mb-4">
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">500+ Prompts</span>
+                        </div>
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">Multiple AI Platforms</span>
+                        </div>
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">Regular Updates</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl font-bold text-green-600">FREE</span>
+                            <span class="text-sm text-gray-500 line-through">$39</span>
+                        </div>
+                        <span class="text-xs text-green-600 font-medium">100% FREE</span>
+                    </div>
                     <div class="flex space-x-2">
-                        <button onclick="addToCart('ai-prompts', 'AI Prompt Collection', 19)" class="teleport-button flex-1 bg-primary-600 text-white py-2 px-4 rounded-lg hover:bg-primary-700 transition-colors">
-                            Add to Cart
-                        </button>
+                        <a href="https://chatgpt.com/" target="_blank" rel="noopener" class="teleport-button flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+                            <i class="fas fa-download mr-2"></i>Get Free
+                        </a>
                         <button onclick="toggleWishlist('ai-prompts')" class="teleport-button p-2 text-gray-400 hover:text-red-500 transition-colors">
                             <i class="fas fa-heart"></i>
                         </button>
@@ -359,23 +611,48 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="product-card bg-white rounded-xl shadow-lg p-6 transition-all duration-300">
-                    <div class="w-full h-48 bg-gradient-to-br from-green-100 to-blue-100 rounded-lg mb-4 flex items-center justify-center">
+                <div class="product-card bg-white rounded-xl shadow-lg p-6 transition-all duration-300" data-category="resources">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-100 to-blue-100 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
                         <i class="fas fa-code text-4xl text-green-600"></i>
+                        <div class="absolute top-2 right-2 bg-purple-500 text-white text-xs px-2 py-1 rounded-full">POPULAR</div>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Website Template Bundle</h3>
-                    <p class="text-gray-600 mb-4">5 responsive website templates for portfolios, businesses, and landing pages.</p>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-2xl font-bold text-primary-600">$49</span>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-green-600 font-medium">LAUNCH-READY WEBSITE KIT</span>
                         <div class="flex items-center space-x-1">
-                            <i class="fas fa-star text-yellow-400"></i>
-                            <span class="text-gray-600">4.7 (156)</span>
+                            <i class="fas fa-star text-yellow-400 text-sm"></i>
+                            <span class="text-gray-600 text-sm">4.7 (156)</span>
                         </div>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Launch-Ready Website Kit</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Beautiful, conversion-focused website designs with setup guides — perfect for personal brands, startups, and agencies.</p>
+                    
+                    <!-- Features -->
+                    <div class="mb-4">
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">5 Templates</span>
+                        </div>
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">Fully Responsive</span>
+                        </div>
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-check text-green-500 text-xs"></i>
+                            <span class="text-gray-600 text-xs">SEO Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl font-bold text-green-600">FREE</span>
+                            <span class="text-sm text-gray-500 line-through">$99</span>
+                        </div>
+                        <span class="text-xs text-green-600 font-medium">100% FREE</span>
+                    </div>
                     <div class="flex space-x-2">
-                        <button onclick="addToCart('website-templates', 'Website Template Bundle', 49)" class="teleport-button flex-1 bg-primary-600 text-white py-2 px-4 rounded-lg hover:bg-primary-700 transition-colors">
-                            Add to Cart
-                        </button>
+                        <a href="https://wordpress.com/" target="_blank" rel="noopener" class="teleport-button flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+                            <i class="fas fa-download mr-2"></i>Get Free
+                        </a>
                         <button onclick="toggleWishlist('website-templates')" class="teleport-button p-2 text-gray-400 hover:text-red-500 transition-colors">
                             <i class="fas fa-heart"></i>
                         </button>
@@ -388,12 +665,26 @@
     <!-- About Section -->
     <section id="about" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">About TDS Innovation</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    We're passionate about creating digital tools that help creators, entrepreneurs, and freelancers 
+                    work smarter, not harder. Our products are designed with real-world use cases in mind.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">About TDS Innovation</h2>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Our Mission</h3>
                     <p class="text-lg text-gray-600 mb-6">
-                        We're passionate about creating digital tools that help creators, entrepreneurs, and freelancers 
-                        work smarter, not harder. Our products are designed with real-world use cases in mind.
+                        At TDS Innovation, we believe that every creator deserves access to professional-grade tools that don't break the bank. 
+                        Our mission is to democratize digital productivity by providing high-quality templates, prompts, and resources 
+                        that help you focus on what matters most - creating amazing content.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Founded in 2020, we've helped over 10,000 creators, entrepreneurs, and freelancers streamline their workflows 
+                        and boost their productivity. Our team consists of designers, developers, and content creators who understand 
+                        the challenges you face daily.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-center space-x-3">
@@ -408,13 +699,155 @@
                             <i class="fas fa-check-circle text-green-500 text-xl"></i>
                             <span class="text-gray-700">Lifetime updates and support</span>
                         </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <span class="text-gray-700">Commercial license included</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <span class="text-gray-700">30-day money-back guarantee</span>
+                        </div>
                     </div>
                 </div>
                 <div class="bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl p-8">
                     <div class="text-center">
                         <i class="fas fa-rocket text-6xl text-primary-600 mb-4"></i>
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Join 10,000+ Creators</h3>
-                        <p class="text-gray-600">Start your journey to better productivity today</p>
+                        <p class="text-gray-600 mb-4">Start your journey to better productivity today</p>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-white bg-opacity-50 rounded-lg p-3">
+                                <div class="font-bold text-primary-600">10K+</div>
+                                <div class="text-gray-600">Happy Customers</div>
+                            </div>
+                            <div class="bg-white bg-opacity-50 rounded-lg p-3">
+                                <div class="font-bold text-primary-600">50+</div>
+                                <div class="text-gray-600">Products</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Meet Our Team</h3>
+                <p class="text-gray-600">The passionate people behind TDS Innovation</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user text-white text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Sarah Johnson</h4>
+                    <p class="text-primary-600 mb-2">Founder & CEO</p>
+                    <p class="text-gray-600 text-sm">Former product manager at Google, passionate about creator tools</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-secondary-400 to-primary-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Mike Chen</h4>
+                    <p class="text-primary-600 mb-2">Lead Developer</p>
+                    <p class="text-gray-600 text-sm">Full-stack developer with 8+ years building digital products</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-blue-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-palette text-white text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Emma Davis</h4>
+                    <p class="text-primary-600 mb-2">Design Director</p>
+                    <p class="text-gray-600 text-sm">Award-winning designer focused on user experience</p>
+                </div>
+            </div>
+
+            <!-- Values Section -->
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Our Values</h3>
+                <p class="text-gray-600">The principles that guide everything we do</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                    <i class="fas fa-lightbulb text-4xl text-primary-600 mb-4"></i>
+                    <h4 class="font-semibold text-gray-900 mb-2">Innovation</h4>
+                    <p class="text-gray-600">We constantly push boundaries to create cutting-edge tools that solve real problems.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                    <i class="fas fa-heart text-4xl text-primary-600 mb-4"></i>
+                    <h4 class="font-semibold text-gray-900 mb-2">Customer First</h4>
+                    <p class="text-gray-600">Every decision we make is guided by what's best for our customers and their success.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                    <i class="fas fa-shield-alt text-4xl text-primary-600 mb-4"></i>
+                    <h4 class="font-semibold text-gray-900 mb-2">Quality</h4>
+                    <p class="text-gray-600">We never compromise on quality, ensuring every product meets the highest standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg text-gray-600">Everything you need to know about our products and services</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-gray-50 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors">
+                        <span class="font-semibold text-gray-900">How do I download my purchased products?</span>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-600">After completing your purchase, you'll receive an email with download links. You can also access your downloads from your account dashboard. All products are delivered instantly as digital files.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-gray-50 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors">
+                        <span class="font-semibold text-gray-900">Do you offer refunds?</span>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-600">Yes, we offer a 30-day money-back guarantee. If you're not satisfied with your purchase, contact our support team within 30 days for a full refund. No questions asked.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-gray-50 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors">
+                        <span class="font-semibold text-gray-900">Can I use these templates for commercial projects?</span>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-600">Absolutely! All our templates and products come with commercial licenses. You can use them for personal and commercial projects without any restrictions.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-gray-50 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors">
+                        <span class="font-semibold text-gray-900">Do you provide support for your products?</span>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-600">Yes! We provide comprehensive documentation and video tutorials for all products. Our support team is available 24/7 to help you with any questions or issues.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-gray-50 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors">
+                        <span class="font-semibold text-gray-900">Are your products compatible with the latest software versions?</span>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-600">We regularly update all our products to ensure compatibility with the latest software versions. You'll receive free updates for life when you purchase any of our products.</p>
                     </div>
                 </div>
             </div>
@@ -423,26 +856,111 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-16 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">Get in Touch</h2>
-            <p class="text-lg text-gray-600 mb-8">
-                Have questions about our products? We'd love to hear from you.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <i class="fas fa-envelope text-3xl text-primary-600 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Email</h3>
-                    <p class="text-gray-600">hello@tdsinnovation.com</p>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">Get in Touch</h2>
+                <p class="text-lg text-gray-600">Have questions about our products? We'd love to hear from you.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all">
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="billing">Billing Question</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="teleport-button w-full bg-primary-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
                 </div>
-                <div class="text-center">
-                    <i class="fas fa-clock text-3xl text-primary-600 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Response Time</h3>
-                    <p class="text-gray-600">Within 24 hours</p>
-                </div>
-                <div class="text-center">
-                    <i class="fas fa-headset text-3xl text-primary-600 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Support</h3>
-                    <p class="text-gray-600">24/7 Customer Care</p>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-primary-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Email</h4>
+                                    <p class="text-gray-600">hello@tdsinnovation.com</p>
+                                    <p class="text-sm text-gray-500">We'll respond within 24 hours</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-clock text-primary-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Business Hours</h4>
+                                    <p class="text-gray-600">Monday - Friday: 9AM - 6PM EST</p>
+                                    <p class="text-sm text-gray-500">Weekend support available</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-headset text-primary-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Live Support</h4>
+                                    <p class="text-gray-600">Available 24/7</p>
+                                    <p class="text-sm text-gray-500">Chat with us anytime</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Follow Us</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fab fa-twitter text-blue-400 text-xl"></i>
+                                <span class="text-gray-700">Twitter</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fab fa-instagram text-pink-400 text-xl"></i>
+                                <span class="text-gray-700">Instagram</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fab fa-linkedin text-blue-600 text-xl"></i>
+                                <span class="text-gray-700">LinkedIn</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fab fa-youtube text-red-500 text-xl"></i>
+                                <span class="text-gray-700">YouTube</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -459,9 +977,21 @@
                 <div>
                     <h4 class="font-semibold mb-4">Products</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Notion Templates</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">AI Prompts</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Website Templates</a></li>
+                        <li>
+                            <a href="https://www.notion.com/product" target="_blank" rel="noopener" class="hover:text-white transition-colors" title="All-in-one digital systems for creators and teams — combining planning, tracking, and automation into seamless workflows.">
+                                Productivity Kits
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/" target="_blank" rel="noopener" class="hover:text-white transition-colors" title="Ready-to-use tools and expert-crafted prompt collections for content creation, strategy, automation, and more.">
+                                AI Tools & Prompt Packs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wordpress.com/" target="_blank" rel="noopener" class="hover:text-white transition-colors" title="Beautiful, conversion-focused website designs with setup guides — perfect for personal brands, startups, and agencies.">
+                                Launch-Ready Website Kits
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div>
@@ -521,6 +1051,84 @@
         </div>
     </div>
 
+    <!-- Social Media Modal -->
+    <div id="socialModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-md w-full teleport-modal">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold">Get Your Free Download!</h3>
+                        <button onclick="closeSocialModal()" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-gift text-green-600 text-2xl"></i>
+                        </div>
+                        <h4 id="socialModalProduct" class="text-lg font-semibold text-gray-900 mb-2">Product Name</h4>
+                        <p class="text-gray-600 text-sm">Follow us on social media and join our Discord to unlock your free download!</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="social-step" data-step="twitter">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fab fa-twitter text-blue-400 text-xl"></i>
+                                    <div>
+                                        <h5 class="font-medium text-gray-900">Follow on Twitter</h5>
+                                        <p class="text-sm text-gray-600">@PalkiSharmaFP</p>
+                                    </div>
+                                </div>
+                                <button onclick="followSocial('twitter')" class="social-btn bg-blue-400 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-500 transition-colors" data-original-text="Follow">
+                                    Follow
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="social-step" data-step="instagram">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fab fa-instagram text-pink-400 text-xl"></i>
+                                    <div>
+                                        <h5 class="font-medium text-gray-900">Follow on Instagram</h5>
+                                        <p class="text-sm text-gray-600">@anchor_palkisharma</p>
+                                    </div>
+                                </div>
+                                <button onclick="followSocial('instagram')" class="social-btn bg-pink-400 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-pink-500 transition-colors" data-original-text="Follow">
+                                    Follow
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="social-step" data-step="discord">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fab fa-discord text-indigo-500 text-xl"></i>
+                                    <div>
+                                        <h5 class="font-medium text-gray-900">Join Discord</h5>
+                                        <p class="text-sm text-gray-600">Palki Sharma Community</p>
+                                    </div>
+                                </div>
+                                <button onclick="followSocial('discord')" class="social-btn bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-600 transition-colors" data-original-text="Join">
+                                    Join
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="downloadBtn" onclick="downloadProduct()" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors opacity-50 cursor-not-allowed" disabled>
+                            <i class="fas fa-download mr-2"></i>Download Now
+                        </button>
+                        <p class="text-xs text-gray-500 mt-2">Complete all steps above to unlock download</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Wishlist Modal -->
     <div id="wishlistModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-4">
@@ -561,6 +1169,14 @@
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('-translate-y-full');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.add('-translate-y-full');
+            });
         });
 
         // Cart functionality
@@ -638,65 +1254,37 @@
             updateWishlistDisplay();
         }
 
-        function updateWishlistDisplay() {
-            const wishlistCount = document.getElementById('wishlistCount');
-            wishlistCount.textContent = wishlist.length;
-        }
 
-        function openWishlist() {
-            const wishlistModal = document.getElementById('wishlistModal');
-            const wishlistItems = document.getElementById('wishlistItems');
-            
-            wishlistItems.innerHTML = '';
-            if (wishlist.length === 0) {
-                wishlistItems.innerHTML = '<p class="text-gray-500 text-center">Your wishlist is empty</p>';
-            } else {
-                // This would typically load product details from a database
-                wishlist.forEach(id => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'flex justify-between items-center p-3 bg-gray-50 rounded';
-                    itemElement.innerHTML = `
-                        <span class="font-semibold">Product ${id}</span>
-                        <button onclick="removeFromWishlist('${id}')" class="text-red-500 hover:text-red-700">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    `;
-                    wishlistItems.appendChild(itemElement);
-                });
-            }
-            
-            wishlistModal.classList.remove('hidden');
-        }
-
-        function removeFromWishlist(id) {
-            const itemIndex = wishlist.indexOf(id);
-            if (itemIndex > -1) {
-                wishlist.splice(itemIndex, 1);
-                updateWishlistDisplay();
-                openWishlist(); // Refresh the modal
-            }
-        }
-
-        function closeWishlist() {
-            document.getElementById('wishlistModal').classList.add('hidden');
-        }
 
         // Event listeners
-        document.getElementById('cartBtn').addEventListener('click', openCart);
-        document.getElementById('wishlistBtn').addEventListener('click', openWishlist);
+        const cartBtn = document.getElementById('cartBtn');
+        const wishlistBtn = document.getElementById('wishlistBtn');
+        const cartModal = document.getElementById('cartModal');
+        const wishlistModal = document.getElementById('wishlistModal');
+
+        if (cartBtn) {
+            cartBtn.addEventListener('click', openCart);
+        }
+        if (wishlistBtn) {
+            wishlistBtn.addEventListener('click', openWishlist);
+        }
 
         // Close modals when clicking outside
-        document.getElementById('cartModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeCart();
-            }
-        });
+        if (cartModal) {
+            cartModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeCart();
+                }
+            });
+        }
 
-        document.getElementById('wishlistModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeWishlist();
-            }
-        });
+        if (wishlistModal) {
+            wishlistModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeWishlist();
+                }
+            });
+        }
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -717,6 +1305,8 @@
         // Particle system
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
             const particleCount = 20;
             
             for (let i = 0; i < particleCount; i++) {
@@ -768,7 +1358,9 @@
         function initializeTeleportEffects() {
             const buttons = document.querySelectorAll('.teleport-button');
             buttons.forEach(button => {
-                addTeleportEffect(button);
+                if (button) {
+                    addTeleportEffect(button);
+                }
             });
         }
 
@@ -801,63 +1393,346 @@
         // Enhanced modal functions with teleport effects
         function openCart() {
             const modal = document.getElementById('cartModal');
+            if (!modal) return;
+            
             modal.classList.remove('hidden');
             const modalContent = modal.querySelector('.teleport-modal');
-            modalContent.style.transform = 'scale(0.1) rotate(-360deg)';
-            modalContent.style.opacity = '0';
-            
-            setTimeout(() => {
-                modalContent.style.transform = 'scale(1) rotate(0deg)';
-                modalContent.style.opacity = '1';
-                modalContent.style.transition = 'all 0.4s ease-out';
-            }, 10);
+            if (modalContent) {
+                modalContent.style.transform = 'scale(0.1) rotate(-360deg)';
+                modalContent.style.opacity = '0';
+                
+                setTimeout(() => {
+                    modalContent.style.transform = 'scale(1) rotate(0deg)';
+                    modalContent.style.opacity = '1';
+                    modalContent.style.transition = 'all 0.4s ease-out';
+                }, 10);
+            }
         }
 
         function closeCart() {
             const modal = document.getElementById('cartModal');
-            const modalContent = modal.querySelector('.teleport-modal');
-            modalContent.classList.add('teleport-modal-out');
+            if (!modal) return;
             
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modalContent.classList.remove('teleport-modal-out');
-            }, 400);
+            const modalContent = modal.querySelector('.teleport-modal');
+            if (modalContent) {
+                modalContent.classList.add('teleport-modal-out');
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modalContent.classList.remove('teleport-modal-out');
+                }, 400);
+            }
         }
 
         function openWishlist() {
             const modal = document.getElementById('wishlistModal');
+            if (!modal) return;
+            
             modal.classList.remove('hidden');
             const modalContent = modal.querySelector('.teleport-modal');
-            modalContent.style.transform = 'scale(0.1) rotate(-360deg)';
-            modalContent.style.opacity = '0';
-            
-            setTimeout(() => {
-                modalContent.style.transform = 'scale(1) rotate(0deg)';
-                modalContent.style.opacity = '1';
-                modalContent.style.transition = 'all 0.4s ease-out';
-            }, 10);
+            if (modalContent) {
+                modalContent.style.transform = 'scale(0.1) rotate(-360deg)';
+                modalContent.style.opacity = '0';
+                
+                setTimeout(() => {
+                    modalContent.style.transform = 'scale(1) rotate(0deg)';
+                    modalContent.style.opacity = '1';
+                    modalContent.style.transition = 'all 0.4s ease-out';
+                }, 10);
+            }
             
             const wishlistItems = document.getElementById('wishlistItems');
-            wishlistItems.innerHTML = '';
-            if (wishlist.length === 0) {
-                wishlistItems.innerHTML = '<p class="text-gray-500 text-center">Your wishlist is empty</p>';
-            } else {
-                wishlist.forEach(id => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'flex justify-between items-center p-3 bg-gray-50 rounded teleport-in';
-                    itemElement.innerHTML = `
-                        <span class="font-semibold">Product ${id}</span>
-                        <button onclick="removeFromWishlist('${id}')" class="text-red-500 hover:text-red-700 teleport-button">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    `;
-                    wishlistItems.appendChild(itemElement);
-                });
+            if (wishlistItems) {
+                wishlistItems.innerHTML = '';
+                if (wishlist.length === 0) {
+                    wishlistItems.innerHTML = '<p class="text-gray-500 text-center">Your wishlist is empty</p>';
+                } else {
+                    wishlist.forEach(id => {
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'flex justify-between items-center p-3 bg-gray-50 rounded teleport-in';
+                        itemElement.innerHTML = `
+                            <span class="font-semibold">Product ${id}</span>
+                            <button onclick="removeFromWishlist('${id}')" class="text-red-500 hover:text-red-700 teleport-button">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        `;
+                        wishlistItems.appendChild(itemElement);
+                    });
+                }
             }
         }
 
         function closeWishlist() {
             const modal = document.getElementById('wishlistModal');
+            if (!modal) return;
+            
+            const modalContent = modal.querySelector('.teleport-modal');
+            if (modalContent) {
+                modalContent.classList.add('teleport-modal-out');
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modalContent.classList.remove('teleport-modal-out');
+                }, 400);
+            }
+        }
+
+        // Cart functionality
+        function addToCart(id, name, price) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            cartTotal += price;
+            updateCartDisplay();
+            showNotification('Item added to cart!');
+        }
+
+        function removeFromCart(id) {
+            const itemIndex = cart.findIndex(item => item.id === id);
+            if (itemIndex > -1) {
+                const item = cart[itemIndex];
+                cartTotal -= item.price * item.quantity;
+                cart.splice(itemIndex, 1);
+                updateCartDisplay();
+                showNotification('Item removed from cart!');
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            
+            // Update cart count
+            if (cartCount) {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            }
+            
+            // Update cart items display
+            if (cartItems) {
+                cartItems.innerHTML = '';
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex justify-between items-center';
+                    itemElement.innerHTML = `
+                        <div>
+                            <h4 class="font-semibold">${item.name}</h4>
+                            <p class="text-gray-600">$${item.price} x ${item.quantity}</p>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 teleport-button">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    `;
+                    cartItems.appendChild(itemElement);
+                });
+            }
+            
+            // Update total
+            if (cartTotalElement) {
+                cartTotalElement.textContent = `$${cartTotal}`;
+            }
+        }
+
+        // Wishlist functionality
+        function toggleWishlist(id) {
+            const itemIndex = wishlist.indexOf(id);
+            if (itemIndex > -1) {
+                wishlist.splice(itemIndex, 1);
+                showNotification('Removed from wishlist!');
+            } else {
+                wishlist.push(id);
+                showNotification('Added to wishlist!');
+            }
+            updateWishlistDisplay();
+        }
+
+        function removeFromWishlist(id) {
+            const itemIndex = wishlist.indexOf(id);
+            if (itemIndex > -1) {
+                wishlist.splice(itemIndex, 1);
+                updateWishlistDisplay();
+                openWishlist(); // Refresh the modal
+            }
+        }
+
+        function updateWishlistDisplay() {
+            const wishlistCount = document.getElementById('wishlistCount');
+            if (wishlistCount) {
+                wishlistCount.textContent = wishlist.length;
+            }
+        }
+
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!');
+                return;
+            }
+            showNotification('Redirecting to checkout...');
+            // Here you would typically redirect to a payment processor
+            setTimeout(() => {
+                closeCart();
+                cart = [];
+                cartTotal = 0;
+                updateCartDisplay();
+            }, 2000);
+        }
+
+        // FAQ Functionality
+        function initializeFAQ() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.closest('.faq-item');
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const icon = this.querySelector('i');
+                    
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-answer').forEach(item => {
+                        if (item !== answer) {
+                            item.classList.add('hidden');
+                            item.closest('.faq-item').querySelector('i').classList.remove('rotate-180');
+                        }
+                    });
+                    
+                    // Toggle current FAQ item
+                    answer.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                    
+                    // Add teleport effect
+                    if (!answer.classList.contains('hidden')) {
+                        answer.classList.add('teleport-in');
+                        setTimeout(() => {
+                            answer.classList.remove('teleport-in');
+                        }, 600);
+                    }
+                });
+            });
+        }
+
+        // Contact Form Handling
+        function initializeContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const firstName = formData.get('firstName');
+                    const lastName = formData.get('lastName');
+                    const email = formData.get('email');
+                    const subject = formData.get('subject');
+                    const message = formData.get('message');
+                    
+                    // Validate form
+                    if (!firstName || !lastName || !email || !subject || !message) {
+                        showNotification('Please fill in all fields!');
+                        return;
+                    }
+                    
+                    // Simulate form submission
+                    showNotification('Message sent successfully! We\'ll get back to you soon.');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Add teleport effect to form
+                    this.classList.add('teleport-out');
+                    setTimeout(() => {
+                        this.classList.remove('teleport-out');
+                    }, 600);
+                });
+            }
+        }
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Social Media Modal Functionality
+        let currentProduct = null;
+        let completedSteps = new Set();
+
+        function showSocialModal(productId, productName) {
+            currentProduct = productId;
+            completedSteps.clear();
+            
+            const modal = document.getElementById('socialModal');
+            const productTitle = document.getElementById('socialModalProduct');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            if (!modal || !productTitle || !downloadBtn) {
+                showNotification('Error loading modal. Please try again.');
+                return;
+            }
+            
+            productTitle.textContent = productName;
+            downloadBtn.disabled = true;
+            downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            downloadBtn.classList.remove('teleport-pulse');
+            
+            // Reset all social steps
+            document.querySelectorAll('.social-step').forEach(step => {
+                step.classList.remove('completed');
+                const btn = step.querySelector('.social-btn');
+                if (btn) {
+                    const originalText = btn.getAttribute('data-original-text') || (btn.textContent.includes('Follow') ? 'Follow' : 'Join');
+                    btn.textContent = originalText;
+                    btn.setAttribute('data-original-text', originalText);
+                    
+                    // Reset button colors based on platform
+                    const platform = step.getAttribute('data-step');
+                    btn.classList.remove('bg-green-500');
+                    if (platform === 'twitter') {
+                        btn.classList.add('bg-blue-400');
+                    } else if (platform === 'instagram') {
+                        btn.classList.add('bg-pink-400');
+                    } else if (platform === 'discord') {
+                        btn.classList.add('bg-indigo-500');
+                    }
+                }
+            });
+            
+            modal.classList.remove('hidden');
+            const modalContent = modal.querySelector('.teleport-modal');
+            if (modalContent) {
+                modalContent.style.transform = 'scale(0.1) rotate(-360deg)';
+                modalContent.style.opacity = '0';
+                
+                setTimeout(() => {
+                    modalContent.style.transform = 'scale(1) rotate(0deg)';
+                    modalContent.style.opacity = '1';
+                    modalContent.style.transition = 'all 0.4s ease-out';
+                }, 10);
+            }
+        }
+
+        function closeSocialModal() {
+            const modal = document.getElementById('socialModal');
             const modalContent = modal.querySelector('.teleport-modal');
             modalContent.classList.add('teleport-modal-out');
             
@@ -865,6 +1740,102 @@
                 modal.classList.add('hidden');
                 modalContent.classList.remove('teleport-modal-out');
             }, 400);
+        }
+
+        function followSocial(platform) {
+            const step = document.querySelector(`[data-step="${platform}"]`);
+            const btn = step.querySelector('.social-btn');
+            
+            // Simulate social media follow
+            btn.textContent = 'Following ✓';
+            btn.classList.remove('bg-blue-400', 'bg-pink-400', 'bg-indigo-500');
+            btn.classList.add('bg-green-500');
+            step.classList.add('completed');
+            
+            completedSteps.add(platform);
+            
+            // Check if all steps are completed
+            if (completedSteps.size === 3) {
+                const downloadBtn = document.getElementById('downloadBtn');
+                downloadBtn.disabled = false;
+                downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                downloadBtn.classList.add('teleport-pulse');
+                
+                showNotification('All steps completed! You can now download your free product!');
+            }
+            
+            // Open social media links in new tab
+            const socialLinks = {
+                twitter: 'https://x.com/PalkiSharmaFP',
+                instagram: 'https://www.instagram.com/anchor_palkisharma/',
+                discord: 'https://discord.gg/zE4sXAGxmU'
+            };
+            
+            window.open(socialLinks[platform], '_blank');
+        }
+
+        function downloadProduct() {
+            if (completedSteps.size === 3) {
+                const downloadBtn = document.getElementById('downloadBtn');
+                if (downloadBtn) {
+                    downloadBtn.classList.add('teleport-out');
+                }
+                // Determine the correct link based on currentProduct
+                let link = '';
+                if (currentProduct === 'notion-template') {
+                    link = 'https://www.notion.com/product';
+                } else if (currentProduct === 'ai-prompts') {
+                    link = 'https://chatgpt.com/';
+                } else if (currentProduct === 'website-templates') {
+                    link = 'https://wordpress.com/';
+                } else {
+                    showNotification('Unknown product.');
+                    return;
+                }
+                // Show notification and teleport, then redirect
+                showNotification('Teleporting you to your free product...');
+                setTimeout(() => {
+                    closeSocialModal();
+                    window.open(link, '_blank');
+                }, 700);
+            } else {
+                showNotification('Please complete all social media steps first!');
+            }
+        }
+
+        // Product Filtering
+        function initializeProductFilters() {
+            const filterButtons = document.querySelectorAll('.product-filter');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary-600', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+                    this.classList.remove('bg-gray-200', 'text-gray-700');
+                    this.classList.add('bg-primary-600', 'text-white');
+                    
+                    // Filter products
+                    productCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        
+                        if (category === 'all' || cardCategory === category) {
+                            card.style.display = 'block';
+                            card.classList.add('teleport-in');
+                            setTimeout(() => {
+                                card.classList.remove('teleport-in');
+                            }, 600);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
         }
 
         // Initialize
@@ -872,6 +1843,9 @@
         updateWishlistDisplay();
         createParticles();
         initializeTeleportEffects();
+        initializeFAQ();
+        initializeContactForm();
+        initializeProductFilters();
     </script>
 </body>
 </html> 
